@@ -1,0 +1,18 @@
+@startuml CircularBuffer_Access_Sequence
+
+participant System as s
+queue       CircularBuffer as c
+
+s -> c : Write data
+
+alt Circular Buffer FULL
+
+    c -> s: Abort writing
+
+else Circular Buffer isn't FULL
+
+    c -> s: Data written
+
+end
+
+@enduml
