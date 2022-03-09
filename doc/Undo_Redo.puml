@@ -1,0 +1,23 @@
+@startuml undo_redo
+abstract class UndoableAction {
+    {abstract} +void execute()
+    {abstract} +void undo()
+    {abstract} +void redo()
+}
+
+class ActionManager {
+    -stack<UndoableAction*> undoStack
+    -stack<UndoableAction*> redoStack
+    -int maxSize
+
+    +void executeAction(UndoableAction*)
+    +void undo()
+    +void redo()
+}
+
+class BlackWhiteFilter
+class XXXFilter
+
+UndoableAction <|-- BlackWhiteFilter
+UndoableAction <|-- XXXFilter
+@enduml

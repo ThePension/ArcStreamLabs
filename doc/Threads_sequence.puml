@@ -1,0 +1,21 @@
+@startuml Threads_sequence
+participant Writting_Thread as th1
+queue   Circular_Buffer as buff
+participant Buffer_Locked as locked
+participant Processing_Thread as th2
+
+th1 -> locked : lock
+activate locked
+th1 -> buff : write data
+th1 -> locked : unlock
+deactivate locked
+
+th2 -> locked : lock
+activate locked
+th2 -> buff : read data
+th2 -> locked : unlock
+deactivate locked
+
+th2 -> th2 : process data
+
+@enduml
