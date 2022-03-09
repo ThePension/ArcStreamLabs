@@ -1,0 +1,1092 @@
+
+@misc{noauthor_improving_nodate,
+	title = {Improving the {Voxel} {Cube} with {Lighting} and {Optimized} {Updates}},
+	url = {https://www.youtube.com/watch?v=9_bZn0aNVPQ},
+	abstract = {One of the big advantages of recording yourself building things is you get to watch it all back, a built in code review while you edit. Sometimes you notice some mistakes or things you've overlooked. That's the case here. Our Voxel Terrain that we designed previously has a few flaws and we're going to fix them. Specifically we're going to focus on two issues: lighting and fixing the extra mesh generation bug that exists in the original implementation.
+
+To make our lighting work we'll add normals to our mesh and fix the triangle winding - the direction that the vertices are oriented relative to one another - to make shadows render correctly. We actually mess this up as well �� and have our normals in the wrong orientation. However, we \_do\_ get working lighting and correctly rendering shadows with this work. This includes self shadowing which is nice, it behaves just like any other mesh would in Unity.
+
+A bigger problem, the one that caused the crash at the end of the first video was how we generated our meshes. We had implemented it to regenerate a mesh whenever a block inside our chunk changed. The problem is, when we are regenerating an entire chunk we need to change every block. The side effect of this is that every single block being generated caused a new mesh to be generated. This means that instead of generating the single mesh we wanted we generated the Width of our Chunk cubed meshes and immediately discarded all but the last. This was a *massive* use of time and caused a lot of slowness when generating these meshes. We're going to fix that by reworking how we send Block Update messages (we'll use Unity Events) and make it possible to update all blocks in a Chunk before sending an update.
+
+Come join the World of Zero Discord channel!  https://discord.gg/hU5Kq2u},
+	urldate = {2020-03-26}
+}
+
+@misc{jan_pixels_2017,
+	title = {Pixels and voxels, the long answer},
+	url = {https://medium.com/retronator-magazine/pixels-and-voxels-the-long-answer-5889ecc18190},
+	abstract = {Retronator Do It Yourself},
+	language = {en},
+	urldate = {2020-03-26},
+	journal = {Medium},
+	author = {Jan, Matej ‘Retro’},
+	month = nov,
+	year = {2017},
+	note = {Library Catalog: medium.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\NFVZCBE6\\pixels-and-voxels-the-long-answer-5889ecc18190.html:text/html}
+}
+
+@misc{noauthor_mapbox_nodate,
+	title = {Mapbox},
+	url = {https://www.mapbox.com/},
+	abstract = {An open source mapping platform for custom designed maps. Our APIs and SDKs are the building blocks to integrate location into any mobile or web app.},
+	urldate = {2020-03-14},
+	note = {Library Catalog: www.mapbox.com},
+	keywords = {Data, Map, Unity},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\683UCAVZ\\www.mapbox.com.html:text/html}
+}
+
+@misc{noauthor_google_nodate,
+	title = {Google {Colaboratory}},
+	url = {https://colab.research.google.com/github/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/Index.ipynb},
+	language = {fr},
+	urldate = {2020-03-11},
+	note = {Library Catalog: colab.research.google.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\C7SB9HWL\\Index.html:text/html}
+}
+
+@book{vanderplas_python_nodate,
+	title = {Python {Data} {Science} {Handbook}},
+	isbn = {978-1-4919-1205-8},
+	url = {http://shop.oreilly.com/product/0636920034919.do},
+	abstract = {For many researchers, Python is a first-class tool mainly because of its libraries for storing, manipulating, and gaining insight from data. Several resources exist for individual pieces of this data science stack, but only with the Python Data...},
+	language = {en},
+	urldate = {2020-03-11},
+	author = {VanderPlas, Jake},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\UNXQHD9Z\\0636920034919.html:text/html}
+}
+
+@misc{microsoft_azure_2019,
+	title = {Azure {Kinect} {DK} documentation},
+	url = {https://docs.microsoft.com/en-us/azure/kinect-dk/},
+	abstract = {Azure Kinect DK is a developer kit with advanced AI sensors that provide sophisticated computer vision and speech models.  Kinect contains a depth sensor, spatial microphone array with a video camera, and orientation sensor as an all in-one small device with multiple modes, options, and SDKs.},
+	language = {en-us},
+	urldate = {2020-03-03},
+	author = {Microsoft},
+	year = {2019},
+	keywords = {Kinect},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\HYBTACAS\\kinect-dk.html:text/html}
+}
+
+@misc{noauthor_bigbird_nodate,
+	title = {{BigBIRD}: ({Big}) {Berkeley} {Instance} {Recognition} {Dataset}},
+	url = {http://rll.berkeley.edu/bigbird/},
+	urldate = {2020-03-03},
+	keywords = {Data, Kinect},
+	file = {BigBIRD\: (Big) Berkeley Instance Recognition Dataset:C\:\\Users\\Benoit\\Zotero\\storage\\GZBHV79B\\bigbird.html:text/html}
+}
+
+@misc{noauthor_modeling_nodate,
+	title = {Modeling {Kinect} {Sensor} {Noise} for {Improved} {3D} {Reconstruction} and {Tracking} - {IEEE} {Conference} {Publication}},
+	url = {https://ieeexplore.ieee.org/document/6375037},
+	urldate = {2020-03-03},
+	keywords = {Kinect},
+	file = {Modeling Kinect Sensor Noise for Improved 3D Reconstruction and Tracking - IEEE Conference Publication:C\:\\Users\\Benoit\\Zotero\\storage\\6DVGIQ7P\\6375037.html:text/html}
+}
+
+@article{landau_simulating_2016,
+	title = {Simulating {Kinect} {Infrared} and {Depth} {Images}},
+	volume = {46},
+	issn = {2168-2275},
+	doi = {10.1109/TCYB.2015.2494877},
+	abstract = {With the emergence of the Microsoft Kinect sensor, many developer communities and research groups have found countless uses and have already published a wide variety of papers that utilize the raw depth images for their specific goals. New methods and applications that use the device generally require an appropriately large ensemble of data sets with accompanying ground truth for testing purposes, as well as accurate models that account for the various systematic and stochastic contributors to Kinect errors. Current error models, however, overlook the intermediate infrared (IR) images that directly contribute to noisy depth estimates. We, therefore, propose a high fidelity Kinect IR and depth image predictor and simulator that models the physics of the transmitter/receiver system, unique IR dot pattern, disparity/depth processing technology, and random intensity speckle and IR noise in the detectors. The model accounts for important characteristics of Kinect's stereo triangulation system, including depth shadowing, IR dot splitting, spreading, and occlusions, correlation-based disparity estimation between windows of measured and reference IR images, and subpixel refinement. Results show that the simulator accurately produces axial depth error from imaged flat surfaces with various tilt angles, as well as the bias and standard lateral error of an object's horizontal and vertical edge.},
+	number = {12},
+	journal = {IEEE Transactions on Cybernetics},
+	author = {Landau, Michael J. and Choo, Benjamin Y. and Beling, Peter A.},
+	month = dec,
+	year = {2016},
+	note = {Conference Name: IEEE Transactions on Cybernetics},
+	keywords = {Kinect, axial depth error, Computer-aided design (CAD), correlation-based disparity estimation, Data models, depth image, depth processing technology, depth shadowing, Design automation, disparity processing, high fidelity Kinect IR image, image processing, image sensors, infrared (IR) dot pattern, infrared imaging, intermediate infrared image, IR dot pattern, IR dot splitting, IR noise, Kinect error, Kinect infrared image, Kinect stereo triangulation system, lateral error, Microsoft Kinect, Microsoft Kinect sensor, noisy depth estimate, object horizontal edge, object vertical edge, occlusion, Optical transmitters, random intensity speckle noise, Receivers, Robot sensing systems, simulation, Solid modeling, speckle, Speckle, speckle noise, structured-light 3-D scanner, subpixel refinement, tilt angle, transmitter-receiver system},
+	pages = {3018--3031},
+	file = {IEEE Xplore Full Text PDF:C\:\\Users\\Benoit\\Zotero\\storage\\FE4DWB8C\\Landau et al. - 2016 - Simulating Kinect Infrared and Depth Images.pdf:application/pdf}
+}
+
+@inproceedings{iversen_prediction_2017,
+	title = {Prediction of {ICP} pose uncertainties using {Monte} {Carlo} simulation with synthetic depth images},
+	doi = {10.1109/IROS.2017.8206335},
+	abstract = {In robotics, vision sensors are used to estimate the poses of objects in the environment. However, it is a fundamental problem that the estimated poses are not always accurate enough for a given robotic task. Proper sensor placement can mitigate this problem. We present a method which can predict the pose uncertainties in the Iterative Closest Point (ICP) algorithm, which is often used as the last critical pose refinement step in a pose estimation system. With our method we thus provide a crucial tool needed for the optimization of a robust pose estimation system. Our method relies on the generation of synthetic depth images in a Monte Carlo simulation. In this paper we demonstrate our method for depth sensors which rely on Kinect v1 like technology. We evaluate our method using real depth sensor recordings from the publicly available BigBird dataset. The evaluation shows that the uncertainty predictions of our method are in better correspondence with real world experimental results than the state of the art analytical method.},
+	booktitle = {2017 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems} ({IROS})},
+	author = {Iversen, Thorbj⊘rn Mosekjær and Buch, Anders Glent and Kraft, Dirk},
+	month = sep,
+	year = {2017},
+	note = {ISSN: 2153-0866},
+	keywords = {Data, Kinect, Robot sensing systems, Solid modeling, BigBird dataset, critical pose refinement step, depth sensor recordings, depth sensors, ICP pose uncertainties, Iterative closest point algorithm, Iterative Closest Point algorithm, iterative methods, Kinect v1 like technology, Monte Carlo methods, Monte Carlo simulation, pose estimation, Pose estimation, pose refinement, robot vision, robotic task, robotics, robust pose estimation system, sensor placement, synthetic depth images, Three-dimensional displays, Uncertainty, uncertainty predictions, vision sensors},
+	pages = {4640--4647},
+	file = {IEEE Xplore Abstract Record:C\:\\Users\\Benoit\\Zotero\\storage\\AZTM3SYB\\8206335.html:text/html;IEEE Xplore Full Text PDF:C\:\\Users\\Benoit\\Zotero\\storage\\A7ADYQCU\\Iversen et al. - 2017 - Prediction of ICP pose uncertainties using Monte C.pdf:application/pdf}
+}
+
+@article{iversen_generation_2017,
+	title = {Generation of synthetic {Kinect} depth images based on empirical noise model},
+	volume = {53},
+	issn = {0013-5194},
+	doi = {10.1049/el.2017.0392},
+	abstract = {The development, training and evaluation of computer vision algorithms rely on the availability of a large number of images. The acquisition of these images can be time-consuming if they are recorded using real sensors. An alternative is to rely on synthetic images which can be rapidly generated. This Letter describes a novel method for the simulation of Kinect v1 depth images. The method is based on an existing empirical noise model from the literature. The authors show that their relatively simple method is able to provide depth images which have a high similarity with real depth images.},
+	number = {13},
+	journal = {Electronics Letters},
+	author = {Iversen, T.M. and Kraft, D.},
+	year = {2017},
+	keywords = {Data, Kinect, image sensors, computer vision, computer vision algorithms, empirical noise model, Kinect v1 depth images, synthetic Kinect depth images},
+	pages = {856--858},
+	file = {Iversen and Kraft - 2017 - Generation of synthetic Kinect depth images based .pdf:C\:\\Users\\Benoit\\Zotero\\storage\\6BS92785\\Iversen and Kraft - 2017 - Generation of synthetic Kinect depth images based .pdf:application/pdf;IEEE Xplore Abstract Record:C\:\\Users\\Benoit\\Zotero\\storage\\M9IMMR9L\\7956653.html:text/html}
+}
+
+@misc{galarnyk_how_2020,
+	title = {How to {Build} a {Data} {Science} {Portfolio}},
+	url = {https://towardsdatascience.com/how-to-build-a-data-science-portfolio-5f566517c79c},
+	abstract = {How do you get a job in data science? Knowing enough statistics, machine learning, programming, etc to be able to get a job is difficult…},
+	language = {en},
+	urldate = {2020-03-03},
+	journal = {Medium},
+	author = {Galarnyk, Michael},
+	month = feb,
+	year = {2020},
+	keywords = {Data},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\BUFBC2AB\\how-to-build-a-data-science-portfolio-5f566517c79c.html:text/html}
+}
+
+@misc{noauthor_synthetic_nodate,
+	title = {Synthetic data generation — a must-have skill for new data scientists},
+	url = {https://towardsdatascience.com/synthetic-data-generation-a-must-have-skill-for-new-data-scientists-915896c0c1ae},
+	urldate = {2020-03-03},
+	keywords = {Data, Kinect},
+	file = {Synthetic data generation — a must-have skill for new data scientists:C\:\\Users\\Benoit\\Zotero\\storage\\CFSMTNFL\\synthetic-data-generation-a-must-have-skill-for-new-data-scientists-915896c0c1ae.html:text/html}
+}
+
+@misc{noauthor_entity_nodate,
+	title = {Entity {Component} {System} - {Unity} {Learn}},
+	url = {https://learn.unity.com/tutorial/entity-component-system#5c7f8528edbc2a002053b67b},
+	urldate = {2020-02-24},
+	keywords = {Unity},
+	file = {Entity Component System - Unity Learn:C\:\\Users\\Benoit\\Zotero\\storage\\A8K5VICF\\entity-component-system.html:text/html}
+}
+
+@misc{noauthor_ecs_2019,
+	title = {{ECS} ‘{Hello} {World}’},
+	url = {https://www.bovinelabs.com/ecs-hello-world/},
+	abstract = {This article is an attempt at illustrating some of the basic syntax of Unity ECS by demonstrating some of the various ways Entities should be accessed and manipulated. I hope to achieve this by showing how you can rotate an object three differe [...]},
+	language = {en-US},
+	urldate = {2020-02-21},
+	journal = {BovineLabs},
+	month = jan,
+	year = {2019},
+	keywords = {ECS},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\9YRC42JR\\ecs-hello-world.html:text/html}
+}
+
+@article{latorre_gait_2019,
+	title = {Gait analysis with the {Kinect} v2: normative study with healthy individuals and comprehensive study of its sensitivity, validity, and reliability in individuals with stroke},
+	volume = {16},
+	issn = {1743-0003},
+	shorttitle = {Gait analysis with the {Kinect} v2},
+	doi = {10.1186/s12984-019-0568-y},
+	abstract = {Gait is usually assessed by clinical tests, which may have poor accuracy and be biased, or instrumented systems, which potentially solve these limitations at the cost of being time-consuming and expensive. The different versions of the Microsoft Kinect have enabled human motion tracking without using wearable sensors at a low-cost and with acceptable reliability. This study aims: First, to determine the sensitivity of an open-access Kinect v2-based gait analysis system to motor disability and aging; Second, to determine its concurrent validity with standardized clinical tests in individuals with stroke; Third, to quantify its inter and intra-rater reliability, standard error of measurement, minimal detectable change; And, finally, to investigate its ability to identify fall risk after stroke.},
+	language = {en},
+	number = {1},
+	urldate = {2020-02-13},
+	journal = {Journal of NeuroEngineering and Rehabilitation},
+	author = {Latorre, Jorge and Colomer, Carolina and Alcañiz, Mariano and Llorens, Roberto},
+	month = jul,
+	year = {2019},
+	keywords = {Gait Analysis, Kinect},
+	pages = {97},
+	file = {Springer Full Text PDF:C\:\\Users\\Benoit\\Zotero\\storage\\B59EQWJ9\\Latorre et al. - 2019 - Gait analysis with the Kinect v2 normative study .pdf:application/pdf}
+}
+
+@misc{noauthor_entity-component-system_nodate,
+	title = {The {Entity}-{Component}-{System} - {An} awesome game-design pattern in {C}++ ({Part} 1)},
+	url = {https://www.gamasutra.com/blogs/TobiasStein/20171122/310172/The_EntityComponentSystem__An_awesome_gamedesign_pattern_in_C_Part_1.php},
+	abstract = {In this article I want to talk about the Entity-Component-System (ECS). It is a design pattern � mostly encountered in video games � which allows you great flexibility in designing your overall software architecture.},
+	language = {en},
+	urldate = {2020-02-21},
+	keywords = {ECS},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\Q56II6HY\\The_EntityComponentSystem__An_awesome_gamedesign_pattern_in_C_Part_1.html:text/html}
+}
+
+@misc{noauthor_component_nodate,
+	title = {Component · {Decoupling} {Patterns} · {Game} {Programming} {Patterns}},
+	url = {https://gameprogrammingpatterns.com/component.html},
+	urldate = {2020-02-21},
+	keywords = {ECS},
+	file = {Component · Decoupling Patterns · Game Programming Patterns:C\:\\Users\\Benoit\\Zotero\\storage\\5XXZR7NY\\component.html:text/html}
+}
+
+@misc{ladlani_ecs_2019,
+	title = {{ECS} {Deep} {Dive}},
+	url = {https://rams3s.github.io/blog/2019-01-09-ecs-deep-dive/},
+	abstract = {Notes taken during ECS Deep Dive presentation.},
+	language = {en},
+	urldate = {2020-02-21},
+	journal = {Rams3s Blog},
+	author = {Ladlani, Ramses},
+	month = jan,
+	year = {2019},
+	keywords = {Unity, ECS},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\XJGPGZAD\\2019-01-09-ecs-deep-dive.html:text/html}
+}
+
+@misc{noauthor_isocppcppcoreguidelines_2020,
+	title = {isocpp/{CppCoreGuidelines}},
+	url = {https://github.com/isocpp/CppCoreGuidelines},
+	abstract = {The C++ Core Guidelines are a set of tried-and-true guidelines, rules, and best practices about coding in C++},
+	urldate = {2020-04-01},
+	publisher = {Standard C++ Foundation},
+	month = apr,
+	year = {2020},
+	note = {original-date: 2015-08-19T20:22:52Z}
+}
+
+@misc{noauthor_point_2020,
+	title = {Point set registration},
+	copyright = {Creative Commons Attribution-ShareAlike License},
+	url = {https://en.wikipedia.org/w/index.php?title=Point_set_registration&oldid=950898257},
+	abstract = {In computer vision, pattern recognition, and robotics, point set registration, also known as point cloud registration or scan matching, is the process of finding a spatial transformation (e.g., scaling, rotation and translation) that aligns two point clouds. The purpose of finding such a transformation includes merging multiple data sets into a globally consistent model (or coordinate frame), and mapping a new measurement to a known data set to identify features or to estimate its pose. Raw 3D point cloud data are typically obtained from Lidars and RGB-D cameras. 3D point clouds can also be generated from computer vision algorithms such as triangulation, bundle adjustment, and more recently, monocular image depth estimation using deep learning. For 2D point set registration used in image processing and feature-based image registration, a point set may be 2D pixel coordinates obtained by feature extraction from an image, for example corner detection. Point cloud registration has extensive applications in autonomous driving, motion estimation and 3D reconstruction, object detection and pose estimation, robotic manipulation, simultaneous localization and mapping (SLAM), panorama stitching, virtual and augmented reality, and medical imaging.As a special case, registration of two point sets that only differ by a 3D rotation (i.e., there is no scaling and translation), is called the Wahba Problem and also related to the orthogonal procrustes problem.},
+	language = {en},
+	urldate = {2020-05-28},
+	journal = {Wikipedia},
+	month = apr,
+	year = {2020},
+	note = {Page Version ID: 950898257},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\9MV8INVE\\index.html:text/html}
+}
+
+@inproceedings{ye_accurate_2011,
+	title = {Accurate {3D} pose estimation from a single depth image},
+	doi = {10.1109/ICCV.2011.6126310},
+	abstract = {This paper presents a novel system to estimate body pose configuration from a single depth map. It combines both pose detection and pose refinement. The input depth map is matched with a set of pre-captured motion exemplars to generate a body configuration estimation, as well as semantic labeling of the input point cloud. The initial estimation is then refined by directly fitting the body configuration with the observation (e.g., the input depth). In addition to the new system architecture, our other contributions include modifying a point cloud smoothing technique to deal with very noisy input depth maps, a point cloud alignment and pose search algorithm that is view-independent and efficient. Experiments on a public dataset show that our approach achieves significantly higher accuracy than previous state-of-art methods.},
+	booktitle = {2011 {International} {Conference} on {Computer} {Vision}},
+	author = {Ye, Mao and Xianwang Wang and Yang, Ruigang and Liu Ren and Pollefeys, Marc},
+	month = nov,
+	year = {2011},
+	note = {ISSN: 2380-7504},
+	keywords = {pose estimation, pose refinement, 3D pose estimation, Accuracy, body pose configuration estimation, Cameras, Databases, Estimation, human motion modeling, image matching, image motion analysis, input depth map, input point cloud semantic labeling, Joints, object detection, point cloud alignment, point cloud smoothing technique, pose detection, pose search algorithm, Sensors, Shape, single depth image, smoothing methods},
+	pages = {731--738},
+	file = {IEEE Xplore Abstract Record:C\:\\Users\\Benoit\\Zotero\\storage\\P56KPCM7\\6126310.html:text/html}
+}
+
+@inproceedings{ye_improved_2016,
+	title = {An improved {ICP} algorithm for kinect point cloud registration},
+	doi = {10.1109/FSKD.2016.7603507},
+	abstract = {Kinect application is becoming a research focus in the field of computer vision. The latest 2.0 version is better than that of 1.0 at the geometric quality and the data transmission. For position estimation and 3D modelling, the popular methods widely employ single data source (depth images or color images) and rarely integrate them, thus providing less robust and precise registration. This paper proposes a new approach for the registration of depth data with color data, which combines epipolar constraints with point-to-plane constraints to improve ICP algorithm and achieve accurate registration. Based on theoretical analysis and experimental verification, results demonstrate the potential of this method, even in a scene tending to be flat where KinectFusion fails in tracking and modelling. The registration accuracy of point cloud is also found to be accord with the observation accuracy of kinect.},
+	booktitle = {2016 12th {International} {Conference} on {Natural} {Computation}, {Fuzzy} {Systems} and {Knowledge} {Discovery} ({ICNC}-{FSKD})},
+	author = {Ye, Qin and Yao, Yahui and Gui, Popo and Lin, Yi},
+	month = aug,
+	year = {2016},
+	keywords = {Robot sensing systems, Iterative closest point algorithm, Three-dimensional displays, computer vision, Cameras, 3D modelling, Color, color data, epipolar constraints, estimation theory, Frequency modulation, ICP, ICP algorithm, image colour analysis, image registration, interactive systems, kinect, Kinect point cloud registration, Mathematical model, point-to-plane constraints, position estimation},
+	pages = {2109--2114},
+	file = {IEEE Xplore Abstract Record:C\:\\Users\\Benoit\\Zotero\\storage\\QMGB9ZCU\\7603507.html:text/html}
+}
+
+@misc{packt_hand_2015,
+	title = {Hand {Gesture} {Recognition} {Using} a {Kinect} {Depth} {Sensor}},
+	url = {https://hub.packtpub.com/hand-gesture-recognition-using-kinect-depth-sensor/},
+	abstract = {In this article by Michael Beyeler author of the book OpenCV with Python Blueprints is to develop an app that detects and tracks simple hand gestures in},
+	language = {en-US},
+	urldate = {2020-05-28},
+	journal = {Packt Hub},
+	author = {{Packt}},
+	month = oct,
+	year = {2015},
+	note = {Library Catalog: hub.packtpub.com
+Section: Data News},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\KR7Q6LHS\\hand-gesture-recognition-using-kinect-depth-sensor.html:text/html}
+}
+
+@incollection{coscia_3-d_2016,
+	title = {3-{D} {Hand} {Pose} {Estimation} from {Kinect}’s {Point} {Cloud} {Using} {Appearance} {Matching}},
+	volume = {54},
+	isbn = {978-3-319-33746-3},
+	abstract = {We present a novel appearance-based approach for pose estimation of a human hand using the point clouds provided by the low-cost Microsoft Kinect sensor. Both the free-hand case, in which the hand is isolated from the surrounding environment, and the hand-object case, in which the different types of interactions are classified, have been considered. The pose estimation is obtained by applying a modified version of the Iterative Closest Point (ICP) algorithm to the synthetic models. The proposed framework uses a “pure” point cloud as provided by the Kinect sensor without any other information such as RGB values or normal vector components.},
+	author = {Coscia, Pasquale and Palmieri, Francesco and Castaldo, Francesco and Cavallo, Alberto},
+	month = apr,
+	year = {2016},
+	doi = {10.1007/978-3-319-33747-0_4},
+	pages = {37--45},
+	file = {Full Text PDF:C\:\\Users\\Benoit\\Zotero\\storage\\TVHI73JN\\Coscia et al. - 2016 - 3-D Hand Pose Estimation from Kinect’s Point Cloud.pdf:application/pdf}
+}
+
+@article{tagliasacchi_robust_2015,
+	title = {Robust {Articulated}-{ICP} for {Real}-{Time} {Hand} {Tracking}},
+	volume = {34},
+	issn = {01677055},
+	doi = {10.1111/cgf.12700},
+	abstract = {We present a robust method for capturing articulated hand motions in realtime using a single depth camera. Our system is based on a realtime registration process that accurately reconstructs hand poses by ﬁtting a 3D articulated hand model to depth images. We register the hand model using depth, silhouette, and temporal information. To effectively map low-quality depth maps to realistic hand poses, we regularize the registration with kinematic and temporal priors, as well as a data-driven prior built from a database of realistic hand poses. We present a principled way of integrating such priors into our registration optimization to enable robust tracking without severely restricting the freedom of motion. A core technical contribution is a new method for computing tracking correspondences that directly models occlusions typical of single-camera setups. To ensure reproducibility of our results and facilitate future research, we fully disclose the source code of our implementation.},
+	language = {en},
+	number = {5},
+	urldate = {2020-05-28},
+	journal = {Computer Graphics Forum},
+	author = {Tagliasacchi, Andrea and Schröder, Matthias and Tkach, Anastasia and Bouaziz, Sofien and Botsch, Mario and Pauly, Mark},
+	month = aug,
+	year = {2015},
+	pages = {101--114},
+	file = {paper.pdf:C\:\\Users\\Benoit\\Zotero\\storage\\GAE8FZMS\\paper.pdf:application/pdf}
+}
+
+@misc{noauthor_fully_nodate,
+	title = {Fully {Articulated} {Hand} {Tracking}},
+	url = {https://www.microsoft.com/en-us/research/project/fully-articulated-hand-tracking/},
+	abstract = {We present a new real-time articulated hand tracker which can enable new possibilities for human-computer interaction (HCI). Our system accurately reconstructs complex hand poses across a variety of subjects using only a single depth camera. It also allows for a high-degree of robustness, continually recovering from tracking failures. However, the most unique aspect of our …},
+	language = {en-US},
+	urldate = {2020-05-28},
+	journal = {Microsoft Research},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\PBAPLRZJ\\fully-articulated-hand-tracking.html:text/html}
+}
+
+@misc{noauthor_how_2017,
+	title = {How to {Git} with {Unity}},
+	url = {https://thoughtbot.com/blog/how-to-git-with-unity},
+	abstract = {A developer’s guide to using Git with Unity projects.},
+	language = {en},
+	urldate = {2020-05-25},
+	journal = {thoughtbot},
+	month = jun,
+	year = {2017},
+	note = {Library Catalog: thoughtbot.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\98RSKFHB\\how-to-git-with-unity.html:text/html}
+}
+
+@misc{noauthor_uiex_nodate,
+	title = {{UIEX}},
+	url = {https://redowlgames.com/UIEX/},
+	abstract = {UIElementsX (UIEX) is the missing high level API for unity’s new UI system},
+	language = {en-US},
+	urldate = {2020-05-13},
+	journal = {UIEX},
+	note = {Library Catalog: redowlgames.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\N6RSARIK\\UIEX.html:text/html}
+}
+
+@book{jakobowicz_python_2019,
+	address = {Malakoff (Hauts-de-Seine)},
+	title = {Python pour le data scientist - {Des} bases du langage au machine learning: {Des} bases du langage au machine learning},
+	isbn = {978-2-10-080162-6},
+	shorttitle = {Python pour le data scientist - {Des} bases du langage au machine learning},
+	abstract = {Python est devenu en quelques années un langage majeur dans l'univers des applications centrées sur le traitement des données, et plus particulièrement des gros volumes de données (big data).Cet ouvrage servira de guide à tous ceux qui s'intéressent à l'utilisation de Python pour le travail sur les données et l'automatisation de certaines tâches (data science). Il met l'accent sur la préparation et la mise en forme des données qui sont essentielles dans la qualité du résultat et qui constituent aujourd'hui une part importante du travail du data scientist.L'ensemble des exemples et des exercices présentés dans cet ouvrage sont disponibles sous forme de Notebooks Jupyter. Ils sont accessibles directement sur GitHub dans le répertoire dédié à l'ouvrage ou en téléchargement sur le site Dunod.},
+	language = {Français},
+	publisher = {Dunod},
+	author = {Jakobowicz, Emmanuel},
+	year = {2019}
+}
+
+@misc{noauthor_unity_nodate,
+	title = {Unity {Shader} {Graph} - {Cartoon} {Water} \& {Foam} {Shader} {Tutorial}},
+	url = {https://www.youtube.com/watch?v=jBmBb-je4Lg&feature=youtu.be},
+	abstract = {Unity Shader Graph - Cartoon Stylized Water with Foam Shader Tutorial
+
+In this Shader Graph tutorial we are going to see how to create a cool stylized water with foam! Foam is the hardest part but it gives a really nice touch to the water.
+
+
+
+Get access to many more Shaders and VFX packages:
+----------------------------------------------------------------------
+
+PATREON: https://www.patreon.com/posts/unity-s...
+
+----------------------------------------------------------------------
+
+UDEMY VFX COURSE: https://www.udemy.com/course/vfx-for-...
+
+
+
+VFX Packages:
+
+Unique Projectiles Volume 1: https://assetstore.unity.com/packages...
+
+Unique Explosions Volume 1: https://assetstore.unity.com/packages...
+
+Unique Lasers Volume 1: https://assetstore.unity.com/packages...
+
+Unique Magic Abilities Volume 1: https://assetstore.unity.com/packages...
+
+Unique Toon Projectiles Volume 1: https://assetstore.unity.com/packages...
+
+
+
+
+Shader Graph Tutorials:
+
+Shader Graph - Introduction: https://www.youtube.com/watch?v=O75iG...
+
+Shader Graph - Portal: https://www.youtube.com/watch?v=w0znZ...
+
+Shader Graph - Fire Flames: https://www.youtube.com/watch?v=glSsa...
+
+Shader Graph - Rock Moss: https://www.youtube.com/watch?v=Q43XB...
+
+Shader Graph - Cartoon Water: https://www.youtube.com/watch?v=jBmBb...
+
+Shader Graph - Laser Beam: https://www.youtube.com/watch?v=mGd3n...
+
+Shader Graph - Fire: https://www.youtube.com/watch?v=qlyIO...
+
+Shader Graph - Vertex Animation: https://www.youtube.com/watch?v=VQxub...
+
+
+
+
+Game VFX Tutorials:
+
+Game Effects - Glowing Orb: https://www.youtube.com/watch?v=ctmqr...
+
+Game Effects - Electric Explosion: https://www.youtube.com/watch?v=uR2jc...
+
+Game Effects - Fireball Projectile: https://www.youtube.com/watch?v=-P09r...
+
+Game Effects - Cartoon Boom Explosion: https://www.youtube.com/watch?v=hlGZs...
+
+Game Effects - Ice Attack: https://www.youtube.com/watch?v=XqWZZ...
+
+Game Effects - Slash Effect: https://www.youtube.com/watch?v=T-ZNk...
+
+Game Effects - Tornado Effect: https://www.youtube.com/watch?v=\_VG\_i...
+
+Game Effects - Lightning \&amp; Thunder: https://www.youtube.com/watch?v=ewC\_c...
+
+Game Effects - 10 Performance Improvements Tips: https://www.youtube.com/watch?v=JqWvJ...
+
+Game Effects - Laser Beams: https://www.youtube.com/watch?v=YbWYc...
+
+Game Effects - Projectile / Bullet Raycast: https://www.youtube.com/watch?v=xenW6...
+
+Game Effects - Weapon Trails: https://www.youtube.com/watch?v=c8hij...
+
+Game Effects - Shatter / Destroy / Explode Objects: https://www.youtube.com/watch?v=w4aMt...
+
+Game Effects - Meteor VFX: https://www.youtube.com/watch?v=YNHw4...
+
+
+
+
+Enjoy and feel free to ask any questions you may have, i'll answer as quickly as possible. And don't forget to like and subscribe. Thank you!
+
+
+✦ Follow us on TWITTER: https://twitter.com/GabrielAguiarFX
+✦ Like us on FACEBOOK: https://www.facebook.com/gabrielaguia...
+✦ Subscribe On YOUTUBE: https://www.youtube.com/c/gabrielagui...
+
+
+
+Unity 2019 Game Effects Shader Graph
+Unity Shader Graph Cartoon Water
+Unity Shader Graph Water
+Unity Shader Graph Foam
+Cartoon Water Shader
+Game Effects in Unity
+Cartoon Water Effect
+\#CartoonWater
+Effects in Unity
+\#ShaderGraph
+Portal Shader
+GameEffects
+Unity Effects
+Unity VFX
+Cartoon
+Unity 3D
+\#Foam
+Shader
+\#Unity},
+	urldate = {2020-05-08}
+}
+
+@misc{noauthor_simple_nodate,
+	title = {{SIMPLE} {CARTOON} {WATER} in {Unity}},
+	url = {https://www.youtube.com/watch?v=Vg0L9aCRWPE},
+	abstract = {Let's make some simple cartoon water!
+
+82\% OFF for Web Hosting and FREE Domain included!: https://www.hostinger.com/brackeys
+Coupon Code is "BRACKEYS" for an additional 15\% discount.
+
+The shader is based on this amazing video: https://youtu.be/jBmBb-je4Lg
+
+GduX: https://www.gdux.me/
+Game Dev Unchained: https://www.gamedevunchained.com/
+····················································································
+
+♥ Subscribe: http://bit.ly/1kMekJV
+
+�� Check out Line of Code! https://lineofcode.io/
+
+● Join our Discord: https://discordapp.com/invite/brackeys
+● Website: http://brackeys.com/
+● Twitter: https://twitter.com/BrackeysTweet/
+● Instagram: https://instagram.com/brackeysteam/
+● Patreon: http://patreon.com/brackeys/
+········································­­·······································­·­····
+
+► All content by Brackeys is 100\% free. We believe that education should be available for everyone. Any support is truly appreciated so we can keep on making the content free of charge.
+
+········································­­·······································­·­····
+
+♪ "ES\_Dress Code\_Black - oomiee" by Epidemic Sound},
+	urldate = {2020-05-08}
+}
+
+@misc{noauthor_marching_2020,
+	title = {Marching cubes},
+	copyright = {Creative Commons Attribution-ShareAlike License},
+	url = {https://en.wikipedia.org/w/index.php?title=Marching_cubes&oldid=951369042},
+	abstract = {Marching cubes is a computer graphics algorithm, published in the 1987 SIGGRAPH proceedings by Lorensen and Cline, for extracting a polygonal mesh of an isosurface from a three-dimensional discrete scalar field (sometimes called a voxel). The applications of this algorithm are mainly concerned with medical visualizations such as CT and MRI scan data images, and special effects or 3-D modelling with what is usually called metaballs or other metasurfaces.  An analogous two-dimensional method is called the marching squares algorithm.},
+	language = {en},
+	urldate = {2020-04-27},
+	journal = {Wikipedia},
+	month = apr,
+	year = {2020},
+	note = {Page Version ID: 951369042},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\CD5CDW3C\\index.html:text/html}
+}
+
+@misc{andrew_hung_implementing_2018,
+	title = {Implementing {Attractive} {Fog} of {War} in {Unity}},
+	url = {https://andrewhungblog.wordpress.com/2018/06/23/implementing-fog-of-war-in-unity/},
+	abstract = {One of the earliest features that I implemented for Gridpulse Legions was fog of war. My intention was for the feature to work similarly to how it works in the original Starcraft; that is to say, i…},
+	language = {en},
+	urldate = {2020-04-21},
+	journal = {Andrew Hung's Game Development Blog},
+	author = {Andrew Hung},
+	month = jun,
+	year = {2018},
+	note = {Library Catalog: andrewhungblog.wordpress.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\8RW3U8TE\\implementing-fog-of-war-in-unity.html:text/html}
+}
+
+@misc{noauthor_gamification_nodate,
+	title = {Gamification in {Computer} {Science} {Education}: a {Systematic} {Literature} {Review}: {American} {Society} for {Engineering} {Education}},
+	url = {https://www.asee.org/public/conferences/106/papers/22808/view},
+	urldate = {2020-04-03},
+	file = {Gamification in Computer Science Education\: a Systematic Literature Review\: American Society for Engineering Education:C\:\\Users\\Benoit\\Zotero\\storage\\6TLCXKD9\\view.html:text/html}
+}
+
+@article{keith_team_2018,
+	title = {Team {Video} {Gaming} for {Team} {Building}: {Effects} on {Team} {Performance}},
+	volume = {10},
+	issn = {1944-3900},
+	shorttitle = {Team {Video} {Gaming} for {Team} {Building}},
+	url = {https://aisel.aisnet.org/thci/vol10/iss4/2},
+	doi = {DOI: 10.17705/1thci.00110},
+	number = {4},
+	journal = {AIS Transactions on Human-Computer Interaction},
+	author = {Keith, Mark and Anderson, Greg and Gaskin, James and Dean, Douglas L.},
+	month = dec,
+	year = {2018},
+	pages = {205--231},
+	file = {"Team Video Gaming for Team Building\: Effects on Team Performance" by Mark J. Keith, Greg Anderson et al.:C\:\\Users\\Benoit\\Zotero\\storage\\2MLUYVUX\\2.html:text/html;Submitted Version:C\:\\Users\\Benoit\\Zotero\\storage\\SAJTKPLR\\Keith et al. - 2018 - Team Video Gaming for Team Building Effects on Te.pdf:application/pdf}
+}
+
+@misc{noauthor_limbo_nodate,
+	title = {Limbo: {Balancing} {Fun} and {Frustration} in {Puzzle} {Design}},
+	shorttitle = {Limbo},
+	url = {https://gdcvault.com/play/1013665/Limbo-Balancing-Fun-and-Frustration},
+	abstract = {This presentation covers the process of designing puzzles for 
+LIMBO, the award winning and critically acclaimed puzzle-platformer which was released on Xbox Live Arcade earlier this year. Jeppe Carlsen, the lead
+level designer at...},
+	urldate = {2020-05-31},
+	note = {Library Catalog: gdcvault.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\MMH7UGWV\\Limbo-Balancing-Fun-and-Frustration.html:text/html}
+}
+
+@misc{noauthor_build_nodate,
+	title = {Build, gather, brawl, repeat: {The} history of real-time strategy games {\textbar} {Ars} {Technica}},
+	url = {https://arstechnica.com/gaming/2017/09/build-gather-brawl-repeat-the-history-of-real-time-strategy-games/},
+	urldate = {2020-06-02},
+	file = {Build, gather, brawl, repeat\: The history of real-time strategy games | Ars Technica:C\:\\Users\\Benoit\\Zotero\\storage\\YUFYJUTC\\build-gather-brawl-repeat-the-history-of-real-time-strategy-games.html:text/html}
+}
+
+@misc{noauthor_github_nodate,
+	title = {{GitHub} for {Unity} editor extension},
+	url = {https://unity.github.com/},
+	abstract = {The GitHub Workflow with git LFS and file locking support, all within Unity.},
+	language = {en-gb},
+	urldate = {2020-06-02},
+	note = {Library Catalog: unity.github.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\SQJ93WIL\\unity.github.com.html:text/html}
+}
+
+@inproceedings{larusso_comparison_1995,
+	title = {A {Comparison} of {Four} {Algorithms} for {Estimating} 3-{D} {Rigid} {Transformations}.},
+	isbn = {978-0-9521898-2-4},
+	url = {http://www.bmva.org/bmvc/1995/bmvc-95-023.html},
+	doi = {10.5244/C.9.24},
+	abstract = {A common need in machine vision is to compute the 3-D rigid transformation that exists between two sets of points for which corresponding pairs have been determined. In this paper a comparative analysis of four popular and efficient algorithms is given. Each computes the translational and rotational components of the transform in closed-form as the solution to a least squares formulation of the problem. They differ in terms of the representation of the transform and the method of solution, using respectively: singular value decomposition of a matrix, orthonormal matrices, unit quaternions and dual quaternions. This comparison presents results of several experiments designed to determine the (1) accuracy in the presence of noise, (2) stability with respect to degenerate data sets, and (3) relative computation time of each approach.},
+	language = {en},
+	urldate = {2020-06-02},
+	booktitle = {Procedings of the {British} {Machine} {Vision} {Conference} 1995},
+	publisher = {British Machine Vision Association},
+	author = {Larusso, A and Eggert, Dw and Fisher, Rb},
+	year = {1995},
+	pages = {24.1--24.10},
+	file = {Larusso et al. - 1995 - A Comparison of Four Algorithms for Estimating 3-D.pdf:C\:\\Users\\Benoit\\Zotero\\storage\\K72LLBKY\\Larusso et al. - 1995 - A Comparison of Four Algorithms for Estimating 3-D.pdf:application/pdf}
+}
+
+@misc{noauthor_optimize_2020,
+	title = {Optimize your projects with {Burst} {Compiler} 1.{3Burst} コンパイラー 1.3 でプロジェクトを最適化 - {Unity} {Technologies} {Blog}},
+	url = {https://blogs.unity3d.com/2020/05/27/optimize-your-projects-with-burst-compiler-1-3/},
+	abstract = {Since the first stable release of Burst Compiler a year ago, we have been working to improve the quality, experience, and robustness of the compiler. As we...},
+	language = {en-US},
+	urldate = {2020-06-03},
+	month = may,
+	year = {2020},
+	note = {Library Catalog: blogs.unity3d.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\ACWUHXIM\\optimize-your-projects-with-burst-compiler-1-3.html:text/html}
+}
+
+@misc{meyer_gregorpmdepth-image-processing_2020,
+	title = {gregorpm/{Depth}-{Image}-{Processing}},
+	url = {https://github.com/gregorpm/Depth-Image-Processing},
+	abstract = {Depth Image Processing. Contribute to gregorpm/Depth-Image-Processing development by creating an account on GitHub.},
+	urldate = {2020-06-05},
+	author = {Meyer, Greg},
+	month = mar,
+	year = {2020},
+	note = {original-date: 2013-06-04T23:11:20Z}
+}
+
+@misc{noauthor_maps_nodate,
+	title = {Maps {SDK} for {Unity} {Overview} {\textbar} {Gaming} {Services} {Documentation}},
+	url = {https://developers.google.com/maps/documentation/gaming/overview_musk?hl=fr},
+	language = {en},
+	urldate = {2020-06-05},
+	journal = {Google Developers},
+	note = {Library Catalog: developers.google.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\EHM8N8KB\\overview_musk.html:text/html}
+}
+
+@misc{noauthor_6dof_2019,
+	title = {{6DOF} joystick crams a cockpit's worth of controls into one hand},
+	url = {https://newatlas.com/games/6dof-joystick-sublight-dynamics-one-handed/},
+	abstract = {It almost goes without saying that flying aircraft or spacecraft is tricky – even in games. The third dimension really complicates things, and traditional controllers or joysticks can only really provide half the puzzle. Now, a small startup called Sublight Dynamics has unveiled a prototype for a…},
+	language = {en-US},
+	urldate = {2020-06-05},
+	journal = {New Atlas},
+	month = nov,
+	year = {2019},
+	note = {Library Catalog: newatlas.com
+Section: Games},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\5MZU4MEP\\6dof-joystick-sublight-dynamics-one-handed.html:text/html}
+}
+
+@misc{noauthor_unity_nodate-1,
+	title = {Unity 5 {Interior} lighting setup (timelapse)},
+	url = {https://www.youtube.com/watch?v=MX1qRM-lTEU},
+	abstract = {Short timelapse of creating realtime interior lighting in Unity 5 (using GI).
+
+http://vxstudio.ru/en
+
+Furniture models: Vladislav Tabachnikov
+Music: MindsEye - Stellar},
+	urldate = {2020-06-05}
+}
+
+@misc{takahashi_keijiropcx_2020,
+	title = {keijiro/{Pcx}},
+	copyright = {MIT},
+	url = {https://github.com/keijiro/Pcx},
+	abstract = {Point cloud importer \& renderer for Unity. Contribute to keijiro/Pcx development by creating an account on GitHub.},
+	urldate = {2020-06-09},
+	author = {Takahashi, Keijiro},
+	month = jun,
+	year = {2020},
+	note = {original-date: 2017-10-24T16:12:04Z},
+	keywords = {3d-scan, graphics, point-cloud, shader, unity, unity3d}
+}
+
+@misc{i-saint_object_nodate,
+	title = {object space raymarching},
+	url = {http://i-saint.hatenablog.com/entry/2015/08/24/225254},
+	abstract = {夏コミ版 exception reboot で用いた、オブジェクトスペースでレイマーチする手法について解説してみます。(ここで言うレイマーチは厳密には sphere tracing のことですが、面倒なのでレイマーチで統一します) アイデア自体は特に新しくも難しくもなく、シーン内に単純なポリゴンモデルを配置し、そのモデルの中でレイマーチを行うというものです。レイマーチにより G-Buffer を生成し、あとは通常通りライティングを行います。レイマーチについては過去にこの blog でも簡単な入門を書きました。最近では日本語でも結構情報が出てくるくらい知名度が上がってきているように見受けられます…},
+	language = {en},
+	urldate = {2020-06-10},
+	journal = {primitive: blog},
+	author = {{i-saint}},
+	note = {Library Catalog: i-saint.hatenablog.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\PMPILCCN\\225254.html:text/html}
+}
+
+@misc{noauthor_scriptableobject_nodate,
+	title = {{ScriptableObject} {Tutorial}: {Getting} {Started}},
+	shorttitle = {{ScriptableObject} {Tutorial}},
+	url = {https://www.raywenderlich.com/2826197-scriptableobject-tutorial-getting-started},
+	abstract = {In this tutorial you’ll learn how to create and use ScriptableObject in Unity. ScriptableObjects in Unity can increase your workflow, reduce memory usage, and even decouple your code architecture.},
+	language = {en},
+	urldate = {2020-06-10},
+	journal = {raywenderlich.com},
+	note = {Library Catalog: www.raywenderlich.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\H78U49ND\\2826197-scriptableobject-tutorial-getting-started.html:text/html;Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\27SEM5NS\\2826197-scriptableobject-tutorial-getting-started.html:text/html}
+}
+
+@misc{noauthor_introducing_2020,
+	title = {Introducing {Unity} {MARS} – a first-of-its-kind solution for intelligent {AR}},
+	url = {https://blogs.unity3d.com/2020/06/08/introducing-unity-mars-a-first-of-its-kind-solution-for-intelligent-ar/},
+	abstract = {Unity MARS provides augmented reality (AR) creators everywhere with specialized tools and a streamlined workflow to deliver responsive, location-aware AR e...},
+	language = {en-US},
+	urldate = {2020-06-11},
+	month = jun,
+	year = {2020},
+	note = {Library Catalog: blogs.unity3d.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\BWTZ2JWY\\introducing-unity-mars-a-first-of-its-kind-solution-for-intelligent-ar.html:text/html;Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\QREPW67F\\introducing-unity-mars-a-first-of-its-kind-solution-for-intelligent-ar.html:text/html}
+}
+
+@misc{noauthor_comparing_nodate,
+	title = {Comparing {Python}, {Go}, and {C}++ on the {N}-{Queens} {Problem} {\textbar} {LinkedIn}},
+	url = {https://www.linkedin.com/pulse/comparing-python-go-c-n-queens-problem-pascal-fua/},
+	urldate = {2020-06-11},
+	file = {Comparing Python, Go, and C++ on the N-Queens Problem | LinkedIn:C\:\\Users\\Benoit\\Zotero\\storage\\R4NMR66B\\comparing-python-go-c-n-queens-problem-pascal-fua.html:text/html}
+}
+
+@misc{noauthor_design_nodate,
+	title = {The design and implementation of a lock-free ring-buffer with contiguous reservations},
+	url = {https://ferrous-systems.com/blog/lock-free-ring-buffer/},
+	urldate = {2020-06-17},
+	file = {The design and implementation of a lock-free ring-buffer with contiguous reservations:C\:\\Users\\Benoit\\Zotero\\storage\\AMU25QVE\\lock-free-ring-buffer.html:text/html}
+}
+
+@misc{noauthor_1_nodate,
+	title = {(1) {Comparing} {Python}, {Go}, and {C}++ on the {N}-{Queens} {Problem} {\textbar} {LinkedIn}},
+	url = {https://www.linkedin.com/pulse/comparing-python-go-c-n-queens-problem-pascal-fua/},
+	urldate = {2020-06-23},
+	file = {(1) Comparing Python, Go, and C++ on the N-Queens Problem | LinkedIn:C\:\\Users\\Benoit\\Zotero\\storage\\WUKF8JG3\\comparing-python-go-c-n-queens-problem-pascal-fua.html:text/html}
+}
+
+@misc{brownlee_4_2020,
+	title = {4 {Automatic} {Outlier} {Detection} {Algorithms} in {Python}},
+	url = {https://machinelearningmastery.com/model-based-outlier-detection-and-removal-in-python/},
+	abstract = {The presence of outliers in a classification or regression dataset can result in a poor fit and lower predictive modeling performance. Identifying and removing outliers is challenging with simple statistical methods for most machine learning datasets given the large number of input variables. Instead, automatic outlier detection methods can be used in the modeling pipeline […]},
+	language = {en-US},
+	urldate = {2020-07-08},
+	journal = {Machine Learning Mastery},
+	author = {Brownlee, Jason},
+	month = jul,
+	year = {2020},
+	note = {Library Catalog: machinelearningmastery.com},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\G37LSJWB\\model-based-outlier-detection-and-removal-in-python.html:text/html}
+}
+
+@misc{microsoft_azure_2020,
+	title = {Azure {Kinect} {DK} hardware specifications},
+	url = {https://docs.microsoft.com/en-us/azure/kinect-dk/hardware-specification},
+	abstract = {Understand the components, specifications, and capabilities of the Azure Kinect DK.},
+	language = {en-us},
+	urldate = {2020-07-28},
+	author = {Microsoft},
+	year = {2020},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\GL89W4IU\\hardware-specification.html:text/html}
+}
+
+@misc{microsoft_about_2019,
+	title = {About {Azure} {Kinect} {DK}},
+	url = {https://docs.microsoft.com/en-us/azure/kinect-dk/about-azure-kinect-dk},
+	abstract = {Overview of the Azure Kinect developer kit (DK) tools and integrated services.},
+	language = {en-us},
+	urldate = {2020-07-28},
+	author = {Microsoft},
+	year = {2019},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\L2TKR5X8\\about-azure-kinect-dk.html:text/html}
+}
+
+@article{da_gama_motor_2015,
+	title = {Motor {Rehabilitation} {Using} {Kinect}: {A} {Systematic} {Review}},
+	volume = {4},
+	issn = {2161-7856},
+	shorttitle = {Motor {Rehabilitation} {Using} {Kinect}},
+	doi = {10.1089/g4h.2014.0047},
+	abstract = {BACKGROUND: Interactive systems are being developed with the intention to help in the engagement of patients on various therapies. Amid the recent technological advances, Kinect™ from Microsoft (Redmond, WA) has helped pave the way on how user interaction technology facilitates and complements many clinical applications. In order to examine the actual status of Kinect developments for rehabilitation, this article presents a systematic review of articles that involve interactive, evaluative, and technical advances related to motor rehabilitation.
+MATERIALS AND METHODS: Systematic research was performed in the IEEE Xplore and PubMed databases using the key word combination "Kinect AND rehabilitation" with the following inclusion criteria: (1) English language, (2) page number {\textgreater}4, (3) Kinect system for assistive interaction or clinical evaluation, or (4) Kinect system for improvement or evaluation of the sensor tracking or movement recognition. Quality assessment was performed by QualSyst standards.
+RESULTS: In total, 109 articles were found in the database research, from which 31 were included in the review: 13 were focused on the development of assistive systems for rehabilitation, 3 in evaluation, 3 in the applicability category, 7 on validation of Kinect anatomic and clinical evaluation, and 5 on improvement techniques. Quality analysis of all included articles is also presented with their respective QualSyst checklist scores.
+CONCLUSIONS: Research and development possibilities and future works with the Kinect for rehabilitation application are extensive. Methodological improvements when performing studies on this area need to be further investigated.},
+	language = {eng},
+	number = {2},
+	journal = {Games for Health Journal},
+	author = {Da Gama, Alana and Fallavollita, Pascal and Teichrieb, Veronica and Navab, Nassir},
+	month = apr,
+	year = {2015},
+	keywords = {Exercise Therapy, Humans, Motor Skills, Movement, Recovery of Function, User-Computer Interface, Video Games},
+	pages = {123--135}
+}
+
+@article{guzsvinecz_suitability_2019,
+	title = {Suitability of the {Kinect} {Sensor} and {Leap} {Motion} {Controller}—{A} {Literature} {Review}},
+	volume = {19},
+	issn = {1424-8220},
+	doi = {10.3390/s19051072},
+	abstract = {As the need for sensors increases with the inception of virtual reality, augmented reality and mixed reality, the purpose of this paper is to evaluate the suitability of the two Kinect devices and the Leap Motion Controller. When evaluating the suitability, the authors’ focus was on the state of the art, device comparison, accuracy, precision, existing gesture recognition algorithms and on the price of the devices. The aim of this study is to give an insight whether these devices could substitute more expensive sensors in the industry or on the market. While in general the answer is yes, it is not as easy as it seems: There are significant differences between the devices, even between the two Kinects, such as different measurement ranges, error distributions on each axis and changing depth precision relative to distance.},
+	number = {5},
+	urldate = {2020-07-29},
+	journal = {Sensors (Basel, Switzerland)},
+	author = {Guzsvinecz, Tibor and Szucs, Veronika and Sik-Lanyi, Cecilia},
+	month = mar,
+	year = {2019},
+	file = {PubMed Central Full Text PDF:C\:\\Users\\Benoit\\Zotero\\storage\\SDUY5MPI\\Guzsvinecz et al. - 2019 - Suitability of the Kinect Sensor and Leap Motion C.pdf:application/pdf}
+}
+
+@article{geerse_kinematic_2015,
+	title = {Kinematic {Validation} of a {Multi}-{Kinect} v2 {Instrumented} 10-{Meter} {Walkway} for {Quantitative} {Gait} {Assessments}},
+	volume = {10},
+	issn = {1932-6203},
+	doi = {10.1371/journal.pone.0139913},
+	abstract = {Walking ability is frequently assessed with the 10-meter walking test (10MWT), which may be instrumented with multiple Kinect v2 sensors to complement the typical stopwatch-based time to walk 10 meters with quantitative gait information derived from Kinect's 3D body point's time series. The current study aimed to evaluate a multi-Kinect v2 set-up for quantitative gait assessments during the 10MWT against a gold-standard motion-registration system by determining between-systems agreement for body point's time series, spatiotemporal gait parameters and the time to walk 10 meters. To this end, the 10MWT was conducted at comfortable and maximum walking speed, while 3D full-body kinematics was concurrently recorded with the multi-Kinect v2 set-up and the Optotrak motion-registration system (i.e., the gold standard). Between-systems agreement for body point's time series was assessed with the intraclass correlation coefficient (ICC). Between-systems agreement was similarly determined for the gait parameters' walking speed, cadence, step length, stride length, step width, step time, stride time (all obtained for the intermediate 6 meters) and the time to walk 10 meters, complemented by Bland-Altman's bias and limits of agreement. Body point's time series agreed well between the motion-registration systems, particularly so for body points in motion. For both comfortable and maximum walking speeds, the between-systems agreement for the time to walk 10 meters and all gait parameters except step width was high (ICC ≥ 0.888), with negligible biases and narrow limits of agreement. Hence, body point's time series and gait parameters obtained with a multi-Kinect v2 set-up match well with those derived with a gold standard in 3D measurement accuracy. Future studies are recommended to test the clinical utility of the multi-Kinect v2 set-up to automate 10MWT assessments, thereby complementing the time to walk 10 meters with reliable spatiotemporal gait parameters obtained objectively in a quick, unobtrusive and patient-friendly manner.},
+	language = {eng},
+	number = {10},
+	journal = {PloS One},
+	author = {Geerse, Daphne J. and Coolen, Bert H. and Roerdink, Melvyn},
+	year = {2015},
+	keywords = {Adult, Ankle, Biomechanical Phenomena, Female, Gait, Humans, Male, Middle Aged, Software, Spatio-Temporal Analysis, Time Factors, Walking, Young Adult},
+	pages = {e0139913},
+	file = {Full Text:C\:\\Users\\Benoit\\Zotero\\storage\\A6FCCHRX\\Geerse et al. - 2015 - Kinematic Validation of a Multi-Kinect v2 Instrume.pdf:application/pdf}
+}
+
+@article{wei_accurate_2012,
+	title = {Accurate realtime full-body motion capture using a single depth camera},
+	volume = {31},
+	issn = {0730-0301},
+	url = {https://doi.org/10.1145/2366145.2366207},
+	doi = {10.1145/2366145.2366207},
+	abstract = {We present a fast, automatic method for accurately capturing full-body motion data using a single depth camera. At the core of our system lies a realtime registration process that accurately reconstructs 3D human poses from single monocular depth images, even in the case of significant occlusions. The idea is to formulate the registration problem in a Maximum A Posteriori (MAP) framework and iteratively register a 3D articulated human body model with monocular depth cues via linear system solvers. We integrate depth data, silhouette information, full-body geometry, temporal pose priors, and occlusion reasoning into a unified MAP estimation framework. Our 3D tracking process, however, requires manual initialization and recovery from failures. We address this challenge by combining 3D tracking with 3D pose detection. This combination not only automates the whole process but also significantly improves the robustness and accuracy of the system. Our whole algorithm is highly parallel and is therefore easily implemented on a GPU. We demonstrate the power of our approach by capturing a wide range of human movements in real time and achieve state-of-the-art accuracy in our comparison against alternative systems such as Kinect [2012].},
+	number = {6},
+	urldate = {2020-07-29},
+	journal = {ACM Transactions on Graphics},
+	author = {Wei, Xiaolin and Zhang, Peizhao and Chai, Jinxiang},
+	month = nov,
+	year = {2012},
+	keywords = {3D pose detection, human motion tracking, motion capture, performance-based animation, vision-based motion modeling},
+	pages = {188:1--188:12},
+	file = {Full Text:C\:\\Users\\Benoit\\Zotero\\storage\\VCT94649\\Wei et al. - 2012 - Accurate realtime full-body motion capture using a.pdf:application/pdf;Citeseer - Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\8BRGTWND\\summary.html:text/html;Citeseer - Full Text PDF:C\:\\Users\\Benoit\\Zotero\\storage\\CUBFCSFT\\Wei et al. - Accurate Realtime Full-body Motion Capture Using a.pdf:application/pdf}
+}
+
+@article{zhang_leveraging_2014,
+	title = {Leveraging depth cameras and wearable pressure sensors for full-body kinematics and dynamics capture},
+	volume = {33},
+	issn = {0730-0301},
+	url = {https://doi.org/10.1145/2661229.2661286},
+	doi = {10.1145/2661229.2661286},
+	abstract = {We present a new method for full-body motion capture that uses input data captured by three depth cameras and a pair of pressure-sensing shoes. Our system is appealing because it is low-cost, non-intrusive and fully automatic, and can accurately reconstruct both full-body kinematics and dynamics data. We first introduce a novel tracking process that automatically reconstructs 3D skeletal poses using input data captured by three Kinect cameras and wearable pressure sensors. We formulate the problem in an optimization framework and incrementally update 3D skeletal poses with observed depth data and pressure data via iterative linear solvers. The system is highly accurate because we integrate depth data from multiple depth cameras, foot pressure data, detailed full-body geometry, and environmental contact constraints into a unified framework. In addition, we develop an efficient physics-based motion reconstruction algorithm for solving internal joint torques and contact forces in the quadratic programming framework. During reconstruction, we leverage Newtonian physics, friction cone constraints, contact pressure information, and 3D kinematic poses obtained from the kinematic tracking process to reconstruct full-body dynamics data. We demonstrate the power of our approach by capturing a wide range of human movements and achieve state-of-the-art accuracy in our comparison against alternative systems.},
+	number = {6},
+	urldate = {2020-07-29},
+	journal = {ACM Transactions on Graphics},
+	author = {Zhang, Peizhao and Siu, Kristin and Zhang, Jianjie and Liu, C. Karen and Chai, Jinxiang},
+	month = nov,
+	year = {2014},
+	keywords = {motion capture, full body shape modeling, human body tracking, physics-based modeling},
+	pages = {221:1--221:14},
+	file = {Submitted Version:C\:\\Users\\Benoit\\Zotero\\storage\\NFN9JXGS\\Zhang et al. - 2014 - Leveraging depth cameras and wearable pressure sen.pdf:application/pdf}
+}
+
+@inproceedings{qian_realtime_2014,
+	title = {Realtime and {Robust} {Hand} {Tracking} from {Depth}},
+	doi = {10.1109/CVPR.2014.145},
+	abstract = {We present a realtime hand tracking system using a depth sensor. It tracks a fully articulated hand under large viewpoints in realtime (25 FPS on a desktop without using a GPU) and with high accuracy (error below 10 mm). To our knowledge, it is the first system that achieves such robustness, accuracy, and speed simultaneously, as verified on challenging real data. Our system is made of several novel techniques. We model a hand simply using a number of spheres and define a fast cost function. Those are critical for realtime performance. We propose a hybrid method that combines gradient based and stochastic optimization methods to achieve fast convergence and good accuracy. We present new finger detection and hand initialization methods that greatly enhance the robustness of tracking.},
+	booktitle = {2014 {IEEE} {Conference} on {Computer} {Vision} and {Pattern} {Recognition}},
+	author = {Qian, Chen and Sun, Xiao and Wei, Yichen and Tang, Xiaoou and Sun, Jian},
+	month = jun,
+	year = {2014},
+	note = {ISSN: 1063-6919},
+	keywords = {Iterative closest point algorithm, Three-dimensional displays, Accuracy, ICP, convergence, cost function, Cost function, depth sensor, finger detection, fingerprint identification, gradient based optimization method, gradient methods, hand initialization method, hand tracking, object tracking, PSO, real-time systems, realtime hand tracking, realtime performance, robust hand tracking, robustness, stochastic optimization method, stochastic programming, Thumb, Tracking},
+	pages = {1106--1113},
+	file = {IEEE Xplore Abstract Record:C\:\\Users\\Benoit\\Zotero\\storage\\I6K49XYM\\6909541.html:text/html}
+}
+
+@article{tompson_real-time_2014,
+	title = {Real-{Time} {Continuous} {Pose} {Recovery} of {Human} {Hands} {Using} {Convolutional} {Networks}},
+	volume = {33},
+	issn = {0730-0301},
+	url = {https://doi.org/10.1145/2629500},
+	doi = {10.1145/2629500},
+	abstract = {We present a novel method for real-time continuous pose recovery of markerless complex articulable objects from a single depth image. Our method consists of the following stages: a randomized decision forest classifier for image segmentation, a robust method for labeled dataset generation, a convolutional network for dense feature extraction, and finally an inverse kinematics stage for stable real-time pose recovery. As one possible application of this pipeline, we show state-of-the-art results for real-time puppeteering of a skinned hand-model.},
+	number = {5},
+	urldate = {2020-07-29},
+	journal = {ACM Transactions on Graphics},
+	author = {Tompson, Jonathan and Stein, Murphy and Lecun, Yann and Perlin, Ken},
+	month = sep,
+	year = {2014},
+	keywords = {analysis-by-synthesis, Hand tracking, markerless motion capture, neural networks},
+	pages = {169:1--169:10}
+}
+
+@incollection{ye_survey_2013,
+	title = {A {Survey} on {Human} {Motion} {Analysis} from {Depth} {Data}},
+	isbn = {978-3-642-44964-2},
+	abstract = {Human pose estimation has been actively studied for decades. While traditional approaches rely on 2d data like images or videos, the development of Time-of-Flight cameras and other depth sensors created new opportunities to advance the field. We give an overview of recent approaches that perform human motion analysis which includes depth-based and skeleton-based activity recognition, head pose estimation, facial feature detection, facial performance capture, hand pose estimation and hand gesture recognition. While the focus is on approaches using depth data, we also discuss traditional image based methods to provide a broad overview of recent developments in these areas.},
+	language = {en},
+	urldate = {2020-07-29},
+	booktitle = {Time-of-{Flight} and {Depth} {Imaging}. {Sensors}, {Algorithms}, and {Applications}},
+	author = {Ye, Mao and Zhang, Qing and Wang, Liang and Zhu, Jiejie and Yang, Ruigang and Gall, Juergen},
+	year = {2013},
+	keywords = {Action Recognition, Depth Data, Depth Sensor, Gesture Recognition, Sign Language},
+	pages = {149--187}
+}
+
+@misc{noauthor_gradient_nodate,
+	title = {Gradient, {Jacobian}, {Hessian}, {Laplacian} and all that},
+	url = {https://najeebkhan.github.io/blog/VecCal.html},
+	urldate = {2020-07-29},
+	file = {Gradient, Jacobian, Hessian, Laplacian and all that:C\:\\Users\\Benoit\\Zotero\\storage\\LTUE5XAE\\VecCal.html:text/html}
+}
+
+@inproceedings{li_action_2010,
+	address = {San Francisco, CA, USA},
+	title = {Action recognition based on a bag of {3D} points},
+	isbn = {978-1-4244-7029-7},
+	url = {http://ieeexplore.ieee.org/document/5543273/},
+	doi = {10.1109/CVPRW.2010.5543273},
+	abstract = {This paper presents a method to recognize human actions from sequences of depth maps. Specifically, we employ an action graph to model explicitly the dynamics of the actions and a bag of 3D points to characterize a set of salient postures that correspond to the nodes in the action graph. In addition, we propose a simple, but effective projection based sampling scheme to sample the bag of 3D points from the depth maps. Experimental results have shown that over 90\% recognition accuracy were achieved by sampling only about 1\% 3D points from the depth maps. Compared to the 2D silhouette based recognition, the recognition errors were halved. In addition, we demonstrate the potential of the bag of points posture model to deal with occlusions through simulation.},
+	language = {en},
+	urldate = {2020-07-30},
+	booktitle = {2010 {IEEE} {Computer} {Society} {Conference} on {Computer} {Vision} and {Pattern} {Recognition} - {Workshops}},
+	publisher = {IEEE},
+	author = {Li, Wanqing and Zhang, Zhengyou and Liu, Zicheng},
+	month = jun,
+	year = {2010},
+	pages = {9--14},
+	file = {Li et al. - 2010 - Action recognition based on a bag of 3D points.pdf:C\:\\Users\\Benoit\\Zotero\\storage\\6SIUJDE8\\Li et al. - 2010 - Action recognition based on a bag of 3D points.pdf:application/pdf}
+}
+
+@book{sharp_accurate_2015,
+	title = {Accurate, {Robust}, and {Flexible} {Real}-time {Hand} {Tracking}},
+	isbn = {978-1-4503-3145-6},
+	url = {https://www.microsoft.com/en-us/research/publication/accurate-robust-and-flexible-real-time-hand-tracking/},
+	abstract = {We present a new real-time hand tracking system based on a single depth camera. The system can accurately reconstruct complex hand poses across a variety of subjects. It also allows for robust tracking, rapidly recovering from any temporary failures. Most uniquely, our tracker is highly flexible, dramatically improving upon previous approaches which have focused on […]},
+	language = {en-US},
+	urldate = {2020-07-30},
+	author = {Sharp, Toby and Keskin, Cem and Robertson, Duncan and Taylor, Jonathan and Shotton, Jamie and Kim, David and Rhemann, Christoph and Leichter, Ido and Vinnikov, Alon and Wei, Yichen and Freedman, Daniel and Krupka, Eyal and Fitzgibbon, Andrew and Izadi, Shahram and Kohli, Pushmeet},
+	month = apr,
+	year = {2015},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\EP3S5P46\\accurate-robust-and-flexible-real-time-hand-tracking.html:text/html}
+}
+
+@article{khamis_learning_2015,
+	title = {Learning an {Efficient} {Model} of {Hand} {Shape} {Variation} from {Depth} {Images}},
+	url = {https://www.microsoft.com/en-us/research/publication/learning-an-efficient-model-of-hand-shape-variation-from-depth-images/},
+	abstract = {We describe how to learn a compact and efficient model of the surface deformation of human hands. The model is built from a set of noisy depth images of a diverse set of subjects performing different poses with their hands. We represent the observed surface using Loop subdivision of a control mesh that is deformed […]},
+	language = {en-US},
+	urldate = {2020-07-30},
+	author = {Khamis, Sameh and Taylor, Jonathan and Shotton, Jamie and Keskin, Cem and Izadi, Shahram and Fitzgibbon, Andrew},
+	month = jun,
+	year = {2015},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\QYRA5BR6\\learning-an-efficient-model-of-hand-shape-variation-from-depth-images.html:text/html}
+}
+
+@article{tan_fits_2016,
+	title = {Fits {Like} a {Glove}: {Rapid} and {Reliable} {Hand} {Shape} {Personalization}},
+	shorttitle = {Fits {Like} a {Glove}},
+	url = {https://www.microsoft.com/en-us/research/publication/fits-like-glove-rapid-reliable-hand-shape-personalization/},
+	abstract = {We present a fast, practical method for personalizing a hand shape basis to an individual user’s detailed hand shape using only a small set of depth images. To achieve this, we minimize an energy based on a sum of render-and-compare cost functions called the golden energy. However, this energy is only piecewise continuous, due to […]},
+	language = {en-US},
+	urldate = {2020-07-30},
+	author = {Tan, David Joseph and Cashman, Tom and Taylor, Jonathan and Fitzgibbon, Andrew and Tarlow, Daniel and Khamis, Sameh and Izadi, Shahram and Shotton, Jamie},
+	month = jun,
+	year = {2016},
+	file = {Full Text PDF:C\:\\Users\\Benoit\\Zotero\\storage\\UM8W4ZSU\\Tan et al. - 2016 - Fits Like a Glove Rapid and Reliable Hand Shape P.pdf:application/pdf;Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\XN3UR9HI\\fits-like-glove-rapid-reliable-hand-shape-personalization.html:text/html}
+}
+
+@article{taylor_efficient_2016,
+	title = {Efficient and {Precise} {Interactive} {Hand} {Tracking} through {Joint}, {Continuous} {Optimization} of {Pose} and {Correspondences}},
+	volume = {35},
+	url = {https://www.microsoft.com/en-us/research/publication/efficient-precise-interactive-hand-tracking-joint-continuous-optimization-pose-correspondences/},
+	abstract = {Fully articulated hand tracking promises to enable fundamentally new interactions with virtual and augmented worlds, but the limited accuracy and efﬁciency of current systems has prevented widespread adoption. Today’s dominant paradigm uses machine learning for initialization and recovery followed by iterative model-ﬁtting optimization to achieve a detailed pose ﬁt. We follow this paradigm, but make […]},
+	language = {en-US},
+	urldate = {2020-07-30},
+	journal = {ACM Transactions on Graphics (TOG) - Proceedings of ACM SIGGRAPH 2016},
+	author = {Taylor, Jonathan and Bordeaux, Lucas and Cashman, Thomas and Corish, Bob and Keskin, Cem and Soto, Eduardo and Sweeney, David and Valentin, Julien and Luff, Benjamin and Topalian, Arran and Wood, Erroll and Khamis, Sameh and Kohli, Pushmeet and Sharp, Toby and Izadi, Shahram and Banks, Richard and Fitzgibbon, Andrew and Shotton, Jamie},
+	month = jul,
+	year = {2016},
+	file = {Full Text PDF:C\:\\Users\\Benoit\\Zotero\\storage\\5YN7I3KC\\Taylor et al. - 2016 - Efficient and Precise Interactive Hand Tracking th.pdf:application/pdf;Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\FE53X9R3\\efficient-precise-interactive-hand-tracking-joint-continuous-optimization-pose-correspondences.html:text/html}
+}
+
+@misc{noauthor_open3d_nodate,
+	title = {{Open3D} – {A} {Modern} {Library} for {3D} {Data} {Processing}},
+	url = {http://www.open3d.org/},
+	language = {en-US},
+	urldate = {2020-08-06},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\F7TLWMHJ\\www.open3d.org.html:text/html}
+}
+
+@misc{noauthor_30_nodate,
+	title = {(30) {How} to {Create} a {Notion} {Daily} {Log} - {YouTube}},
+	url = {https://www.youtube.com/watch?v=HrwOVNt9nRM},
+	urldate = {2020-08-07},
+	file = {(30) How to Create a Notion Daily Log - YouTube:C\:\\Users\\Benoit\\Zotero\\storage\\4SIGDSAC\\watch.html:text/html}
+}
+
+@misc{noauthor_mathnet_nodate,
+	title = {Math.{NET} {Numerics}},
+	url = {https://numerics.mathdotnet.com/},
+	urldate = {2020-08-07},
+	file = {Math.NET Numerics:C\:\\Users\\Benoit\\Zotero\\storage\\AURE5A5L\\numerics.mathdotnet.com.html:text/html}
+}
+
+@article{rousseeuw_least_1984,
+	title = {Least {Median} of {Squares} {Regression}},
+	volume = {79},
+	issn = {0162-1459},
+	doi = {10.1080/01621459.1984.10477105},
+	abstract = {Classical least squares regression consists of minimizing the sum of the squared residuals. Many authors have produced more robust versions of this estimator by replacing the square by something else, such as the absolute value. In this article a different approach is introduced in which the sum is replaced by the median of the squared residuals. The resulting estimator can resist the effect of nearly 50\% of contamination in the data. In the special case of simple regression, it corresponds to finding the narrowest strip covering half of the observations. Generalizations are possible to multivariate location, orthogonal regression, and hypothesis testing in linear models.},
+	number = {388},
+	urldate = {2020-08-12},
+	journal = {Journal of the American Statistical Association},
+	author = {Rousseeuw, Peter J.},
+	month = dec,
+	year = {1984},
+	keywords = {Breakdown point, Least squares method, Outliers, Robust regression},
+	pages = {871--880},
+	file = {Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\QNL3F34D\\01621459.1984.html:text/html}
+}
+
+@article{besl_method_1992,
+	title = {A method for registration of 3-{D} shapes},
+	volume = {14},
+	issn = {1939-3539},
+	doi = {10.1109/34.121791},
+	abstract = {The authors describe a general-purpose, representation-independent method for the accurate and computationally efficient registration of 3-D shapes including free-form curves and surfaces. The method handles the full six degrees of freedom and is based on the iterative closest point (ICP) algorithm, which requires only a procedure to find the closest point on a geometric entity to a given point. The ICP algorithm always converges monotonically to the nearest local minimum of a mean-square distance metric, and the rate of convergence is rapid during the first few iterations. Therefore, given an adequate set of initial rotations and translations for a particular class of objects with a certain level of 'shape complexity', one can globally minimize the mean-square distance metric over all six degrees of freedom by testing each initial registration. One important application of this method is to register sensed data from unfixtured rigid objects with an ideal geometric model, prior to shape inspection. Experimental results show the capabilities of the registration algorithm on point sets, curves, and surfaces.{\textless}{\textgreater}},
+	number = {2},
+	journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	author = {Besl, P.J. and McKay, Neil D.},
+	month = feb,
+	year = {1992},
+	keywords = {3D shape registration, computational geometry, convergence, Convergence, convergence of numerical methods, geometric entity, geometric model, Inspection, Iterative algorithms, iterative closest point, Iterative closest point algorithm, iterative methods, Iterative methods, mean-square distance metric, Motion estimation, optimisation, pattern recognition, picture processing, point set registration, Quaternions, Shape measurement, Solid modeling, Testing},
+	pages = {239--256},
+	file = {IEEE Xplore Abstract Record:C\:\\Users\\Benoit\\Zotero\\storage\\EHVX6RJ5\\121791.html:text/html;Submitted Version:C\:\\Users\\Benoit\\Zotero\\storage\\2RZY64XM\\Besl and McKay - 1992 - A method for registration of 3-D shapes.pdf:application/pdf}
+}
+
+@article{chen_object_1992,
+	series = {Range {Image} {Understanding}},
+	title = {Object modelling by registration of multiple range images},
+	volume = {10},
+	issn = {0262-8856},
+	doi = {10.1016/0262-8856(92)90066-C},
+	abstract = {We study the problem of creating a complete model of a physical object. Although this may be possible using intensity images, we here use images which directly provide access to three dimensional information. The first problem that we need to solve is to find the transformation between the different views. Previous approaches either assume this transformation to be known (which is extremely difficult for a complete model), or compute it with feature matching (which is not accurate enough for integration). In this paper, we propose a new approach which works on range data directly and registers successive views with enough overlapping area to get an accurate transformation between views. This is performed by minimizing a functional which does not require point-to-point matches. We give the details of the registration method and modelling procedure and illustrate them on real range images of complex objects.},
+	language = {en},
+	number = {3},
+	urldate = {2020-08-12},
+	journal = {Image and Vision Computing},
+	author = {Chen, Yang and Medioni, Gérard},
+	month = apr,
+	year = {1992},
+	keywords = {3D surface registration, object modelling, range image registration},
+	pages = {145--155},
+	file = {ScienceDirect Snapshot:C\:\\Users\\Benoit\\Zotero\\storage\\Z5TGV9JZ\\026288569290066C.html:text/html}
+}
+
+@inproceedings{le_callennec_robust_2006,
+	title = {Robust kinematic constraint detection for motion data},
+	isbn = {978-3-905673-34-0},
+	abstract = {Motion capture data is now widely available to create realistic character animation. However, it is difficult to reuse without any additional information. For this reason, annotating motion data with kinematic constraints is a clever step to ease further operations such as blending or motion editing. Unfortunately, prior automatic methods prove to be unreliable for noisy data and/or lack genericity. In this paper, we present a method for detecting kinematic constraints for motion data. It detects when an object (or an end-effector) is stationary in space or is rotating around an axis or a point. Our method is fast, generic and may be used on any kind of objects in the scene. Furthermore, it is robust to highly noisy data as we detect and reject aberrant data by using a least median of squares (LMedS) method. We demonstrate the accuracy of our method in various motion editing contexts.},
+	urldate = {2020-08-12},
+	booktitle = {Proceedings of the 2006 {ACM} {SIGGRAPH}/{Eurographics} symposium on {Computer} animation},
+	author = {Le Callennec, Benoît and Boulic, Ronan},
+	month = sep,
+	year = {2006},
+	pages = {281--290}
+}
+
+@article{harish_parallel_2016,
+	title = {Parallel {Inverse} {Kinematics} for {Multithreaded} {Architectures}},
+	volume = {35},
+	issn = {0730-0301},
+	doi = {10.1145/2887740},
+	abstract = {In this article, we present a parallel prioritized Jacobian-based inverse kinematics algorithm for multithreaded architectures. We solve damped least squares inverse kinematics using a parallel line search by identifying and sampling critical input parameters. Parallel competing execution paths are spawned for each parameter in order to select the optimum that minimizes the error criteria. Our algorithm is highly scalable and can handle complex articulated bodies at interactive frame rates. We show results on complex skeletons consisting of more than 600 degrees of freedom while being controlled using multiple end effectors. We implement the algorithm both on multicore and GPU architectures and demonstrate how the GPU can further exploit fine-grain parallelism not directly available on a multicore processor. Our implementations are 10 to 150 times faster compared to a state-of-the-art serial implementation while providing higher accuracy. We also demonstrate the scalability of the algorithm over multiple scenarios and explore the GPU implementation in detail.},
+	number = {2},
+	urldate = {2020-08-12},
+	journal = {ACM Transactions on Graphics},
+	author = {Harish, Pawan and Mahmudi, Mentar and Le Callennec, Benoît and Boulic, Ronan},
+	month = feb,
+	year = {2016},
+	keywords = {GPU computing, Jacobian inverse},
+	pages = {19:1--19:13}
+}
