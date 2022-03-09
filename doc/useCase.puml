@@ -1,0 +1,37 @@
+@startuml useCase
+top to bottom direction
+
+actor Utilisateur as u
+
+package Réglages {
+    usecase "Modifier les réglages du filtre" as UC10
+    usecase "Sauvegarder les réglages" as UC11
+    usecase "Choisir des réglages sauvegardés" as UC12
+    usecase "Appliquer les réglages" as UC13
+}
+
+package ActStreamLabs {
+  usecase "Choisir une source d'entrée" as UC1
+  usecase "Ajouter un filtre" as UC2
+  usecase "Prendre un instantané" as UC3
+  usecase "Undo / Redo" as UC4
+  usecase "Modifier la colorimétrie" as UC5
+  usecase "Ajouter un effet spécial" as UC6
+  usecase "Modifier la vitesse de lecture (ralenti)" as UC8
+  usecase "Ajouter une animation" as UC9
+}
+
+Réglages .> UC2 : <<extends>>
+Réglages .> UC5 : <<extends>>
+Réglages .> UC8 : <<extends>>
+Réglages .> UC9 : <<extends>>
+
+u --> UC1
+u --> UC2
+u --> UC3
+u --> UC4
+u --> UC5
+u --> UC6
+u --> UC8
+
+@enduml
