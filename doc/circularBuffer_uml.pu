@@ -1,15 +1,19 @@
-@startuml
-class CircularBuffer<T> {
-    - mutex _mutex
-    - cv::Mat[] buffer
-    - int current_size
-    - int max_size
-    - bool isFull
+@startuml CircularBuffer_UML
+class CircularBuffer {
+  - cv::Mat[] buffer
+  - int head
+  - int tail
+  - mutex _mutex
+  - int max_size
+  - bool isFull
 
-    CircularBuffer(int maxSize)
-    void put(T data)
-
-  void methods()
+  + CircularBuffer(int maxSize)
+  + void put(cv::Mat data)
+  + bool empty()
+  + bool read()
+  + void reset()
+  + int getCurrentSize()
+  + int getMaxSize()
 }
 
 @enduml
