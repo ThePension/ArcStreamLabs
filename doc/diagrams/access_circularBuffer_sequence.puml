@@ -5,18 +5,12 @@ queue       CircularBuffer as c
 
 group Write
     s -> c : Write data
-    c -> c : Write data on head
+    c -> c : Write data on buffer's head
     alt Circular Buffer FULL
-        c -> c : Update tail
-        note right
-            tail = (tail + 1) % maxSize
-        end note
+        c -> c : Increment tail
     end
-    c -> c : Update head and isFull
-    note right
-        head = (head + 1) % maxSize
-        isFull = head == tail
-    end note
+    c -> c : Increment head
+    c -> c : Update isFull
 end
 
 group Read
@@ -25,11 +19,8 @@ group Read
         c -> s: Return NULL
     else Circular Buffer NOT EMPTY
         c -> c : Prepare data
-        c -> c : Update tail and isFull
-        note right
-            tail = (tail + 1) % maxSize
-            isFull = false
-        end note
+        c -> c : Increment tail
+        c -> c : Update isFull
         c -> s : Return data
     end
 end
