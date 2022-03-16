@@ -123,5 +123,8 @@ compile_commands.json
 *.cxxflags
 *.cflags
 
+# Doxygen doc
+doc/doxygen
+
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,qtcreator,qt,opencv
