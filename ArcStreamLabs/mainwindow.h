@@ -19,6 +19,6 @@ QT_END_NAMESPACE
 
 private:
     Ui::MainWindow *ui;
-
+    cv::Mat mat;
 };
 #endif // MAINWINDOW_H

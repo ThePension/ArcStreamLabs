@@ -19,6 +19,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
+add_subdirectory(LibA)
+
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
@@ -49,7 +51,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS})
+target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibA)
 
 set_target_properties(ArcStreamLabs PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -59,6 +61,47 @@ set_target_properties(ArcStreamLabs PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
+
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(ArcStreamLabs)
 endif()
+
+
+####################################
+#            Unit Test #
+####################################
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+  )
+
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+add_executable(tests tests.cpp ${LibA_TESTS}) # tests.cpp
+target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(tests gtest_main LibA) # tests.cpp
+
+include(GoogleTest)
+gtest_discover_tests(tests)
+enable_testing()
+
+####################################
+#             Doxygen #
+####################################
+find_package(Doxygen)
+
+if(NOT DOXYGEN_FOUND)
+message(FATAL_ERROR "Doxygen is needed to build the documentation.")
+endif()
+
+set(doxyfile ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
+
+add_custom_target(BuildDoc ALL
+  COMMAND ${DOXYGEN_EXECUTABLE} ${doxyfile}
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/..
+  COMMENT "Generating Doxygen documentation"
+  VERBATIM
+)
