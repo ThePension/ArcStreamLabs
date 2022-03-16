@@ -1,0 +1,28 @@
+@startuml CircularBuffer_Access_Sequence
+
+participant System as s
+queue       CircularBuffer as c
+
+group Write
+    s -> c : Write data
+    c -> c : Write data on buffer's head
+    alt Circular Buffer FULL
+        c -> c : Increment tail
+    end
+    c -> c : Increment head
+    c -> c : Update isFull
+end
+
+group Read
+    s -> c : Read
+    alt Circular Buffer EMPTY
+        c -> s: Return NULL
+    else Circular Buffer NOT EMPTY
+        c -> c : Prepare data
+        c -> c : Increment tail
+        c -> c : Update isFull
+        c -> s : Return data
+    end
+end
+
+@enduml
