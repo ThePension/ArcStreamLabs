@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(ArcStreamLabs VERSION 0.1 LANGUAGES CXX)
 
-set(OpenCV_DIR "C:/opencv-build")
+set(PATH_OPENCV "C:/opencv/release", "C:/opencv-build")
+find_package( OpenCV REQUIRED PATHS ${PATH_OPENCV} )
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -16,7 +17,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
-find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 add_subdirectory(LibA)
