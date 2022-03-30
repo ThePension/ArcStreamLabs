@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(ArcStreamLabs VERSION 0.1 LANGUAGES CXX)
 
-set(PATH_OPENCV "C:/opencv/release", "C:/opencv-build")
+set(PATH_OPENCV "C:/opencv-build" "C:/opencv/release")
 find_package( OpenCV REQUIRED PATHS ${PATH_OPENCV} )
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -18,8 +18,6 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
-
-add_subdirectory(LibA)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -53,7 +51,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibA)
+target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS})
 
 set_target_properties(ArcStreamLabs PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -82,9 +80,9 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(tests tests.cpp ${LibA_TESTS}) # tests.cpp
+add_executable(tests tests.cpp) # tests.cpp
 target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(tests gtest_main LibA) # tests.cpp
+target_link_libraries(tests gtest_main) # tests.cpp
 
 include(GoogleTest)
 gtest_discover_tests(tests)
