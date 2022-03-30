@@ -2,6 +2,11 @@
 
 #include <QtWidgets>
 
+#include "colorimetry.h"
+#include "filter.h"
+#include "specialeffect.h"
+#include "animation.h"
+
 class ArcStreamLab : public QWidget
 {
     Q_OBJECT
@@ -22,5 +27,6 @@ class ArcStreamLab : public QWidget
     private:
         void createUIGeometry();
         void createUIAppearance();
+        void createUIControl();
         void imageButtons();
 };

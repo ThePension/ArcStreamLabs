@@ -21,10 +21,12 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 set(PROJECT_SOURCES
         main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        arcstreamlab.h
-        arcstreamlab.cpp
+        mainwindow.h mainwindow.cpp
+        arcstreamlab.h arcstreamlab.cpp
+        colorimetry.h colorimetry.cpp
+        filter.h filter.cpp
+        specialeffect.h specialeffect.cpp
+        animation.h animation.cpp
         Ressources.qrc
 )
 

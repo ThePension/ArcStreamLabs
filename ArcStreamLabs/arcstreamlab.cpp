@@ -4,6 +4,7 @@ ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
 {
     createUIGeometry();
     createUIAppearance();
+    createUIControl();
 }
 
 void ArcStreamLab::createUIGeometry()
@@ -61,6 +62,21 @@ void ArcStreamLab::createUIAppearance()
     imageButtons();
     this->graphicViewInput->setMaximumSize(20*this->GV_WIDTH, 20*this->GV_HEIGHT);
     this->graphicViewProcess->setMaximumSize(55*this->GV_WIDTH, 55*this->GV_HEIGHT);
+}
+
+void ArcStreamLab::createUIControl()
+{
+    Colorimetry *colorDialog = new Colorimetry(this);
+    connect(this->btnColor, &QPushButton::clicked, colorDialog, &QDialog::show);
+
+    Filter *filterDialog =  new Filter(this);
+    connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
+
+    SpecialEffect *specialEffectDialog =  new SpecialEffect(this);
+    connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);
+
+    Animation *animationDialog =  new Animation(this);
+    connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);
 }
 
 void ArcStreamLab::imageButtons()
