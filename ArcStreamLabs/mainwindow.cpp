@@ -1,50 +1,48 @@
 #include "mainwindow.h"
-#include "./ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    ui->setupUi(this);
+    arcStreamLab = new ArcStreamLab();
+    setCentralWidget(this->arcStreamLab);
 
-    configureUI();
+    setWindowTitle("Arc Stream Labs");
+    resize(1200,800);
+
+    createMenusActions();
 }
 
-MainWindow::~MainWindow()
+void MainWindow::createMenusActions()
 {
-    delete ui;
+    actNew = new QAction(tr("&Nouveau"),this);
+    actOpen = new QAction(tr("&Ouvrir"),this);
+    actSave = new QAction(tr("&Enregistrer"),this);
+    actQuit = new QAction(tr("&Quitter"),this);
+    actChangeThick = new QAction(tr("&Epaisseur"),this);
+    actChangePen = new QAction(tr("Couleur &tracé"),this);
+    actChangeBrush = new QAction(tr("Couleur &remplissage"),this);
+
+    actZoomIn = new QAction(tr("Zoom &In"),this);
+    actZoomOut = new QAction(tr("Zoom &Out"),this);
+    actZoomReset = new QAction(tr("&Echelle 1:1"),this);
+
+    actAbout = new QAction(tr("A &Propos"),this);
+
+    QMenu* menuFichier = menuBar()->addMenu(tr("&Fichier"));
+    menuFichier->addAction(actNew);
+    menuFichier->addAction(actOpen);
+    menuFichier->addAction(actSave);
+    menuFichier->addAction(actQuit);
+
+    QMenu* menuDraw = menuBar()->addMenu(tr("&Dessin"));
+    menuDraw->addAction(actChangeThick);
+    menuDraw->addAction(actChangePen);
+    menuDraw->addAction(actChangeBrush);
+
+    QMenu* menuZoom = menuBar()->addMenu(tr("&Zoom"));
+    menuZoom->addAction(actZoomIn);
+    menuZoom->addAction(actZoomOut);
+    menuZoom->addAction(actZoomReset);
+
+    QMenu* menuHelp = menuBar()->addMenu(tr("&?"));
+    menuHelp->addAction(actAbout);
 }
-
-void MainWindow::configureUI()
-{
-    QPixmap play = QPixmap(":/Images/Play.png");
-    play = play.scaled(50, 50, Qt::KeepAspectRatio);
-    ui->btnPlay->setIcon(play);
-    ui->btnPlay->setFlat(true);
-    ui->btnPlay->setFocusPolicy(Qt::NoFocus);
-    ui->btnPlay->setIconSize(play.size());
-    ui->btnPlay->setStyleSheet("QPushButton:flat:pressed { border: none; };");
-
-    QPixmap pause = QPixmap(":/Images/Pause.png");
-    pause = pause.scaled(50, 50, Qt::KeepAspectRatio);
-    ui->btnPause->setIcon(pause);
-    ui->btnPause->setFlat(true);
-    ui->btnPause->setFocusPolicy(Qt::NoFocus);
-    ui->btnPause->setIconSize(pause.size());
-    ui->btnPause->setStyleSheet("QPushButton:flat:pressed { border: none; };");
-
-    QPixmap stop = QPixmap(":/Images/Stop.png");
-    stop = stop.scaled(50, 50, Qt::KeepAspectRatio);
-    ui->btnStop->setIcon(stop);
-    ui->btnStop->setFlat(true);
-    ui->btnStop->setFocusPolicy(Qt::NoFocus);
-    ui->btnStop->setIconSize(stop.size());
-    ui->btnStop->setStyleSheet("QPushButton:flat:pressed { border: none; };");
-
-    QPixmap snapshot = QPixmap(":/Images/Snapshot.png");
-    snapshot = snapshot.scaled(80, 80, Qt::KeepAspectRatio);
-    ui->btnInstantane->setIcon(snapshot);
-    ui->btnInstantane->setFlat(true);
-    ui->btnInstantane->setFocusPolicy(Qt::NoFocus);
-    ui->btnInstantane->setIconSize(snapshot.size());
-    ui->btnInstantane->setStyleSheet("QPushButton:flat:pressed { border: none; };");
-}
-

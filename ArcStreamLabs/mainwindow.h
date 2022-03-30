@@ -4,6 +4,8 @@
 #include <opencv2/opencv.hpp>
 #include <QMutex>
 
+#include "arcstreamlab.h"
+
 QT_BEGIN_NAMESPACE
     namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -12,14 +14,19 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-    public:
-        MainWindow(QWidget *parent = nullptr);
-        ~MainWindow();
-
     private:
+        QAction *actNew, *actOpen, *actSave, *actQuit, *actCancel;
+        QAction *actChangeThick, *actChangePen, *actChangeBrush;
+        QAction *actZoomIn, *actZoomOut, *actZoomReset, *actHelp, *actAbout;
+
+        ArcStreamLab *arcStreamLab;
+
         QMutex mutex;
-        Ui::MainWindow *ui;
         cv::Mat mat;
 
-        void configureUI();
+    public:
+        MainWindow(QWidget *parent = nullptr);
+
+    private:
+        void createMenusActions();
 };

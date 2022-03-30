@@ -25,7 +25,8 @@ set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
-        mainwindow.ui
+        arcstreamlab.h
+        arcstreamlab.cpp
         Ressources.qrc
 )
 
