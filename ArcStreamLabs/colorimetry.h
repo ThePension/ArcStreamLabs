@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QDialog>
+//#include <QTabWidget>
+//#include <QDialogButtonBox>
 
 class QCheckBox;
 class QLabel;
@@ -12,7 +14,8 @@ class Colorimetry : public QDialog
     Q_OBJECT
 
     private:
-        // TODO
+        //QTabWidget *tabWidget;
+        //QDialogButtonBox *buttonBox;
 
     public:
         Colorimetry(QWidget *parent = 0);

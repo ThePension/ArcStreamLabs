@@ -9,10 +9,16 @@ ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
 
 void ArcStreamLab::createUIGeometry()
 {
-    // Layout
+    // Horizontal Layout
     this->buttonsHLayout = new QHBoxLayout();
     this->displayHLayout = new QHBoxLayout();
     this->settingsHLayout = new QHBoxLayout();
+
+    // Vertical Layout
+    this->colorimetryVLayout = new QVBoxLayout();
+    this->filterVLayout = new QVBoxLayout();
+    this->specialEffectVLayout = new QVBoxLayout();
+    this->animationVLayout = new QVBoxLayout();
 
     this->videoInputVLayout = new QVBoxLayout();
     this->mainVLayout = new QVBoxLayout();
@@ -32,7 +38,35 @@ void ArcStreamLab::createUIGeometry()
     this->graphicViewInput = new QGraphicsView();
     this->graphicViewProcess = new QGraphicsView();
 
-    // Composition
+    // Label
+    this->lblVSeparator = new QLabel();
+    this->lblHSeparator1 = new QLabel();
+    this->lblHSeparator2 = new QLabel();
+    this->lblHSeparator3 = new QLabel();
+
+    this->lblColorimetry = new QLabel("Colorimetry");
+    this->lblFilter = new QLabel("Filter");
+    this->lblSpecialEffect = new QLabel("Special Effect");
+    this->lblAnimation = new QLabel("Animation");
+
+    // Composition Settings (Colorimetry, Filter, etc)
+    this->colorimetryVLayout->addWidget(this->lblColorimetry);
+    this->colorimetryVLayout->addSpacing(60);
+    this->colorimetryVLayout->addWidget(this->btnColor);
+
+    this->filterVLayout->addWidget(this->lblFilter);
+    this->filterVLayout->addSpacing(60);
+    this->filterVLayout->addWidget(this->btnFilter);
+
+    this->specialEffectVLayout->addWidget(this->lblSpecialEffect);
+    this->specialEffectVLayout->addSpacing(60);
+    this->specialEffectVLayout->addWidget(this->btnSpecialEffect);
+
+    this->animationVLayout->addWidget(this->lblAnimation);
+    this->animationVLayout->addSpacing(60);
+    this->animationVLayout->addWidget(this->btnAnimation);
+
+    // Composition (other)
     this->buttonsHLayout->addWidget(this->btnPlay);
     this->buttonsHLayout->addWidget(this->btnPause);
     this->buttonsHLayout->addWidget(this->btnStop);
@@ -44,13 +78,17 @@ void ArcStreamLab::createUIGeometry()
     this->displayHLayout->addLayout(this->videoInputVLayout);
     this->displayHLayout->addWidget(this->graphicViewProcess);
 
-    this->settingsHLayout->addWidget(this->btnColor);
-    this->settingsHLayout->addWidget(this->btnFilter);
-    this->settingsHLayout->addWidget(this->btnSpecialEffect);
-    this->settingsHLayout->addWidget(this->btnAnimation);
+    this->settingsHLayout->addLayout(this->colorimetryVLayout);
+    this->settingsHLayout->addWidget(this->lblHSeparator1);
+    this->settingsHLayout->addLayout(this->filterVLayout);
+    this->settingsHLayout->addWidget(this->lblHSeparator2);
+    this->settingsHLayout->addLayout(this->specialEffectVLayout);
+    this->settingsHLayout->addWidget(this->lblHSeparator3);
+    this->settingsHLayout->addLayout(this->animationVLayout);
 
     this->mainVLayout->addLayout(this->displayHLayout);
-    this->mainVLayout->addSpacing(100);
+    this->mainVLayout->addSpacing(10);
+    this->mainVLayout->addWidget(this->lblVSeparator);
     this->mainVLayout->addLayout(this->settingsHLayout);
 
     // Display
@@ -59,9 +97,56 @@ void ArcStreamLab::createUIGeometry()
 
 void ArcStreamLab::createUIAppearance()
 {
+    // Font
+    QFont font;
+    font.setPixelSize(35);
+    font.setWeight(QFont::Normal);
+
+    // Vertical layout
+    this->colorimetryVLayout->setAlignment(Qt::AlignTop);
+    this->filterVLayout->setAlignment(Qt::AlignTop);
+    this->specialEffectVLayout->setAlignment(Qt::AlignTop);
+    this->animationVLayout->setAlignment(Qt::AlignTop);
+
+    // Graphics view
+    this->graphicViewInput->setMaximumSize(20*this->formatWidth, 20*this->formatHeight);
+    this->graphicViewProcess->setMaximumSize(55*this->formatWidth, 55*this->formatHeight);
+
+    // Label
+    this->lblColorimetry->setFont(font);
+    this->lblColorimetry->setAlignment(Qt::AlignCenter);
+    this->lblFilter->setFont(font);
+    this->lblFilter->setAlignment(Qt::AlignCenter);
+    this->lblSpecialEffect->setFont(font);
+    this->lblSpecialEffect->setAlignment(Qt::AlignCenter);
+    this->lblAnimation->setFont(font);
+    this->lblAnimation->setAlignment(Qt::AlignCenter);
+
+    this->lblVSeparator->setStyleSheet("border-top: 1px solid black;");
+    this->lblVSeparator->setMaximumHeight(20);
+
+    this->lblHSeparator1->setStyleSheet("border: 1px solid black;");
+    this->lblHSeparator1->setMaximumWidth(1);
+
+    this->lblHSeparator2->setStyleSheet("border: 1px solid black;");
+    this->lblHSeparator2->setMaximumWidth(1);
+
+    this->lblHSeparator3->setStyleSheet("border: 1px solid black;");
+    this->lblHSeparator3->setMaximumWidth(1);
+
+    // Buttons
     imageButtons();
-    this->graphicViewInput->setMaximumSize(20*this->GV_WIDTH, 20*this->GV_HEIGHT);
-    this->graphicViewProcess->setMaximumSize(55*this->GV_WIDTH, 55*this->GV_HEIGHT);
+    font.setPixelSize(20);
+
+    this->btnColor->setFont(font);
+    this->btnFilter->setFont(font);
+    this->btnSpecialEffect->setFont(font);
+    this->btnAnimation->setFont(font);
+
+    this->btnAnimation->setMinimumHeight(50);
+    this->btnFilter->setMinimumHeight(50);
+    this->btnColor->setMinimumHeight(50);
+    this->btnSpecialEffect->setMinimumHeight(50);
 }
 
 void ArcStreamLab::createUIControl()
