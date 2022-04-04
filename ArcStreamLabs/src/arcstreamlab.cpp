@@ -134,7 +134,7 @@ void ArcStreamLab::createUIAppearance()
     this->lblHSeparator3->setStyleSheet("border: 1px solid black;");
     this->lblHSeparator3->setMaximumWidth(1);
 
-    // Buttons
+    // Button
     imageButtons();
     font.setPixelSize(20);
 
@@ -197,4 +197,18 @@ void ArcStreamLab::imageButtons()
     this->btnSnapshot->setFocusPolicy(Qt::NoFocus);
     this->btnSnapshot->setIconSize(snapshot.size());
     this->btnSnapshot->setStyleSheet("QPushButton:flat:pressed { border: none; };");
+}
+
+void ArcStreamLab::responsiveResize(float width)
+{
+    float w = width - 60.0;
+    float units = w / this->formatWidth;
+    float unitForLittleGV = (1.0/5.0) * units;
+    float unitsForBigGV = units - unitForLittleGV;
+
+    this->graphicViewInput->setMaximumSize(unitForLittleGV*this->formatWidth, unitForLittleGV*this->formatHeight);
+    this->graphicViewInput->setMinimumSize(unitForLittleGV*this->formatWidth, unitForLittleGV*this->formatHeight);
+
+    this->graphicViewProcess->setMaximumSize(unitsForBigGV*this->formatWidth, unitsForBigGV*this->formatHeight);
+    this->graphicViewProcess->setMinimumSize(unitsForBigGV*this->formatWidth, unitsForBigGV*this->formatHeight);
 }

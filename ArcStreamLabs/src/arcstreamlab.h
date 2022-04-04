@@ -2,10 +2,10 @@
 
 #include <QtWidgets>
 
-#include "colorimetry.h"
-#include "filter.h"
-#include "specialeffect.h"
-#include "animation.h"
+#include "dialog/colorimetry/colorimetry.h"
+#include "dialog/filter/filter.h"
+#include "dialog/specialEffect/specialeffect.h"
+#include "dialog/animation/animation.h"
 
 class ArcStreamLab : public QWidget
 {
@@ -48,11 +48,13 @@ class ArcStreamLab : public QWidget
         QLabel *lblHSeparator3;
 
         // The dimensions of the graphicsView
-        float formatWidth = 16;
-        float formatHeight = 9;
+        float formatWidth = 16.0;
+        float formatHeight = 9.0;
 
     public:
         ArcStreamLab(QWidget *parent=nullptr);
+
+        void responsiveResize(float width);
 
     private:
         void createUIGeometry(); // Create every UI's items and display it

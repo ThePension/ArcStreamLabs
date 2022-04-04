@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setWindowTitle("Arc Stream Labs");
     resize(1200,800);
 
+    this->arcStreamLab->responsiveResize(width());
+
     createMenusActions();
 }
 
@@ -45,4 +47,9 @@ void MainWindow::createMenusActions()
 
     QMenu* menuHelp = menuBar()->addMenu(tr("&?"));
     menuHelp->addAction(actAbout);
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    this->arcStreamLab->responsiveResize(width());
 }

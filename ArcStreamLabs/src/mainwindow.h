@@ -29,4 +29,6 @@ class MainWindow : public QMainWindow
 
     private:
         void createMenusActions();
+
+        void resizeEvent(QResizeEvent *event);
 };

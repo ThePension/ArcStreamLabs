@@ -20,13 +20,13 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.h mainwindow.cpp
-        arcstreamlab.h arcstreamlab.cpp
-        colorimetry.h colorimetry.cpp
-        filter.h filter.cpp
-        specialeffect.h specialeffect.cpp
-        animation.h animation.cpp
+        src/main.cpp
+        src/mainwindow.h src/mainwindow.cpp
+        src/arcstreamlab.h src/arcstreamlab.cpp
+        src/dialog/colorimetry/colorimetry.h src/dialog/colorimetry/colorimetry.cpp
+        src/dialog/filter/filter.h src/dialog/filter/filter.cpp
+        src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp
+        src/dialog/animation/animation.h src/dialog/animation/animation.cpp
         Ressources.qrc
 )
 
@@ -82,7 +82,7 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(tests tests.cpp) # tests.cpp
+add_executable(tests test/tests.cpp) # tests.cpp
 target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(tests gtest_main) # tests.cpp
 
