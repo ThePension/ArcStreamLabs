@@ -94,7 +94,6 @@ void ArcStreamLab::createUIGeometry()
 
     this->mainVLayout->addLayout(this->displayGridLayout);
     this->mainVLayout->addSpacing(10);
-    //this->mainVLayout->addStretch(1);
     this->mainVLayout->addWidget(this->lblVSeparator);
     this->mainVLayout->addLayout(this->settingsHLayout);
 
@@ -132,17 +131,17 @@ void ArcStreamLab::createUIAppearance()
     this->lblAnimation->setAlignment(Qt::AlignCenter);
     this->lblAnimation->setMaximumHeight(this->lblAnimation->height());
 
-    this->lblVSeparator->setStyleSheet("border-top: 1px solid black;");
+    this->lblVSeparator->setStyleSheet("QLabel { border-top: 1px solid black; }");
     this->lblVSeparator->setMaximumHeight(20);
     this->lblVSeparator->setMinimumHeight(20);
 
-    this->lblHSeparator1->setStyleSheet("border: 1px solid black;");
+    this->lblHSeparator1->setStyleSheet("QLabel { border: 1px solid black; }");
     this->lblHSeparator1->setMaximumWidth(1);
 
-    this->lblHSeparator2->setStyleSheet("border: 1px solid black;");
+    this->lblHSeparator2->setStyleSheet("QLabel { border: 1px solid black; }");
     this->lblHSeparator2->setMaximumWidth(1);
 
-    this->lblHSeparator3->setStyleSheet("border: 1px solid black;");
+    this->lblHSeparator3->setStyleSheet("QLabel { border: 1px solid black; }");
     this->lblHSeparator3->setMaximumWidth(1);
 
     // Button
@@ -162,6 +161,9 @@ void ArcStreamLab::createUIAppearance()
     this->btnColor->setMaximumHeight(50);
     this->btnSpecialEffect->setMinimumHeight(50);
     this->btnSpecialEffect->setMaximumHeight(50);
+
+    // Graphics view
+    //this->graphicViewInput->setMaximumHeight(5*this->formatHeight);
 }
 
 void ArcStreamLab::createUIControl()
@@ -187,7 +189,6 @@ void ArcStreamLab::imageButtons()
     this->btnPlay->setFlat(true);
     this->btnPlay->setFocusPolicy(Qt::NoFocus);
     this->btnPlay->setIconSize(play.size());
-    this->btnPlay->setStyleSheet("QPushButton:flat:pressed { border: none; };");
 
     QPixmap pause = QPixmap(":/img/Pause.png");
     pause = pause.scaled(50, 50, Qt::KeepAspectRatio);
@@ -195,7 +196,6 @@ void ArcStreamLab::imageButtons()
     this->btnPause->setFlat(true);
     this->btnPause->setFocusPolicy(Qt::NoFocus);
     this->btnPause->setIconSize(pause.size());
-    this->btnPause->setStyleSheet("QPushButton:flat:pressed { border: none; };");
 
     QPixmap stop = QPixmap(":/img/Stop.png");
     stop = stop.scaled(50, 50, Qt::KeepAspectRatio);
@@ -203,7 +203,6 @@ void ArcStreamLab::imageButtons()
     this->btnStop->setFlat(true);
     this->btnStop->setFocusPolicy(Qt::NoFocus);
     this->btnStop->setIconSize(stop.size());
-    this->btnStop->setStyleSheet("QPushButton:flat:pressed { border: none; };");
 
     QPixmap snapshot = QPixmap(":/img/Snapshot.png");
     snapshot = snapshot.scaled(80, 80, Qt::KeepAspectRatio);
@@ -211,7 +210,6 @@ void ArcStreamLab::imageButtons()
     this->btnSnapshot->setFlat(true);
     this->btnSnapshot->setFocusPolicy(Qt::NoFocus);
     this->btnSnapshot->setIconSize(snapshot.size());
-    this->btnSnapshot->setStyleSheet("QPushButton:flat:pressed { border: none; };");
 }
 
 void ArcStreamLab::responsiveResize()
