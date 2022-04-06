@@ -24,6 +24,7 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 set(PROJECT_SOURCES
         src/main.cpp
         src/mainwindow.h src/mainwindow.cpp
+        src/videostream.h src/videostream.cpp
         src/arcstreamlab.h src/arcstreamlab.cpp
         src/dialog/colorimetry/colorimetry.h src/dialog/colorimetry/colorimetry.cpp
         src/dialog/filter/filter.h src/dialog/filter/filter.cpp

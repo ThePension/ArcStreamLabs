@@ -6,12 +6,19 @@
 #include "dialog/filter/filter.h"
 #include "dialog/specialEffect/specialeffect.h"
 #include "dialog/animation/animation.h"
+#include "videostream.h"
+
 
 class ArcStreamLab : public QWidget
 {
     Q_OBJECT
 
     private:
+
+        VideoStream *rawStream;
+
+        QGraphicsPixmapItem tempPixmap;
+
         QHBoxLayout *buttonsHLayout; // Contains the play, pause and stop buttons
         QHBoxLayout *settingsHLayout; // Contains the Colorimetry, Filter, Special Effect and Animation blocs
 

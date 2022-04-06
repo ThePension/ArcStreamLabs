@@ -2,9 +2,12 @@
 
 ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
 {
+    rawStream = new VideoStream();
     createUIGeometry();
     createUIAppearance();
     createUIControl();
+    graphicViewInput->setScene(new QGraphicsScene(this));
+    graphicViewInput->scene()->addItem(&tempPixmap);
 }
 
 void ArcStreamLab::createUIGeometry()
@@ -168,6 +171,15 @@ void ArcStreamLab::createUIAppearance()
 
 void ArcStreamLab::createUIControl()
 {
+    //connect the stream video
+    connect(rawStream,&VideoStream::newPixmapCaptured,this, [&](){
+        tempPixmap.setPixmap(rawStream->pixmap());
+        graphicViewInput->fitInView(&tempPixmap, Qt::KeepAspectRatio);
+    });
+    connect(btnPlay,&QPushButton::clicked,this,[&](){rawStream->start(QThread::HighPriority);});
+
+
+    //connection with the dialog box
     Colorimetry *colorDialog = new Colorimetry(this);
     connect(this->btnColor, &QPushButton::clicked, colorDialog, &QDialog::show);
 
