@@ -6,6 +6,7 @@ set(PATH_OPENCV "C:/opencv-build" "C:/opencv/release")
 find_package( OpenCV REQUIRED PATHS ${PATH_OPENCV} )
 
 add_subdirectory("lib/LibCircularBuffer")
+add_subdirectory("lib/LibUndoRedo")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -57,7 +58,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibCircularBuffer)
+target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibCircularBuffer LibUndoRedo)
 
 set_target_properties(ArcStreamLabs PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -88,7 +89,7 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(tests test/tests.cpp ${LibCircularBuffer_TESTS}) # tests.cpp
 target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(tests gtest_main ${OpenCV_LIBS} LibCircularBuffer) # tests.cpp
+target_link_libraries(tests gtest_main ${OpenCV_LIBS} LibCircularBuffer LibUndoRedo) # tests.cpp
 
 include(GoogleTest)
 gtest_discover_tests(tests)
