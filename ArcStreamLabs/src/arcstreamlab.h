@@ -7,6 +7,8 @@
 #include "dialog/specialEffect/specialeffect.h"
 #include "dialog/animation/animation.h"
 #include "videostream.h"
+#include "lib/LibCircularBuffer/libcircularbuffer_1.h"
+#include "imageprocessing.h"
 
 
 class ArcStreamLab : public QWidget
@@ -16,8 +18,12 @@ class ArcStreamLab : public QWidget
     private:
 
         VideoStream *rawStream;
+        ImageProcessing *processedStream;
 
-        QGraphicsPixmapItem tempPixmap;
+        ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer;
+
+        QGraphicsPixmapItem inputPixmap;
+        QGraphicsPixmapItem outputPixmap;
 
         QHBoxLayout *buttonsHLayout; // Contains the play, pause and stop buttons
         QHBoxLayout *settingsHLayout; // Contains the Colorimetry, Filter, Special Effect and Animation blocs

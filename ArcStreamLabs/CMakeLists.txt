@@ -26,6 +26,7 @@ set(PROJECT_SOURCES
         src/mainwindow.h src/mainwindow.cpp
         src/videostream.h src/videostream.cpp
         src/arcstreamlab.h src/arcstreamlab.cpp
+        src/imageprocessing.h src/imageprocessing.cpp
         src/dialog/colorimetry/colorimetry.h src/dialog/colorimetry/colorimetry.cpp
         src/dialog/filter/filter.h src/dialog/filter/filter.cpp
         src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp

@@ -3,11 +3,15 @@
 ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
 {
     rawStream = new VideoStream();
+    circularBuffer = new ArcStreamLabs::LibCircularBuffer::CircularBuffer(1000);
+    processedStream = new ImageProcessing(circularBuffer);
     createUIGeometry();
     createUIAppearance();
     createUIControl();
     graphicViewInput->setScene(new QGraphicsScene(this));
-    graphicViewInput->scene()->addItem(&tempPixmap);
+    graphicViewInput->scene()->addItem(&inputPixmap);
+    graphicViewProcess->setScene(new QGraphicsScene(this));
+    graphicViewProcess->scene()->addItem(&outputPixmap);
 }
 
 void ArcStreamLab::createUIGeometry()
@@ -173,10 +177,22 @@ void ArcStreamLab::createUIControl()
 {
     //connect the stream video
     connect(rawStream,&VideoStream::newPixmapCaptured,this, [&](){
-        tempPixmap.setPixmap(rawStream->pixmap());
-        graphicViewInput->fitInView(&tempPixmap, Qt::KeepAspectRatio);
+        inputPixmap.setPixmap(rawStream->pixmap());
+        graphicViewInput->fitInView(&inputPixmap, Qt::KeepAspectRatio);
+        circularBuffer->put(rawStream->frame());
     });
-    connect(btnPlay,&QPushButton::clicked,this,[&](){rawStream->start(QThread::HighPriority);});
+
+    connect(processedStream,&ImageProcessing::imagedProcessed,this, [&](){
+        outputPixmap.setPixmap(processedStream->pixmap());
+        //graphicViewProcess->fitInView(&outputPixmap, Qt::KeepAspectRatio);
+    });
+
+    connect(btnPlay,&QPushButton::clicked,this,[&](){
+        rawStream->start(QThread::HighPriority);
+        processedStream->start(QThread::LowPriority);
+    });
+
+
 
 
     //connection with the dialog box

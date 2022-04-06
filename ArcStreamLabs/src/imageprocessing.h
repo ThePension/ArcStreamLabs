@@ -1,36 +1,33 @@
-#ifndef VIDEOSTREAM_H
-#define VIDEOSTREAM_H
+#ifndef IMAGEPROCESSING_H
+#define IMAGEPROCESSING_H
 
 #include <QPixmap>
 #include <QImage>
 #include <QThread>
 #include "opencv2/opencv.hpp"
+#include "lib/LibCircularBuffer/libcircularbuffer_1.h"
 
 #define ID_CAMERA 0
 
-class VideoStream : public QThread
+class ImageProcessing : public QThread
 {
     Q_OBJECT
 public:
-    VideoStream(QObject * parent = nullptr);
-    ~VideoStream();
+    ImageProcessing(ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer, QObject * parent = nullptr);
+    ~ImageProcessing();
 
     QPixmap pixmap() const {
         return mPixmap;
     }
 
-    cv::Mat frame() const {
-        return mFrame;
-    }
-
 protected:
     void run() override;
 signals:
-    void newPixmapCaptured();
+    void imagedProcessed();
 private:
+    ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer;
     QPixmap mPixmap;
     cv::Mat mFrame;
-    cv::VideoCapture mVideoCap;
     // https://asmaloney.com/2013/11/code/converting-between-cvmat-and-qimage-or-qpixmap/
     QPixmap cvMatToQPixmap( const cv::Mat &inMat );
     QImage cvMatToQImage( const cv::Mat &inMat );
