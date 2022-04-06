@@ -2,13 +2,13 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    arcStreamLab = new ArcStreamLab();
+    this->arcStreamLab = new ArcStreamLab();
     setCentralWidget(this->arcStreamLab);
 
     setWindowTitle("Arc Stream Labs");
     resize(1200,800);
 
-    this->arcStreamLab->responsiveResize(width());
+    this->arcStreamLab->responsiveResize();
 
     createMenusActions();
 }
@@ -51,5 +51,5 @@ void MainWindow::createMenusActions()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    this->arcStreamLab->responsiveResize(width());
+    this->arcStreamLab->responsiveResize();
 }

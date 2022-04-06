@@ -11,7 +11,6 @@ void ArcStreamLab::createUIGeometry()
 {
     // Horizontal Layout
     this->buttonsHLayout = new QHBoxLayout();
-    this->displayHLayout = new QHBoxLayout();
     this->settingsHLayout = new QHBoxLayout();
 
     // Vertical Layout
@@ -22,6 +21,9 @@ void ArcStreamLab::createUIGeometry()
 
     this->videoInputVLayout = new QVBoxLayout();
     this->mainVLayout = new QVBoxLayout();
+
+    // Grid Layout
+    this->displayGridLayout = new QGridLayout();
 
     // Buttons
     this->btnPlay = new QPushButton();
@@ -51,20 +53,24 @@ void ArcStreamLab::createUIGeometry()
 
     // Composition Settings (Colorimetry, Filter, etc)
     this->colorimetryVLayout->addWidget(this->lblColorimetry);
-    this->colorimetryVLayout->addSpacing(60);
+    this->colorimetryVLayout->addSpacing(40);
     this->colorimetryVLayout->addWidget(this->btnColor);
+    this->colorimetryVLayout->addSpacing(20);
 
     this->filterVLayout->addWidget(this->lblFilter);
-    this->filterVLayout->addSpacing(60);
+    this->filterVLayout->addSpacing(40);
     this->filterVLayout->addWidget(this->btnFilter);
+    this->filterVLayout->addSpacing(20);
 
     this->specialEffectVLayout->addWidget(this->lblSpecialEffect);
-    this->specialEffectVLayout->addSpacing(60);
+    this->specialEffectVLayout->addSpacing(40);
     this->specialEffectVLayout->addWidget(this->btnSpecialEffect);
+    this->specialEffectVLayout->addSpacing(20);
 
     this->animationVLayout->addWidget(this->lblAnimation);
-    this->animationVLayout->addSpacing(60);
+    this->animationVLayout->addSpacing(40);
     this->animationVLayout->addWidget(this->btnAnimation);
+    this->animationVLayout->addSpacing(20);
 
     // Composition (other)
     this->buttonsHLayout->addWidget(this->btnPlay);
@@ -75,8 +81,8 @@ void ArcStreamLab::createUIGeometry()
     this->videoInputVLayout->addLayout(this->buttonsHLayout);
     this->videoInputVLayout->addWidget(this->btnSnapshot);
 
-    this->displayHLayout->addLayout(this->videoInputVLayout);
-    this->displayHLayout->addWidget(this->graphicViewProcess);
+    this->displayGridLayout->addLayout(this->videoInputVLayout, 0, 0);
+    this->displayGridLayout->addWidget(this->graphicViewProcess, 0, 1);
 
     this->settingsHLayout->addLayout(this->colorimetryVLayout);
     this->settingsHLayout->addWidget(this->lblHSeparator1);
@@ -86,8 +92,9 @@ void ArcStreamLab::createUIGeometry()
     this->settingsHLayout->addWidget(this->lblHSeparator3);
     this->settingsHLayout->addLayout(this->animationVLayout);
 
-    this->mainVLayout->addLayout(this->displayHLayout);
+    this->mainVLayout->addLayout(this->displayGridLayout);
     this->mainVLayout->addSpacing(10);
+    //this->mainVLayout->addStretch(1);
     this->mainVLayout->addWidget(this->lblVSeparator);
     this->mainVLayout->addLayout(this->settingsHLayout);
 
@@ -108,22 +115,26 @@ void ArcStreamLab::createUIAppearance()
     this->specialEffectVLayout->setAlignment(Qt::AlignTop);
     this->animationVLayout->setAlignment(Qt::AlignTop);
 
-    // Graphics view
-    this->graphicViewInput->setMaximumSize(20*this->formatWidth, 20*this->formatHeight);
-    this->graphicViewProcess->setMaximumSize(55*this->formatWidth, 55*this->formatHeight);
+    this->displayGridLayout->setColumnStretch(0, 1);
+    this->displayGridLayout->setColumnStretch(1, 3);
 
     // Label
     this->lblColorimetry->setFont(font);
     this->lblColorimetry->setAlignment(Qt::AlignCenter);
+    this->lblColorimetry->setMaximumHeight(this->lblColorimetry->height());
     this->lblFilter->setFont(font);
     this->lblFilter->setAlignment(Qt::AlignCenter);
+    this->lblFilter->setMaximumHeight(this->lblFilter->height());
     this->lblSpecialEffect->setFont(font);
     this->lblSpecialEffect->setAlignment(Qt::AlignCenter);
+    this->lblSpecialEffect->setMaximumHeight(this->lblSpecialEffect->height());
     this->lblAnimation->setFont(font);
     this->lblAnimation->setAlignment(Qt::AlignCenter);
+    this->lblAnimation->setMaximumHeight(this->lblAnimation->height());
 
     this->lblVSeparator->setStyleSheet("border-top: 1px solid black;");
     this->lblVSeparator->setMaximumHeight(20);
+    this->lblVSeparator->setMinimumHeight(20);
 
     this->lblHSeparator1->setStyleSheet("border: 1px solid black;");
     this->lblHSeparator1->setMaximumWidth(1);
@@ -144,9 +155,13 @@ void ArcStreamLab::createUIAppearance()
     this->btnAnimation->setFont(font);
 
     this->btnAnimation->setMinimumHeight(50);
+    this->btnAnimation->setMaximumHeight(50);
     this->btnFilter->setMinimumHeight(50);
+    this->btnFilter->setMaximumHeight(50);
     this->btnColor->setMinimumHeight(50);
+    this->btnColor->setMaximumHeight(50);
     this->btnSpecialEffect->setMinimumHeight(50);
+    this->btnSpecialEffect->setMaximumHeight(50);
 }
 
 void ArcStreamLab::createUIControl()
@@ -199,16 +214,10 @@ void ArcStreamLab::imageButtons()
     this->btnSnapshot->setStyleSheet("QPushButton:flat:pressed { border: none; };");
 }
 
-void ArcStreamLab::responsiveResize(float width)
+void ArcStreamLab::responsiveResize()
 {
-    float w = width - 60.0;
+    float w = this->graphicViewInput->width();
     float units = w / this->formatWidth;
-    float unitForLittleGV = (1.0/5.0) * units;
-    float unitsForBigGV = units - unitForLittleGV;
 
-    this->graphicViewInput->setMaximumSize(unitForLittleGV*this->formatWidth, unitForLittleGV*this->formatHeight);
-    this->graphicViewInput->setMinimumSize(unitForLittleGV*this->formatWidth, unitForLittleGV*this->formatHeight);
-
-    this->graphicViewProcess->setMaximumSize(unitsForBigGV*this->formatWidth, unitsForBigGV*this->formatHeight);
-    this->graphicViewProcess->setMinimumSize(unitsForBigGV*this->formatWidth, unitsForBigGV*this->formatHeight);
+    this->graphicViewInput->setMaximumHeight(units*this->formatHeight);
 }

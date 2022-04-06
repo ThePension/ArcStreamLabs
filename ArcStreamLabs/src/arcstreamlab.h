@@ -13,7 +13,6 @@ class ArcStreamLab : public QWidget
 
     private:
         QHBoxLayout *buttonsHLayout; // Contains the play, pause and stop buttons
-        QHBoxLayout *displayHLayout; // Contains the two graphics view and the buttons (all the display part)
         QHBoxLayout *settingsHLayout; // Contains the Colorimetry, Filter, Special Effect and Animation blocs
 
         QVBoxLayout *colorimetryVLayout;
@@ -22,6 +21,8 @@ class ArcStreamLab : public QWidget
         QVBoxLayout *animationVLayout;
         QVBoxLayout *videoInputVLayout; // Contains the camera raw input (little graphicsView) and all the buttons (play, pause, stop and snapshot)
         QVBoxLayout *mainVLayout;
+
+        QGridLayout *displayGridLayout; // Contains the two graphics view and the buttons (all the display part)
 
         QGraphicsView *graphicViewInput; // Display the camera's raw input (little graphicsView)
         QGraphicsView *graphicViewProcess; // Dispaly the processed video (big graphicsView)
@@ -54,7 +55,7 @@ class ArcStreamLab : public QWidget
     public:
         ArcStreamLab(QWidget *parent=nullptr);
 
-        void responsiveResize(float width);
+        void responsiveResize();
 
     private:
         void createUIGeometry(); // Create every UI's items and display it
