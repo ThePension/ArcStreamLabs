@@ -18,14 +18,8 @@ before_script:
 
 stages:
   - build
-
-info-job:
-  tags:
-    - alpine-docker
-  stage: info
-  script:
-    - pwd
-    - ls
+  - test
+  - deploy
 
 build-job:
   tags:
