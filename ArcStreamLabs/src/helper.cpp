@@ -1,5 +1,7 @@
 #include "helper.h"
 
+using namespace cv;
+
 Helper::Helper() { }
 
 QPixmap Helper::cvMatToQPixmap(const cv::Mat &inMat)
@@ -51,4 +53,31 @@ QImage Helper::cvMatToQImage(const cv::Mat &inMat)
 
     return QImage();
 }
+
+Mat Helper::transformMatWithKernel(Mat src, Mat_<float> kernel)
+{
+    Mat dst;
+    // Apply filter
+    transform(src, dst, kernel);
+
+    return dst;
+}
+
+Mat Helper::transformMatWithKernel(Mat src,
+                                            float x0y0, float x1y0, float x2y0,
+                                            float x0y1, float x1y1, float x2y1,
+                                            float x0y2, float x1y2, float x2y2)
+{
+    Mat dst;
+    Mat kernel = (Mat_<float>(3, 3)
+                      << x0y0, x1y0, x2y0,
+                  x0y1, x1y1, x2y1,
+                  x0y2, x1y2, x2y2);
+
+    // Apply filter
+    transform(src, dst, kernel);
+
+    return dst;
+}
+
 

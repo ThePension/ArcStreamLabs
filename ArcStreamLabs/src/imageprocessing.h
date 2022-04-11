@@ -28,7 +28,12 @@ signals:
 private:
     ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer;
     QPixmap mPixmap;
+<<<<<<< HEAD
     cv::Mat mFrame,mGaussianBlur;
+=======
+    cv::Mat mFrame;
+    cv::Mat sepiaFilter(cv::Mat);
+>>>>>>> 6294485 (Adding sepia filter with kernel transform + Generic kernel transform)
 };
 
 #endif // VIDEOSTREAM_H
