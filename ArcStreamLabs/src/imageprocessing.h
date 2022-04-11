@@ -32,7 +32,6 @@ private:
     QPixmap mPixmap;
     cv::Mat mFrame, mGaussianBlur;
     cv::Mat kernel;
-
 };
 
 #endif // VIDEOSTREAM_H
