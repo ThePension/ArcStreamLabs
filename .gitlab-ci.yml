@@ -13,8 +13,8 @@ before_script:
  - apt-get update --yes
  - apt-get install --yes cmake
  - apt-get install ninja-build
- - apt-get install doxygen --assume-yes
- - sudo apt-get install python3-opencv
+ - apt-get install doxygen 
+ - apt-get install python3-opencv --assume-yes
 
 stages:
   - build
