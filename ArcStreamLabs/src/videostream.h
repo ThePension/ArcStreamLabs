@@ -5,6 +5,7 @@
 #include <QImage>
 #include <QThread>
 #include "opencv2/opencv.hpp"
+#include "helper.h"
 
 #define ID_CAMERA 0
 
@@ -31,9 +32,6 @@ private:
     QPixmap mPixmap;
     cv::Mat mFrame;
     cv::VideoCapture mVideoCap;
-    // https://asmaloney.com/2013/11/code/converting-between-cvmat-and-qimage-or-qpixmap/
-    QPixmap cvMatToQPixmap( const cv::Mat &inMat );
-    QImage cvMatToQImage( const cv::Mat &inMat );
 };
 
 #endif // VIDEOSTREAM_H
