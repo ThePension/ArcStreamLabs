@@ -27,7 +27,7 @@ signals:
 private:
     ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer;
     QPixmap mPixmap;
-    cv::Mat mFrame;
+    cv::Mat mFrame,mGaussianBlur;
     // https://asmaloney.com/2013/11/code/converting-between-cvmat-and-qimage-or-qpixmap/
     QPixmap cvMatToQPixmap( const cv::Mat &inMat );
     QImage cvMatToQImage( const cv::Mat &inMat );

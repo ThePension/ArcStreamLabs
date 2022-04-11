@@ -184,13 +184,15 @@ void ArcStreamLab::createUIControl()
 
     connect(processedStream,&ImageProcessing::imagedProcessed,this, [&](){
         outputPixmap.setPixmap(processedStream->pixmap());
-        //graphicViewProcess->fitInView(&outputPixmap, Qt::KeepAspectRatio);
+        graphicViewProcess->fitInView(&outputPixmap, Qt::KeepAspectRatio);
     });
 
     connect(btnPlay,&QPushButton::clicked,this,[&](){
         rawStream->start(QThread::HighPriority);
         processedStream->start(QThread::LowPriority);
     });
+
+    connect(btnStop,&QPushButton::clicked,this,&QApplication::quit);
 
 
 
