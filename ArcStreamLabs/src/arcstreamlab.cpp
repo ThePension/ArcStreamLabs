@@ -200,6 +200,7 @@ void ArcStreamLab::createUIControl()
 
     animationDialog =  new Animation(this);
     connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);
+
 }
 
 void ArcStreamLab::imageButtons()

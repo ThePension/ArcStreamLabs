@@ -87,7 +87,7 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(tests test/tests.cpp ${LibCircularBuffer_TESTS}) # tests.cpp
+add_executable(tests test/tests.cpp ${LibCircularBuffer_TESTS} ${LibUndoRedo_TESTS}) # tests.cpp
 target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(tests gtest_main ${OpenCV_LIBS} LibCircularBuffer LibUndoRedo) # tests.cpp
 

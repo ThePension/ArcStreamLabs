@@ -1,8 +1,7 @@
 ###############################################################################
 ##########          MINIMUM REQUIREMENTS (some need to be BEFORE project command)
 ###############################################################################
-set(PATH_OPENCV "C:/opencv-build" "C:/opencv/release")
-find_package( OpenCV REQUIRED PATHS ${PATH_OPENCV} )
+find_package( OpenCV REQUIRED)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 ###############################################################################
@@ -10,9 +9,9 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 ###############################################################################
 set(TARGET_NAME LibUndoRedo)
 
-set(${TARGET_NAME}_SOURCES 
-undoredo.h
-undoredo.cpp
+set(${TARGET_NAME}_SOURCES
+    actionmanager.h actionmanager.cpp
+    undoableaction.h
 )
 set(${TARGET_NAME}_TESTS
 ${CMAKE_CURRENT_SOURCE_DIR}/undoredo_tests.cpp
