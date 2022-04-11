@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(ArcStreamLabs VERSION 0.1 LANGUAGES CXX)
 
-#set(PATH_OPENCV "C:/opencv-build" "C:/opencv/release")
-find_package( opencv )#REQUIRED PATHS ${PATH_OPENCV} )
+set(PATH_OPENCV "C:/opencv-build" "C:/opencv/release")
+find_package( opencv REQUIRED PATHS ${PATH_OPENCV} )
 
 add_subdirectory("lib/LibCircularBuffer")
 add_subdirectory("lib/LibUndoRedo")
