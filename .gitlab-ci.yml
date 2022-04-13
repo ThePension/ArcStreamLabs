@@ -1,55 +1,35 @@
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
-# https://docs.gitlab.com/ee/development/cicd/templates.html
-# This specific template is located at:
-# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/C++.gitlab-ci.yml
-
-# use the official gcc image, based on debian
-# can use verions as well, like gcc:5.2
-# see https://hub.docker.com/_/gcc/
-
-image: gcc
-
-before_script:
- - apt-get update --yes && apt-get upgrade --yes
- - apt-get install --yes cmake
- - apt-get install ninja-build
- - apt-get install doxygen --assume-yes
-
-# Installing OpenCV from source
- - apt install software-properties-common -y
- - apt install apt-file -y
- - apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev -y
- 
- - apt-get install python3-numpy libtbb2 libtbb-dev -y
- - apt-get install libjpeg-dev libpng-dev libtiff5-dev libjasper-dev libdc1394-22-dev libeigen3-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev sphinx-common libtbb-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libopenexr-dev libgstreamer-plugins-base1.0-dev libavutil-dev libavfilter-dev libavresample-dev -y
- 
- - cd /opt
- - git clone https://github.com/Itseez/opencv.git
- - git clone https://github.com/Itseez/opencv_contrib.git
- 
- - cd opencv
- - mkdir release
- - cd release
- - cmake -D BUILD_TIFF=ON -D WITH_CUDA=OFF -D ENABLE_AVX=OFF -D WITH_OPENGL=OFF -D WITH_OPENCL=OFF -D WITH_IPP=OFF -D WITH_TBB=ON -D BUILD_TBB=ON -D WITH_EIGEN=OFF -D WITH_V4L=OFF -D WITH_VTK=OFF -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D OPENCV_GENERATE_PKGCONFIG=ON -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/opt/opencv_contrib/modules /opt/opencv/
-
- - make -j4
- - make install
- - ldconfig
- - exit
- - cd ~
- 
- - pkg-config --modversion opencv
+# this helps speed our Docker containers a bit because by default it uses vfs which is slower
+variables:
+  DOCKER_DRIVER: overlay2
 
 stages:
+  # - build-image
   - build
+  - test
+  - deploy
+
+#build-image:
+  #tags:
+    #- alpine-docker # here we specify the runner to use
+  #image: docker
+  #stage: build-image
+  #services:
+    #- docker:dind
+  #script:
+    #- docker login -u gitlab-ci-token -p $CI_JOB_TOKEN gitlab-etu.ing.he-arc.ch:5050
+    #- docker build -t gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1 .
+    #- docker push gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1
 
 build-job:
+  image:
+    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
   tags:
-    - alpine-docker
+    - alpine-docker # here we specify the runner to use
   stage: build
   artifacts:
     paths:
-    - BUILD/Documentation/
+    - ./Documentation
   script:
     - mkdir BUILD
     - cd BUILD
@@ -58,3 +38,22 @@ build-job:
     - ./tests
     - cmake --build . --target BuildDoc
 
+test-job:
+  image:
+    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
+  tags:
+    - alpine-docker
+  stage: test
+  script:
+    - echo "Running tests..."
+
+deploy-job:
+  image:
+    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
+  tags:
+    - alpine-docker
+  stage: deploy
+  script:
+    - echo "Deploying..."
