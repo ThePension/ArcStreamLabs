@@ -30,7 +30,6 @@ before_script:
  - apt-get install libopenexr-dev -y
  - apt-get install libtiff-dev -y
  - apt-get install libwebp-dev -y
- - apt-get install qt5-default -y
 
  - apt install libavcodec-dev libavformat-dev libswscale-dev libavresample-dev -y
  - apt install libxvidcore-dev x264 libx264-dev libfaac-dev libmp3lame-dev libtheora-dev  -y  
