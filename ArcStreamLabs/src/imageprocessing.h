@@ -21,6 +21,8 @@ public:
         return mPixmap;
     }
 
+    void setKernel(cv::Mat);
+
 protected:
     void run() override;
 signals:
@@ -28,9 +30,9 @@ signals:
 private:
     ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer;
     QPixmap mPixmap;
-    cv::Mat mGaussianBlur;
-    cv::Mat mFrame;
-    cv::Mat sepiaFilter(cv::Mat);
+    cv::Mat mFrame, mGaussianBlur;
+    void sepiaFilter();
+    cv::Mat kernel;
 };
 
 #endif // VIDEOSTREAM_H

@@ -12,14 +12,18 @@ class Filter : public QDialog
     Q_OBJECT
 
     private:
-        // TODO
+        QPushButton * buttonSepiaFilter;
+
+        void geometry();
+        void control();
+        void appearance();
 
     public:
         Filter(QWidget *parent = 0);
 
     signals:
-        // TODO
+        void sigSetSepiaFilter();
 
     private slots:
-        // TODO
+        void sloButtonSepiaFilterClick();
 };

@@ -176,38 +176,50 @@ void ArcStreamLab::createUIAppearance()
 void ArcStreamLab::createUIControl()
 {
     //connect the stream video
-    connect(rawStream,&VideoStream::newPixmapCaptured,this, [&](){
+    connect(rawStream, &VideoStream::newPixmapCaptured, this, [&](){
         inputPixmap.setPixmap(rawStream->pixmap());
         graphicViewInput->fitInView(&inputPixmap, Qt::KeepAspectRatio);
         circularBuffer->put(rawStream->frame());
     });
 
-    connect(processedStream,&ImageProcessing::imagedProcessed,this, [&](){
+    connect(processedStream, &ImageProcessing::imagedProcessed, this, [&](){
         outputPixmap.setPixmap(processedStream->pixmap());
         graphicViewProcess->fitInView(&outputPixmap, Qt::KeepAspectRatio);
     });
 
-    connect(btnPlay,&QPushButton::clicked,this,[&](){
+    connect(btnPlay, &QPushButton::clicked, this,[&](){
         rawStream->start(QThread::HighPriority);
         processedStream->start(QThread::LowPriority);
     });
 
-    connect(btnStop,&QPushButton::clicked,this,&QApplication::quit);
+    connect(btnStop, &QPushButton::clicked, this, [=](){
+        this->rawStream->quit(); //  /!\ Ne fonctionne pas
+        this->processedStream->quit(); // /!\ Ne fonctionne pas
+        this->circularBuffer->reset();
+        QApplication::quit();
+    });
 
+    connect(btnPause, &QPushButton::clicked, this, [=](){
+        this->rawStream->quit(); // /!\ Ne fonctionne pas
+        this->processedStream->quit(); // /!\ Ne fonctionne pas
+        this->circularBuffer->reset();
+    });
 
-
-
-    //connection with the dialog box
-    Colorimetry *colorDialog = new Colorimetry(this);
+    // connection with the dialog box
+    colorDialog = new Colorimetry(this);
     connect(this->btnColor, &QPushButton::clicked, colorDialog, &QDialog::show);
+    connect(colorDialog, &Colorimetry::sigSlidersValueChanged, this, &ArcStreamLab::updateColorimetryValues);
 
-    Filter *filterDialog =  new Filter(this);
+    updateColorimetryValues();
+
+    filterDialog =  new Filter(this);
     connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
+    connect(filterDialog, &Filter::sigSetSepiaFilter, colorDialog, &Colorimetry::sloSetSepiaFilter);
 
-    SpecialEffect *specialEffectDialog =  new SpecialEffect(this);
+    specialEffectDialog =  new SpecialEffect(this);
     connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);
 
-    Animation *animationDialog =  new Animation(this);
+    animationDialog =  new Animation(this);
     connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);
 }
 
@@ -240,6 +252,11 @@ void ArcStreamLab::imageButtons()
     this->btnSnapshot->setFlat(true);
     this->btnSnapshot->setFocusPolicy(Qt::NoFocus);
     this->btnSnapshot->setIconSize(snapshot.size());
+}
+
+void ArcStreamLab::updateColorimetryValues()
+{
+    this->processedStream->setKernel(this->colorDialog->getKernel());
 }
 
 void ArcStreamLab::responsiveResize()

@@ -61,6 +61,12 @@ class ArcStreamLab : public QWidget
         QLabel *lblHSeparator2;
         QLabel *lblHSeparator3;
 
+        // Dialogs
+        Colorimetry * colorDialog;
+        Filter * filterDialog;
+        SpecialEffect *specialEffectDialog;
+        Animation *animationDialog;
+
         // The dimensions of the graphicsView
         float formatWidth = 16.0;
         float formatHeight = 9.0;
@@ -75,4 +81,8 @@ class ArcStreamLab : public QWidget
         void createUIAppearance(); // Manage the appearance of the UI
         void createUIControl(); // Connect the UI's items to slots
         void imageButtons(); // Replace the buttons by images
+
+    public slots:
+        void updateColorimetryValues();
+
 };
