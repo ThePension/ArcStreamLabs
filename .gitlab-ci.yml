@@ -31,9 +31,9 @@ before_script:
  - apt-get install libtiff-dev -y
  - apt-get install libwebp-dev -y
 
- - apt install libavcodec-dev libavformat-dev libswscale-dev libavresample-dev -y
- - apt install libxvidcore-dev x264 libx264-dev libfaac-dev libmp3lame-dev libtheora-dev  -y  
- - apt install libfaac-dev libmp3lame-dev libvorbis-dev -y
+ - apt-get install libavcodec-dev libavformat-dev libswscale-dev libavresample-dev -y
+ - apt-get install libxvidcore-dev x264 libx264-dev libfaac-dev libmp3lame-dev libtheora-dev  -y  
+ - apt-get install libfaac-dev libmp3lame-dev libvorbis-dev -y
  - apt-get install libgtk-3-dev -y
  - pip3 install -U pip numpy
 
