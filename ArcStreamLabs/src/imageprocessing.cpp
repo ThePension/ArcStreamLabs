@@ -19,20 +19,13 @@ void ImageProcessing::run()
         if(circularBuffer->empty()==false)
         {
             mFrame = circularBuffer->read();
-<<<<<<< HEAD
 
             for ( int i = 1; i < /*valeur a modifié pour la netteté :man_shrugging*/3; i = i + 2 )
             {
                 GaussianBlur(mFrame, mGaussianBlur, Size(i,i), 0, 0, BORDER_DEFAULT);
             }
             mPixmap = Helper::cvMatToQPixmap(mGaussianBlur);
-            emit imagedProcessed();   
-
-=======
-            mFrame = sepiaFilter(mFrame);
-            mPixmap = Helper::cvMatToQPixmap(mFrame);
             emit imagedProcessed();
->>>>>>> 6294485 (Adding sepia filter with kernel transform + Generic kernel transform)
         }
     }
 }
