@@ -14,13 +14,12 @@ before_script:
  - apt-get install --yes cmake
  - apt-get install ninja-build
  - apt-get install doxygen --assume-yes
- - apt-get install python3-opencv --assume-yes
 
 # Installing OpenCV from source
  - apt install -y g++ wget unzip
 
- - apt install liblz-dev libtiff5 libtiff5-dev libtiff-tools libwebp6
- - apt-get install vlc ubuntu-restricted-extras
+ - apt-get install liblz-dev libtiff5 libtiff5-dev libtiff-tools libwebp6 -y
+ - apt-get install vlc ubuntu-restricted-extras -y
 
  - apt install liblz-dev -y
  - apt-get install python3-dev python3-numpy python3-pip -y
