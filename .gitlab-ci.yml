@@ -1,0 +1,59 @@
+# this helps speed our Docker containers a bit because by default it uses vfs which is slower
+variables:
+  DOCKER_DRIVER: overlay2
+
+stages:
+  # - build-image
+  - build
+  - test
+  - deploy
+
+#build-image:
+  #tags:
+    #- alpine-docker # here we specify the runner to use
+  #image: docker
+  #stage: build-image
+  #services:
+    #- docker:dind
+  #script:
+    #- docker login -u gitlab-ci-token -p $CI_JOB_TOKEN gitlab-etu.ing.he-arc.ch:5050
+    #- docker build -t gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1 .
+    #- docker push gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1
+
+build-job:
+  image:
+    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
+  tags:
+    - alpine-docker # here we specify the runner to use
+  stage: build
+  artifacts:
+    paths:
+    - ./Documentation
+  script:
+    - mkdir BUILD
+    - cd BUILD
+    - cmake -G "Ninja" ../ArcStreamLabs
+    - ninja
+    - ./tests
+    - cmake --build . --target BuildDoc
+
+test-job:
+  image:
+    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
+  tags:
+    - alpine-docker
+  stage: test
+  script:
+    - echo "Running tests..."
+
+deploy-job:
+  image:
+    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
+  tags:
+    - alpine-docker
+  stage: deploy
+  script:
+    - echo "Deploying..."
