@@ -115,7 +115,7 @@ void Colorimetry::appearance()
             QSlider * slider = this->slidersTab[i][j];
             slider->setTickInterval(1);
             slider->setMaximum(interval);
-            slider->setMinimum(1);
+            slider->setMinimum(-interval);
             slider->setMaximumHeight(100);
         }
     }
