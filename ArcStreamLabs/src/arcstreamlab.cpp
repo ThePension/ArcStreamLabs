@@ -176,41 +176,20 @@ void ArcStreamLab::createUIAppearance()
 void ArcStreamLab::createUIControl()
 {
     //connect the stream video
-    connect(rawStream, &VideoStream::newPixmapCaptured, this, [&](){
-        inputPixmap.setPixmap(rawStream->pixmap());
-        graphicViewInput->fitInView(&inputPixmap, Qt::KeepAspectRatio);
-        circularBuffer->put(rawStream->frame());
-    });
+    connect(rawStream, &VideoStream::newPixmapCaptured, this, &ArcStreamLab::sloUpdateRawStreamValue);
+    connect(processedStream, &ImageProcessing::imagedProcessed, this, &ArcStreamLab::sloUpdateProcessedStreamValue);
 
-    connect(processedStream, &ImageProcessing::imagedProcessed, this, [&](){
-        outputPixmap.setPixmap(processedStream->pixmap());
-        graphicViewProcess->fitInView(&outputPixmap, Qt::KeepAspectRatio);
-    });
-
-    connect(btnPlay, &QPushButton::clicked, this,[&](){
-        rawStream->start(QThread::HighPriority);
-        processedStream->start(QThread::LowPriority);
-    });
-
-    connect(btnStop, &QPushButton::clicked, this, [=](){
-        this->rawStream->terminate();
-        this->processedStream->terminate();
-        this->circularBuffer->reset();
-        QApplication::quit();
-    });
-
-    connect(btnPause, &QPushButton::clicked, this, [=](){
-        this->rawStream->terminate();
-        this->processedStream->terminate();
-        this->circularBuffer->reset();
-    });
+    // Stream buttons
+    connect(btnPlay, &QPushButton::clicked, this, &ArcStreamLab::sloPlayButtonClicked);
+    connect(btnStop, &QPushButton::clicked, this, &ArcStreamLab::sloStopButtonClicked);
+    connect(btnPause, &QPushButton::clicked, this, &ArcStreamLab::sloPauseButtonClicked);
 
     // connection with the dialog box
     colorDialog = new Colorimetry(this);
     connect(this->btnColor, &QPushButton::clicked, colorDialog, &QDialog::show);
-    connect(colorDialog, &Colorimetry::sigSlidersValueChanged, this, &ArcStreamLab::updateColorimetryValues);
+    connect(colorDialog, &Colorimetry::sigSlidersValueChanged, this, &ArcStreamLab::sloUpdateColorimetryValues);
 
-    updateColorimetryValues();
+    sloUpdateColorimetryValues();
 
     filterDialog =  new Filter(this);
     connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
@@ -254,7 +233,41 @@ void ArcStreamLab::imageButtons()
     this->btnSnapshot->setIconSize(snapshot.size());
 }
 
-void ArcStreamLab::updateColorimetryValues()
+void ArcStreamLab::sloUpdateRawStreamValue()
+{
+    inputPixmap.setPixmap(rawStream->pixmap());
+    graphicViewInput->fitInView(&inputPixmap, Qt::KeepAspectRatio);
+    circularBuffer->put(rawStream->frame());
+}
+
+void ArcStreamLab::sloUpdateProcessedStreamValue()
+{
+    outputPixmap.setPixmap(processedStream->pixmap());
+    graphicViewProcess->fitInView(&outputPixmap, Qt::KeepAspectRatio);
+}
+
+void ArcStreamLab::sloPlayButtonClicked()
+{
+    rawStream->start(QThread::HighPriority);
+    processedStream->start(QThread::LowPriority);
+}
+
+void ArcStreamLab::sloPauseButtonClicked()
+{
+    this->rawStream->terminate();
+    this->processedStream->terminate();
+    this->circularBuffer->reset();
+}
+
+void ArcStreamLab::sloStopButtonClicked()
+{
+    this->rawStream->terminate();
+    this->processedStream->terminate();
+    this->circularBuffer->reset();
+    QApplication::quit();
+}
+
+void ArcStreamLab::sloUpdateColorimetryValues()
 {
     this->processedStream->setKernel(this->colorDialog->getKernel());
 }

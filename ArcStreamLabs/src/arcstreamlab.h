@@ -83,6 +83,11 @@ class ArcStreamLab : public QWidget
         void imageButtons(); // Replace the buttons by images
 
     public slots:
-        void updateColorimetryValues();
+        void sloUpdateRawStreamValue();
+        void sloUpdateProcessedStreamValue();
+        void sloUpdateColorimetryValues();
+        void sloPlayButtonClicked();
+        void sloPauseButtonClicked();
+        void sloStopButtonClicked();
 
 };
