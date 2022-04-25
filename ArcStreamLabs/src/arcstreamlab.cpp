@@ -193,15 +193,15 @@ void ArcStreamLab::createUIControl()
     });
 
     connect(btnStop, &QPushButton::clicked, this, [=](){
-        this->rawStream->quit(); //  /!\ Ne fonctionne pas
-        this->processedStream->quit(); // /!\ Ne fonctionne pas
+        this->rawStream->terminate();
+        this->processedStream->terminate();
         this->circularBuffer->reset();
         QApplication::quit();
     });
 
     connect(btnPause, &QPushButton::clicked, this, [=](){
-        this->rawStream->quit(); // /!\ Ne fonctionne pas
-        this->processedStream->quit(); // /!\ Ne fonctionne pas
+        this->rawStream->terminate();
+        this->processedStream->terminate();
         this->circularBuffer->reset();
     });
 

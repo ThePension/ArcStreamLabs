@@ -38,18 +38,3 @@ void ImageProcessing::run()
         }
     }
 }
-
-void ImageProcessing::sepiaFilter()
-{
-    // Based on : https://amin-ahmadi.com/2016/03/24/sepia-filter-opencv/
-    kernel = (Mat_<float>(3, 3)
-                    << 0.272, 0.534, 0.131,
-                       0.349, 0.686, 0.168,
-                       0.393, 0.769, 0.189);
-
-    // test
-    kernel = (Mat_<float>(3, 3)
-                  << 0.f, 0.f, 0.f,
-              0.f, 0.f, 0.f,
-              0.f, 0.f, 0.f);
-}

@@ -31,7 +31,6 @@ private:
     ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer;
     QPixmap mPixmap;
     cv::Mat mFrame, mGaussianBlur;
-    void sepiaFilter();
     cv::Mat kernel;
 };
 
