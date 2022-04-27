@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
     private:
-        QAction *actNew, *actOpen, *actSave, *actQuit, *actCancel;
+        QAction *actImportSettings, *actExportSettings, *actExportSettingsAs, *actQuit, *actCancel;
         QAction *actChangeThick, *actChangePen, *actChangeBrush;
         QAction *actZoomIn, *actZoomOut, *actZoomReset, *actHelp, *actAbout;
 

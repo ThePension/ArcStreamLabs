@@ -15,27 +15,30 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::createMenusActions()
 {
-    actNew = new QAction(tr("&Nouveau"),this);
-    actOpen = new QAction(tr("&Ouvrir"),this);
-    actSave = new QAction(tr("&Enregistrer"),this);
-    actQuit = new QAction(tr("&Quitter"),this);
-    actChangeThick = new QAction(tr("&Epaisseur"),this);
-    actChangePen = new QAction(tr("Couleur &tracé"),this);
-    actChangeBrush = new QAction(tr("Couleur &remplissage"),this);
+    actImportSettings = new QAction(tr("&Ouvrir"), this);
+    actExportSettings = new QAction(tr("&Enregistrer"), this);
+    actExportSettingsAs = new QAction(tr("Enregistrer &Sous"), this);
+    actQuit = new QAction(tr("&Quitter"), this);
+    actChangeThick = new QAction(tr("&Epaisseur"), this);
+    actChangePen = new QAction(tr("Couleur &tracé"), this);
+    actChangeBrush = new QAction(tr("Couleur &remplissage"), this);
 
-    actZoomIn = new QAction(tr("Zoom &In"),this);
-    actZoomOut = new QAction(tr("Zoom &Out"),this);
-    actZoomReset = new QAction(tr("&Echelle 1:1"),this);
+    actZoomIn = new QAction(tr("Zoom &In"), this);
+    actZoomOut = new QAction(tr("Zoom &Out"), this);
+    actZoomReset = new QAction(tr("&Echelle 1:1"), this);
 
-    actAbout = new QAction(tr("A &Propos"),this);
+    actAbout = new QAction(tr("A &Propos"), this);
+
+    actExportSettings->setShortcut(tr("Ctrl+S"));
 
     QMenu* menuFichier = menuBar()->addMenu(tr("&Fichier"));
-    menuFichier->addAction(actNew);
-    menuFichier->addAction(actOpen);
-    menuFichier->addAction(actSave);
+    menuFichier->addAction(actImportSettings);
+    menuFichier->addAction(actExportSettings);
+    menuFichier->addAction(actExportSettingsAs);
     menuFichier->addAction(actQuit);
 
-    connect(actSave, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::exportSettings);
+    connect(actExportSettings, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::exportSettings);
+    connect(actExportSettingsAs, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::exportSettingsAs);
 
     QMenu* menuDraw = menuBar()->addMenu(tr("&Dessin"));
     menuDraw->addAction(actChangeThick);
