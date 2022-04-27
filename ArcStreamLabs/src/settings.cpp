@@ -95,7 +95,7 @@ void Settings::exportSettings()
 
 void Settings::exportSettingsAs()
 {
-    QString newFileName = QFileDialog::getSaveFileName(this, tr("Sauver"), "./", tr("Dessins (*.icnqt)"));
+    QString newFileName = QFileDialog::getSaveFileName(this, tr("Sauver"), "./", tr("Dessins (*.asls)"));
     if (!newFileName.isEmpty())
     {
         this->filename = newFileName;
@@ -105,7 +105,7 @@ void Settings::exportSettingsAs()
 
 void Settings::importSettings()
 {
-    QString newFileName = QFileDialog::getOpenFileName(this, tr("Ouvrir"), "./", tr("Dessins (*.icnqt)"));
+    QString newFileName = QFileDialog::getOpenFileName(this, tr("Ouvrir"), "./", tr("Dessins (*.asls)"));
     if (!newFileName.isNull())
     {
         this->filename = newFileName;
