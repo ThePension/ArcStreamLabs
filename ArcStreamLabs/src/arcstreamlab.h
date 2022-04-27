@@ -6,6 +6,7 @@
 #include "dialog/filter/filter.h"
 #include "dialog/specialEffect/specialeffect.h"
 #include "dialog/animation/animation.h"
+#include "settings.h"
 #include "videostream.h"
 #include "lib/LibCircularBuffer/libcircularbuffer_1.h"
 #include "imageprocessing.h"
@@ -71,10 +72,14 @@ class ArcStreamLab : public QWidget
         float formatWidth = 16.0;
         float formatHeight = 9.0;
 
+        // Settings
+        Settings * settings;
+
     public:
         ArcStreamLab(QWidget *parent=nullptr);
 
         void responsiveResize();
+        Settings * getSettings();
 
     private:
         void createUIGeometry(); // Create every UI's items and display it

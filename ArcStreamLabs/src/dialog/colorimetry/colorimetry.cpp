@@ -32,6 +32,21 @@ cv::Mat Colorimetry::getKernel()
     return kernel;
 }
 
+QSlider ***Colorimetry::getSlidersTab()
+{
+    return this->slidersTab;
+}
+
+int Colorimetry::getWidth()
+{
+    return this->width;
+}
+
+int Colorimetry::getHeight()
+{
+    return this->height;
+}
+
 void Colorimetry::sloSetDefaultValues()
 {
     this->slidersTab[0][0]->setValue(1000);

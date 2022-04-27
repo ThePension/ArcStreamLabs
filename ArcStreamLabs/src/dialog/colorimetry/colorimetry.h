@@ -38,6 +38,9 @@ class Colorimetry : public QDialog
         Colorimetry(QWidget *parent = 0);
 
         cv::Mat getKernel();
+        QSlider *** getSlidersTab();
+        int getWidth();
+        int getHeight();
 
     signals:
         void sigSlidersValueChanged();

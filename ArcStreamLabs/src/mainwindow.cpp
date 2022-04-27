@@ -35,6 +35,8 @@ void MainWindow::createMenusActions()
     menuFichier->addAction(actSave);
     menuFichier->addAction(actQuit);
 
+    connect(actSave, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::exportSettings);
+
     QMenu* menuDraw = menuBar()->addMenu(tr("&Dessin"));
     menuDraw->addAction(actChangeThick);
     menuDraw->addAction(actChangePen);

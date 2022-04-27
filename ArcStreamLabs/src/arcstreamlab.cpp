@@ -205,6 +205,8 @@ void ArcStreamLab::createUIControl()
 
     animationDialog =  new Animation(this);
     connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);
+
+    this->settings = new Settings(colorDialog, filterDialog, specialEffectDialog, animationDialog, this);
 }
 
 void ArcStreamLab::imageButtons()
@@ -283,4 +285,9 @@ void ArcStreamLab::responsiveResize()
     float units = w / this->formatWidth;
 
     this->graphicViewInput->setMaximumHeight(units*this->formatHeight);
+}
+
+Settings *ArcStreamLab::getSettings()
+{
+    return this->settings;
 }
