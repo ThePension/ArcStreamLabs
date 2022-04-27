@@ -44,5 +44,9 @@ class Colorimetry : public QDialog
 
     public slots:
         void sloSetDefaultValues();
+        void sloSetRedFilter();
+        void sloSetGreenFilter();
+        void sloSetBlueFilter();
         void sloSetSepiaFilter();
+        void sloSetBlackAndWhiteFilter();
 };

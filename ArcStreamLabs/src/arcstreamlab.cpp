@@ -193,7 +193,12 @@ void ArcStreamLab::createUIControl()
 
     filterDialog =  new Filter(this);
     connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
+    connect(filterDialog, &Filter::sigSetDefaultFilter, colorDialog, &Colorimetry::sloSetDefaultValues);
+    connect(filterDialog, &Filter::sigSetRedFilter, colorDialog, &Colorimetry::sloSetRedFilter);
+    connect(filterDialog, &Filter::sigSetGreenFilter, colorDialog, &Colorimetry::sloSetGreenFilter);
+    connect(filterDialog, &Filter::sigSetBlueFilter, colorDialog, &Colorimetry::sloSetBlueFilter);
     connect(filterDialog, &Filter::sigSetSepiaFilter, colorDialog, &Colorimetry::sloSetSepiaFilter);
+    connect(filterDialog, &Filter::sigSetBlackAndWhiteFilter, colorDialog, &Colorimetry::sloSetBlackAndWhiteFilter);
 
     specialEffectDialog =  new SpecialEffect(this);
     connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);

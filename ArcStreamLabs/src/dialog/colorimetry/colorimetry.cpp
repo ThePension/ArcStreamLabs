@@ -47,6 +47,51 @@ void Colorimetry::sloSetDefaultValues()
     emit sigSlidersValueChanged();
 }
 
+void Colorimetry::sloSetRedFilter()
+{
+    this->slidersTab[0][0]->setValue(0);
+    this->slidersTab[0][1]->setValue(0);
+    this->slidersTab[0][2]->setValue(0);
+    this->slidersTab[1][0]->setValue(0);
+    this->slidersTab[1][1]->setValue(0);
+    this->slidersTab[1][2]->setValue(0);
+    this->slidersTab[2][0]->setValue(0);
+    this->slidersTab[2][1]->setValue(0);
+    this->slidersTab[2][2]->setValue(1000);
+
+    emit sigSlidersValueChanged();
+}
+
+void Colorimetry::sloSetGreenFilter()
+{
+    this->slidersTab[0][0]->setValue(0);
+    this->slidersTab[0][1]->setValue(0);
+    this->slidersTab[0][2]->setValue(0);
+    this->slidersTab[1][0]->setValue(0);
+    this->slidersTab[1][1]->setValue(1000);
+    this->slidersTab[1][2]->setValue(0);
+    this->slidersTab[2][0]->setValue(0);
+    this->slidersTab[2][1]->setValue(0);
+    this->slidersTab[2][2]->setValue(0);
+
+    emit sigSlidersValueChanged();
+}
+
+void Colorimetry::sloSetBlueFilter()
+{
+    this->slidersTab[0][0]->setValue(800);
+    this->slidersTab[0][1]->setValue(125);
+    this->slidersTab[0][2]->setValue(333);
+    this->slidersTab[1][0]->setValue(0);
+    this->slidersTab[1][1]->setValue(0);
+    this->slidersTab[1][2]->setValue(0);
+    this->slidersTab[2][0]->setValue(0);
+    this->slidersTab[2][1]->setValue(0);
+    this->slidersTab[2][2]->setValue(0);
+
+    emit sigSlidersValueChanged();
+}
+
 void Colorimetry::sloSetSepiaFilter()
 {
     this->slidersTab[0][0]->setValue(272);
@@ -58,6 +103,21 @@ void Colorimetry::sloSetSepiaFilter()
     this->slidersTab[2][0]->setValue(393);
     this->slidersTab[2][1]->setValue(769);
     this->slidersTab[2][2]->setValue(189);
+
+    emit sigSlidersValueChanged();
+}
+
+void Colorimetry::sloSetBlackAndWhiteFilter()
+{
+    this->slidersTab[0][0]->setValue(800);
+    this->slidersTab[0][1]->setValue(700);
+    this->slidersTab[0][2]->setValue(700);
+    this->slidersTab[1][0]->setValue(700);
+    this->slidersTab[1][1]->setValue(800);
+    this->slidersTab[1][2]->setValue(700);
+    this->slidersTab[2][0]->setValue(700);
+    this->slidersTab[2][1]->setValue(700);
+    this->slidersTab[2][2]->setValue(800);
 
     emit sigSlidersValueChanged();
 }
