@@ -15,9 +15,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::createMenusActions()
 {
-    actImportSettings = new QAction(tr("&Ouvrir"), this);
-    actExportSettings = new QAction(tr("&Enregistrer"), this);
-    actExportSettingsAs = new QAction(tr("Enregistrer &Sous"), this);
+    actImportSettings = new QAction(tr("&Importer paramètres"), this);
+    actExportSettings = new QAction(tr("&Exporter paramètres"), this);
+    actExportSettingsAs = new QAction(tr("Exporter paramètres &Sous"), this);
     actQuit = new QAction(tr("&Quitter"), this);
     actChangeThick = new QAction(tr("&Epaisseur"), this);
     actChangePen = new QAction(tr("Couleur &tracé"), this);
@@ -37,6 +37,7 @@ void MainWindow::createMenusActions()
     menuFichier->addAction(actExportSettingsAs);
     menuFichier->addAction(actQuit);
 
+    connect(actImportSettings, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::importSettings);
     connect(actExportSettings, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::exportSettings);
     connect(actExportSettingsAs, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::exportSettingsAs);
 

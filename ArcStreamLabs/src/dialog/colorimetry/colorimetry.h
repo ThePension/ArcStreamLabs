@@ -13,14 +13,13 @@ class QSlider;
 class QHBoxLayout;
 class QVBoxLayout;
 
+using namespace cv;
+
 class Colorimetry : public QDialog
 {
     Q_OBJECT
 
     private:
-        //QTabWidget *tabWidget;
-        //QDialogButtonBox *buttonBox;
-
         QHBoxLayout * horizontalLayoutForSliders;
         QVBoxLayout * verticalLayout;
 
@@ -37,10 +36,11 @@ class Colorimetry : public QDialog
     public:
         Colorimetry(QWidget *parent = 0);
 
-        cv::Mat getKernel();
+        Mat getKernel();
         QSlider *** getSlidersTab();
         int getWidth();
         int getHeight();
+        void setKernel(Mat);
 
     signals:
         void sigSlidersValueChanged();

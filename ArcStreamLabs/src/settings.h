@@ -29,6 +29,8 @@ private:
 
     QString filename;
 
+    void readFile();
+
 public:
     Settings(Colorimetry *, Filter *, SpecialEffect *, Animation *, QWidget * parent = nullptr);
 

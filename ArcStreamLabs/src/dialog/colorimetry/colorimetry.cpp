@@ -47,6 +47,17 @@ int Colorimetry::getHeight()
     return this->height;
 }
 
+void Colorimetry::setKernel(Mat kernel)
+{
+    for(int i = 0; i < this->width; i++)
+    {
+        for(int j = 0; j < this->height; j++)
+        {
+            this->slidersTab[i][j]->setValue(kernel.at<float>(i, j));
+        }
+    }
+}
+
 void Colorimetry::sloSetDefaultValues()
 {
     this->slidersTab[0][0]->setValue(1000);
