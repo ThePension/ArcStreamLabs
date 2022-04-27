@@ -1,11 +1,24 @@
 #include <gtest/gtest.h>
 
-// LOCAL INCLUDES
 #include "LibUndoRedo/actionmanager.h"
 #include "LibUndoRedo/undoableaction.h"
 
-TEST(LibUndoREdo, UndoREdo)
+TEST(LibUndoREdo, BlackAndWhiteFilter)
 {
-    // Verification of the stacks state
+    // TODO
     EXPECT_EQ(0, 0);
 }
+
+TEST(LibUndoREdo, SepiaFilter)
+{
+    // TODO
+    EXPECT_EQ(0, 0);
+}
+
+TEST(LibUndoREdo, ChangeColors)
+{
+    // TODO
+    EXPECT_EQ(0, 0);
+}
+
+// ...
