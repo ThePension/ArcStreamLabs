@@ -1,5 +1,4 @@
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#pragma once
 
 #include "opencv2/opencv.hpp"
 
@@ -13,8 +12,6 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QSlider>
-
-using namespace cv;
 
 class Settings : public QWidget
 {
@@ -39,5 +36,3 @@ public slots:
     void exportSettingsAs();
     void importSettings();
 };
-
-#endif // SETTINGS_H

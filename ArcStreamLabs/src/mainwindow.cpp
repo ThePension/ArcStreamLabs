@@ -31,11 +31,20 @@ void MainWindow::createMenusActions()
 
     actExportSettings->setShortcut(tr("Ctrl+S"));
 
+    actUndo = new QAction("undo", this);
+    actUndo->setShortcut(QKeySequence("Ctrl+Z"));
+    connect(actUndo, &QAction::triggered, this->arcStreamLab, &ArcStreamLab::undo);
+    actRedo = new QAction("redo", this);
+    actRedo->setShortcut(QKeySequence("Ctrl+Y"));
+    connect(actRedo, &QAction::triggered, this->arcStreamLab, &ArcStreamLab::redo);
+
     QMenu* menuFichier = menuBar()->addMenu(tr("&Fichier"));
     menuFichier->addAction(actImportSettings);
     menuFichier->addAction(actExportSettings);
     menuFichier->addAction(actExportSettingsAs);
     menuFichier->addAction(actQuit);
+    menuFichier->addAction(actUndo);
+    menuFichier->addAction(actRedo);
 
     connect(actImportSettings, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::importSettings);
     connect(actExportSettings, &QAction::triggered, this->arcStreamLab->getSettings(), &Settings::exportSettings);

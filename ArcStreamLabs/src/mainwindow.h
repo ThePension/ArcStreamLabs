@@ -19,6 +19,7 @@ class MainWindow : public QMainWindow
         QAction *actImportSettings, *actExportSettings, *actExportSettingsAs, *actQuit, *actCancel;
         QAction *actChangeThick, *actChangePen, *actChangeBrush;
         QAction *actZoomIn, *actZoomOut, *actZoomReset, *actHelp, *actAbout;
+        QAction *actUndo, *actRedo;
 
         ArcStreamLab *arcStreamLab;
 

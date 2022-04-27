@@ -33,6 +33,7 @@ set(PROJECT_SOURCES
         src/dialog/filter/filter.h src/dialog/filter/filter.cpp
         src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp
         src/dialog/animation/animation.h src/dialog/animation/animation.cpp
+        src/dialog/colorimetry/colorimetryactions.h src/dialog/colorimetry/colorimetryactions.cpp
         Ressources.qrc
 )
 

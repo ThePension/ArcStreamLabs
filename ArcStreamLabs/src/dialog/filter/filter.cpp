@@ -1,5 +1,6 @@
 #include "filter.h"
 #include <QPushButton>
+#include "../../arcstreamlab.h"
 
 Filter::Filter(QWidget *parent) : QDialog(parent)
 {
@@ -9,6 +10,19 @@ Filter::Filter(QWidget *parent) : QDialog(parent)
     geometry();
     control();
     appearance();
+
+    this->parent = static_cast<ArcStreamLab*>(parent);
+
+    actUndo = new QAction("undo", this);
+    actUndo->setShortcut(QKeySequence("Ctrl+Z"));
+    connect(actUndo, &QAction::triggered, this->parent, &ArcStreamLab::undo);
+
+    actRedo = new QAction("redo", this);
+    actRedo->setShortcut(QKeySequence("Ctrl+Y"));
+    connect(actRedo, &QAction::triggered, this->parent, &ArcStreamLab::redo);
+
+    addAction(actUndo);
+    addAction(actRedo);
 }
 
 void Filter::sloButtonDefaultFilterClick()

@@ -10,6 +10,7 @@
 #include "videostream.h"
 #include "lib/LibCircularBuffer/libcircularbuffer_1.h"
 #include "imageprocessing.h"
+#include "LibUndoRedo/actionmanager.h"
 
 
 class ArcStreamLab : public QWidget
@@ -17,6 +18,7 @@ class ArcStreamLab : public QWidget
     Q_OBJECT
 
     private:
+        ActionManager *actionManager;
 
         VideoStream *rawStream;
         ImageProcessing *processedStream;
@@ -94,5 +96,7 @@ class ArcStreamLab : public QWidget
         void sloPlayButtonClicked();
         void sloPauseButtonClicked();
         void sloStopButtonClicked();
+        void undo();
+        void redo();
 
 };

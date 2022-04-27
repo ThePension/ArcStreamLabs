@@ -8,6 +8,7 @@ class QCheckBox;
 class QLabel;
 class QLineEdit;
 class QPushButton;
+class ArcStreamLab;
 
 class Filter : public QDialog
 {
@@ -22,6 +23,8 @@ class Filter : public QDialog
         QPushButton * buttonBlueFilter;
         QPushButton * buttonSepiaFilter;
         QPushButton * buttonBlackAndWhiteFilter;
+        ArcStreamLab *parent;
+        QAction *actUndo, *actRedo;
 
         void geometry();
         void control();

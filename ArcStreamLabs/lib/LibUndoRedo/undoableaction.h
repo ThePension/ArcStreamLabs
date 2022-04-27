@@ -3,7 +3,7 @@
 class UndoableAction
 {
     public:
-        virtual ~UndoableAction() = 0;
+        virtual ~UndoableAction() {};
         void virtual execute() = 0;
         void virtual undo() = 0;
 };

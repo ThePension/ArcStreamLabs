@@ -32,16 +32,22 @@ void ActionManager::executeAction(UndoableAction* action)
 
 void ActionManager::undo()
 {
-    UndoableAction* action = this->undoStack->top();
-    this->undoStack->pop();
-    action->undo();
-    this->redoStack->push(action);
+    if(!this->undoStack->empty())
+    {
+        UndoableAction* action = this->undoStack->top();
+        this->undoStack->pop();
+        action->undo();
+        this->redoStack->push(action);
+    }
 }
 
 void ActionManager::redo()
 {
-    UndoableAction* action = this->redoStack->top();
-    this->redoStack->pop();
-    action->execute();
-    this->undoStack->push(action);
+    if(!this->redoStack->empty())
+    {
+        UndoableAction* action = this->redoStack->top();
+        this->redoStack->pop();
+        action->execute();
+        this->undoStack->push(action);
+    }
 }

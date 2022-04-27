@@ -29,7 +29,7 @@ void Settings::readFile()
 
             // quint16 iconeSizeIn;
             // in >> iconeSizeIn;
-            Mat colorimetryKernel = this->colorDialog->getKernel();
+            cv::Mat colorimetryKernel = this->colorDialog->getKernel();
             for (int i = 0; i < this->colorDialog->getWidth(); i++)
             {
                 for (int j = 0; j < this->colorDialog->getHeight(); j++)
@@ -42,7 +42,7 @@ void Settings::readFile()
 
             this->colorDialog->setKernel(colorimetryKernel);
         }
-        catch (Exception e)
+        catch (cv::Exception e)
         {
             QMessageBox::critical(this, "Erreur", "Fichier illisible");
         }
@@ -76,7 +76,7 @@ void Settings::exportSettings()
         // TODO : Should be the number of settings/filters
         // out << static_cast<quint16>(this->getIconSize());
 
-        Mat colorimetryKernel = this->colorDialog->getKernel();
+        cv::Mat colorimetryKernel = this->colorDialog->getKernel();
         for (int i = 0; i < this->colorDialog->getWidth(); i++)
         {
             for (int j = 0; j < this->colorDialog->getHeight(); j++)

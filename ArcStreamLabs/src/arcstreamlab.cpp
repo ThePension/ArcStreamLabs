@@ -2,6 +2,7 @@
 
 ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
 {
+    actionManager = new ActionManager();
     rawStream = new VideoStream();
     circularBuffer = new ArcStreamLabs::LibCircularBuffer::CircularBuffer(1000);
     processedStream = new ImageProcessing(circularBuffer);
@@ -185,7 +186,7 @@ void ArcStreamLab::createUIControl()
     connect(btnPause, &QPushButton::clicked, this, &ArcStreamLab::sloPauseButtonClicked);
 
     // connection with the dialog box
-    colorDialog = new Colorimetry(this);
+    colorDialog = new Colorimetry(this->actionManager, this);
     connect(this->btnColor, &QPushButton::clicked, colorDialog, &QDialog::show);
     connect(colorDialog, &Colorimetry::sigSlidersValueChanged, this, &ArcStreamLab::sloUpdateColorimetryValues);
 
@@ -290,4 +291,14 @@ void ArcStreamLab::responsiveResize()
 Settings *ArcStreamLab::getSettings()
 {
     return this->settings;
+}
+
+void ArcStreamLab::undo()
+{
+    this->actionManager->undo();
+}
+
+void ArcStreamLab::redo()
+{
+    this->actionManager->redo();
 }

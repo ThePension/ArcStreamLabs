@@ -5,6 +5,9 @@
 //#include <QTabWidget>
 //#include <QDialogButtonBox>
 
+#include "colorimetryactions.h"
+#include "LibUndoRedo/actionmanager.h"
+
 class QCheckBox;
 class QLabel;
 class QLineEdit;
@@ -12,14 +15,21 @@ class QPushButton;
 class QSlider;
 class QHBoxLayout;
 class QVBoxLayout;
-
-using namespace cv;
+class QAction;
+class ArcStreamLab;
 
 class Colorimetry : public QDialog
 {
     Q_OBJECT
 
     private:
+        //QTabWidget *tabWidget;
+        //QDialogButtonBox *buttonBox;
+
+        ActionManager *actionManager;
+        ArcStreamLab *parent;
+        QAction *actUndo, *actRedo;
+
         QHBoxLayout * horizontalLayoutForSliders;
         QVBoxLayout * verticalLayout;
 
@@ -32,15 +42,26 @@ class Colorimetry : public QDialog
         void geometry();
         void control();
         void appearance();
+        void createColorimetryActions();
+        void defaultValues();
+
+        ColorimetryActions *caDefaultFilter;
+        ColorimetryActions *caSepiaFilter;
+        ColorimetryActions *caRedFilter;
+        ColorimetryActions *caGreenFilter;
+        ColorimetryActions *caBlueFilter;
+        ColorimetryActions *caBlackAndWhiteFilter;
+
+        int **tempValues;
 
     public:
-        Colorimetry(QWidget *parent = 0);
+        Colorimetry(ActionManager *actionManager, QWidget *parent = 0);
 
-        Mat getKernel();
+        cv::Mat getKernel();
         QSlider *** getSlidersTab();
         int getWidth();
         int getHeight();
-        void setKernel(Mat);
+        void setKernel(cv::Mat);
 
     signals:
         void sigSlidersValueChanged();
