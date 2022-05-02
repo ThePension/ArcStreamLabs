@@ -12,6 +12,7 @@ class ColorimetryActions : public UndoableAction
         int **backup;
 
     public:
+        ColorimetryActions(int **backup, int **values, QSlider *** slidersTab);
         ColorimetryActions(int **values, QSlider *** slidersTab);
         virtual ~ColorimetryActions() override;
 

@@ -8,30 +8,94 @@
 
 Colorimetry::Colorimetry(ActionManager *actionManager, QWidget *parent) : QDialog(parent)
 {
-    setWindowTitle("Colorimetry");
-    resize(200, 200);
+    this->actionManager = actionManager;
+    this->parent = static_cast<ArcStreamLab*>(parent);
+
+    this->tempBackupValues = new int*[3];
+    for(int i=0; i<3; i++)
+    {
+        this->tempBackupValues[i] = new int[3];
+    }
 
     geometry();
     control();
     appearance();
 
-    createColorimetryActions();
-
-    this->actionManager = actionManager;
-    this->parent = static_cast<ArcStreamLab*>(parent);
-
-    actUndo = new QAction("undo", this);
-    actUndo->setShortcut(QKeySequence("Ctrl+Z"));
-    connect(actUndo, &QAction::triggered, this->parent, &ArcStreamLab::undo);
-
-    actRedo = new QAction("redo", this);
-    actRedo->setShortcut(QKeySequence("Ctrl+Y"));
-    connect(actRedo, &QAction::triggered, this->parent, &ArcStreamLab::redo);
-
-    addAction(actUndo);
-    addAction(actRedo);
-
+    redirectAction();
     defaultValues();
+}
+
+Colorimetry::~Colorimetry()
+{
+    for(int i=0; i<3; i++)
+    {
+        delete [] this->tempBackupValues[i];
+    }
+
+    delete [] this->tempBackupValues;
+}
+
+void Colorimetry::geometry()
+{
+    this->horizontalLayoutForSliders = new QHBoxLayout(this);
+    this->verticalLayout = new QVBoxLayout(this);
+
+    this->slidersTab = new QSlider**[3];
+
+    buttonDefaultValues = new QPushButton(this);
+    buttonDefaultValues->setText(tr("Default values"));
+
+    for (int i = 0; i < width; i++)
+    {
+        this->slidersTab[i] = new QSlider*[3];
+        for (int j = 0; j < height; j++)
+        {
+            this->slidersTab[i][j] = new QSlider();
+            this->horizontalLayoutForSliders->addWidget(this->slidersTab[i][j]);
+        }
+    }
+
+    this->verticalLayout->addWidget(this->buttonDefaultValues);
+    this->verticalLayout->addStrut(100);
+    this->verticalLayout->addLayout(this->horizontalLayoutForSliders);
+}
+
+void Colorimetry::control()
+{
+    connect(this->buttonDefaultValues, &QPushButton::clicked, this, &Colorimetry::sloSetDefaultValues);
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            QSlider * slider = this->slidersTab[i][j];
+            connect(slider, &QSlider::valueChanged, this, [=](){
+                emit sigSlidersValueChanged();
+            });
+            connect(slider, &QSlider::sliderPressed, this, &Colorimetry::backupSliderValues);
+            connect(slider, &QSlider::sliderReleased, this, &Colorimetry::createReleaseAction);
+        }
+    }
+}
+
+void Colorimetry::appearance()
+{
+    setWindowTitle("Colorimetry");
+    resize(200, 200);
+
+    int interval = 1000;
+
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            QSlider * slider = this->slidersTab[i][j];
+            slider->setTickInterval(1);
+            slider->setMaximum(interval);
+            slider->setMinimum(-interval);
+            slider->setMaximumHeight(100);
+        }
+    }
 }
 
 cv::Mat Colorimetry::getKernel()
@@ -78,106 +142,101 @@ void Colorimetry::setKernel(cv::Mat kernel)
 
 void Colorimetry::sloSetDefaultValues()
 {
-    this->actionManager->executeAction(this->caDefaultFilter);
+    int **defaultValues = new int*[3];
+    for(int i=0; i<3; i++)
+    {
+        defaultValues[i] = new int[3];
+    }
+
+    // default values
+    defaultValues[0][0] = 1000;
+    defaultValues[0][1] = 0;
+    defaultValues[0][2] = 0;
+    defaultValues[1][0] = 0;
+    defaultValues[1][1] = 1000;
+    defaultValues[1][2] = 0;
+    defaultValues[2][0] = 0;
+    defaultValues[2][1] = 0;
+    defaultValues[2][2] = 1000;
+
+    this->actionManager->executeAction(createColorimetryAction(defaultValues));
 
     emit sigSlidersValueChanged();
 }
 
 void Colorimetry::sloSetRedFilter()
 {
-    this->actionManager->executeAction(this->caRedFilter);
+    int **redValues = new int*[3];
+    for(int i=0; i<3; i++)
+    {
+        redValues[i] = new int[3];
+    }
+
+    // red values
+    redValues[0][0] = 0;
+    redValues[0][1] = 0;
+    redValues[0][2] = 0;
+    redValues[1][0] = 0;
+    redValues[1][1] = 0;
+    redValues[1][2] = 0;
+    redValues[2][0] = 0;
+    redValues[2][1] = 0;
+    redValues[2][2] = 1000;
+
+    this->actionManager->executeAction(createColorimetryAction(redValues));
 
     emit sigSlidersValueChanged();
 }
 
 void Colorimetry::sloSetGreenFilter()
 {
-    this->actionManager->executeAction(this->caGreenFilter);
+    int **greenValues = new int*[3];
+    for(int i=0; i<3; i++)
+    {
+        greenValues[i] = new int[3];
+    }
+
+    // green values
+    greenValues[0][0] = 0;
+    greenValues[0][1] = 0;
+    greenValues[0][2] = 0;
+    greenValues[1][0] = 0;
+    greenValues[1][1] = 1000;
+    greenValues[1][2] = 0;
+    greenValues[2][0] = 0;
+    greenValues[2][1] = 0;
+    greenValues[2][2] = 0;
+
+    this->actionManager->executeAction(createColorimetryAction(greenValues));
 
     emit sigSlidersValueChanged();
 }
 
 void Colorimetry::sloSetBlueFilter()
 {
-    this->actionManager->executeAction(this->caBlueFilter);
+    int **blueValues = new int*[3];
+    for(int i=0; i<3; i++)
+    {
+        blueValues[i] = new int[3];
+    }
+
+    // blue values
+    blueValues[0][0] = 800;
+    blueValues[0][1] = 125;
+    blueValues[0][2] = 333;
+    blueValues[1][0] = 0;
+    blueValues[1][1] = 0;
+    blueValues[1][2] = 0;
+    blueValues[2][0] = 0;
+    blueValues[2][1] = 0;
+    blueValues[2][2] = 0;
+
+    this->actionManager->executeAction(createColorimetryAction(blueValues));
 
     emit sigSlidersValueChanged();
 }
 
 void Colorimetry::sloSetSepiaFilter()
-{
-    this->actionManager->executeAction(this->caSepiaFilter);
-
-    emit sigSlidersValueChanged();
-}
-
-void Colorimetry::sloSetBlackAndWhiteFilter()
-{
-    this->actionManager->executeAction(this->caBlackAndWhiteFilter);
-
-    emit sigSlidersValueChanged();
-}
-
-
-void Colorimetry::geometry()
-{
-    this->horizontalLayoutForSliders = new QHBoxLayout(this);
-    this->verticalLayout = new QVBoxLayout(this);
-
-    this->slidersTab = new QSlider**[3];
-
-    buttonDefaultValues = new QPushButton(this);
-    buttonDefaultValues->setText(tr("Default values"));
-
-    for (int i = 0; i < width; i++)
-    {
-        this->slidersTab[i] = new QSlider*[3];
-        for (int j = 0; j < height; j++)
-        {
-            this->slidersTab[i][j] = new QSlider();
-            this->horizontalLayoutForSliders->addWidget(this->slidersTab[i][j]);
-        }
-    }
-
-    this->verticalLayout->addWidget(this->buttonDefaultValues);
-    this->verticalLayout->addStrut(100);
-    this->verticalLayout->addLayout(this->horizontalLayoutForSliders);
-}
-
-void Colorimetry::control()
-{
-    connect(this->buttonDefaultValues, &QPushButton::clicked, this, &Colorimetry::sloSetDefaultValues);
-
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            QSlider * slider = this->slidersTab[i][j];
-            connect(slider, &QSlider::valueChanged, this, [=](){
-                emit sigSlidersValueChanged();
-            });
-        }
-    }
-}
-
-void Colorimetry::appearance()
-{
-    int interval = 1000;
-
-    for (int i = 0; i < width; i++)
-    {
-        for (int j = 0; j < height; j++)
-        {
-            QSlider * slider = this->slidersTab[i][j];
-            slider->setTickInterval(1);
-            slider->setMaximum(interval);
-            slider->setMinimum(-interval);
-            slider->setMaximumHeight(100);
-        }
-    }
-}
-
-void Colorimetry::createColorimetryActions()
 {
     int **sepiaValues = new int*[3];
     for(int i=0; i<3; i++)
@@ -196,84 +255,13 @@ void Colorimetry::createColorimetryActions()
     sepiaValues[2][1] = 769;
     sepiaValues[2][2] = 189;
 
-    this->caSepiaFilter = new ColorimetryActions(sepiaValues, this->slidersTab);
+    this->actionManager->executeAction(createColorimetryAction(sepiaValues));
 
-    int **defaultValues = new int*[3];
-    for(int i=0; i<3; i++)
-    {
-        defaultValues[i] = new int[3];
-    }
+    emit sigSlidersValueChanged();
+}
 
-    // default values
-    defaultValues[0][0] = 1000;
-    defaultValues[0][1] = 0;
-    defaultValues[0][2] = 0;
-    defaultValues[1][0] = 0;
-    defaultValues[1][1] = 1000;
-    defaultValues[1][2] = 0;
-    defaultValues[2][0] = 0;
-    defaultValues[2][1] = 0;
-    defaultValues[2][2] = 1000;
-
-    this->caDefaultFilter = new ColorimetryActions(defaultValues, this->slidersTab);
-
-    int **redValues = new int*[3];
-    for(int i=0; i<3; i++)
-    {
-        redValues[i] = new int[3];
-    }
-
-    // red values
-    redValues[0][0] = 0;
-    redValues[0][1] = 0;
-    redValues[0][2] = 0;
-    redValues[1][0] = 0;
-    redValues[1][1] = 0;
-    redValues[1][2] = 0;
-    redValues[2][0] = 0;
-    redValues[2][1] = 0;
-    redValues[2][2] = 1000;
-
-    this->caRedFilter = new ColorimetryActions(redValues, this->slidersTab);
-
-    int **greenValues = new int*[3];
-    for(int i=0; i<3; i++)
-    {
-        greenValues[i] = new int[3];
-    }
-
-    // green values
-    greenValues[0][0] = 0;
-    greenValues[0][1] = 0;
-    greenValues[0][2] = 0;
-    greenValues[1][0] = 0;
-    greenValues[1][1] = 1000;
-    greenValues[1][2] = 0;
-    greenValues[2][0] = 0;
-    greenValues[2][1] = 0;
-    greenValues[2][2] = 0;
-
-    this->caGreenFilter = new ColorimetryActions(greenValues, this->slidersTab);
-
-    int **blueValues = new int*[3];
-    for(int i=0; i<3; i++)
-    {
-        blueValues[i] = new int[3];
-    }
-
-    // blue values
-    blueValues[0][0] = 800;
-    blueValues[0][1] = 125;
-    blueValues[0][2] = 333;
-    blueValues[1][0] = 0;
-    blueValues[1][1] = 0;
-    blueValues[1][2] = 0;
-    blueValues[2][0] = 0;
-    blueValues[2][1] = 0;
-    blueValues[2][2] = 0;
-
-    this->caBlueFilter = new ColorimetryActions(blueValues, this->slidersTab);
-
+void Colorimetry::sloSetBlackAndWhiteFilter()
+{
     int **blackAndWhiteValues = new int*[3];
     for(int i=0; i<3; i++)
     {
@@ -291,7 +279,64 @@ void Colorimetry::createColorimetryActions()
     blackAndWhiteValues[2][1] = 700;
     blackAndWhiteValues[2][2] = 800;
 
-    this->caBlackAndWhiteFilter = new ColorimetryActions(blackAndWhiteValues, this->slidersTab);
+    this->actionManager->executeAction(createColorimetryAction(blackAndWhiteValues));
+
+    emit sigSlidersValueChanged();
+}
+
+void Colorimetry::backupSliderValues()
+{
+    this->tempBackupValues[0][0] = this->slidersTab[0][0]->value();
+    this->tempBackupValues[0][1] = this->slidersTab[0][1]->value();
+    this->tempBackupValues[0][2] = this->slidersTab[0][2]->value();
+    this->tempBackupValues[1][0] = this->slidersTab[1][0]->value();
+    this->tempBackupValues[1][1] = this->slidersTab[1][1]->value();
+    this->tempBackupValues[1][2] = this->slidersTab[1][2]->value();
+    this->tempBackupValues[2][0] = this->slidersTab[2][0]->value();
+    this->tempBackupValues[2][1] = this->slidersTab[2][1]->value();
+    this->tempBackupValues[2][2] = this->slidersTab[2][2]->value();
+}
+
+void Colorimetry::createReleaseAction()
+{
+    int **backupValues = new int*[3];
+    for(int i=0; i<3; i++)
+    {
+        backupValues[i] = new int[3];
+    }
+
+    backupValues[0][0] = this->tempBackupValues[0][0];
+    backupValues[0][1] = this->tempBackupValues[0][1];
+    backupValues[0][2] = this->tempBackupValues[0][2];
+    backupValues[1][0] = this->tempBackupValues[1][0];
+    backupValues[1][1] = this->tempBackupValues[1][1];
+    backupValues[1][2] = this->tempBackupValues[1][2];
+    backupValues[2][0] = this->tempBackupValues[2][0];
+    backupValues[2][1] = this->tempBackupValues[2][1];
+    backupValues[2][2] = this->tempBackupValues[2][2];
+
+    int **newValues = new int*[3];
+    for(int i=0; i<3; i++)
+    {
+        newValues[i] = new int[3];
+    }
+
+    newValues[0][0] = this->slidersTab[0][0]->value();
+    newValues[0][1] = this->slidersTab[0][1]->value();
+    newValues[0][2] = this->slidersTab[0][2]->value();
+    newValues[1][0] = this->slidersTab[1][0]->value();
+    newValues[1][1] = this->slidersTab[1][1]->value();
+    newValues[1][2] = this->slidersTab[1][2]->value();
+    newValues[2][0] = this->slidersTab[2][0]->value();
+    newValues[2][1] = this->slidersTab[2][1]->value();
+    newValues[2][2] = this->slidersTab[2][2]->value();
+
+    this->actionManager->executeAction(new ColorimetryActions(backupValues, newValues, this->slidersTab));
+}
+
+ColorimetryActions* Colorimetry::createColorimetryAction(int **colorValues)
+{
+    return new ColorimetryActions(colorValues, this->slidersTab);
 }
 
 void Colorimetry::defaultValues()
@@ -305,4 +350,18 @@ void Colorimetry::defaultValues()
     this->slidersTab[2][0]->setValue(0);
     this->slidersTab[2][1]->setValue(0);
     this->slidersTab[2][2]->setValue(1000);
+}
+
+void Colorimetry::redirectAction()
+{
+    actUndo = new QAction("undo", this);
+    actUndo->setShortcut(QKeySequence("Ctrl+Z"));
+    connect(actUndo, &QAction::triggered, this->parent, &ArcStreamLab::undo);
+
+    actRedo = new QAction("redo", this);
+    actRedo->setShortcut(QKeySequence("Ctrl+Y"));
+    connect(actRedo, &QAction::triggered, this->parent, &ArcStreamLab::redo);
+
+    addAction(actUndo);
+    addAction(actRedo);
 }

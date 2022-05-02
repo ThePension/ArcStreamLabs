@@ -1,6 +1,12 @@
 #include "colorimetryactions.h"
 #include <QSlider>
 
+ColorimetryActions::ColorimetryActions(int **backup, int **values, QSlider *** slidersTab)
+{
+    this->slidersTab = slidersTab;
+    this->values = values;
+    this->backup = backup;
+}
 
 ColorimetryActions::ColorimetryActions(int **values, QSlider *** slidersTab)
 {
@@ -13,6 +19,16 @@ ColorimetryActions::ColorimetryActions(int **values, QSlider *** slidersTab)
     {
         this->backup[i] = new int[3];
     }
+
+    this->backup[0][0] = this->slidersTab[0][0]->value();
+    this->backup[0][1] = this->slidersTab[0][1]->value();
+    this->backup[0][2] = this->slidersTab[0][2]->value();
+    this->backup[1][0] = this->slidersTab[1][0]->value();
+    this->backup[1][1] = this->slidersTab[1][1]->value();
+    this->backup[1][2] = this->slidersTab[1][2]->value();
+    this->backup[2][0] = this->slidersTab[2][0]->value();
+    this->backup[2][1] = this->slidersTab[2][1]->value();
+    this->backup[2][2] = this->slidersTab[2][2]->value();
 }
 
 ColorimetryActions::~ColorimetryActions()
@@ -29,16 +45,6 @@ ColorimetryActions::~ColorimetryActions()
 
 void ColorimetryActions::execute()
 {
-    this->backup[0][0] = this->slidersTab[0][0]->value();
-    this->backup[0][1] = this->slidersTab[0][1]->value();
-    this->backup[0][2] = this->slidersTab[0][2]->value();
-    this->backup[1][0] = this->slidersTab[1][0]->value();
-    this->backup[1][1] = this->slidersTab[1][1]->value();
-    this->backup[1][2] = this->slidersTab[1][2]->value();
-    this->backup[2][0] = this->slidersTab[2][0]->value();
-    this->backup[2][1] = this->slidersTab[2][1]->value();
-    this->backup[2][2] = this->slidersTab[2][2]->value();
-
     this->slidersTab[0][0]->setValue(this->values[0][0]);
     this->slidersTab[0][1]->setValue(this->values[0][1]);
     this->slidersTab[0][2]->setValue(this->values[0][2]);

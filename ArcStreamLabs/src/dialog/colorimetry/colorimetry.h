@@ -36,26 +36,20 @@ class Colorimetry : public QDialog
         int width = 3;
         int height = 3;
         QSlider *** slidersTab;
+        int **tempBackupValues;
 
         QPushButton * buttonDefaultValues;
 
         void geometry();
         void control();
         void appearance();
-        void createColorimetryActions();
+        ColorimetryActions* createColorimetryAction(int **colorValues);
         void defaultValues();
-
-        ColorimetryActions *caDefaultFilter;
-        ColorimetryActions *caSepiaFilter;
-        ColorimetryActions *caRedFilter;
-        ColorimetryActions *caGreenFilter;
-        ColorimetryActions *caBlueFilter;
-        ColorimetryActions *caBlackAndWhiteFilter;
-
-        int **tempValues;
+        void redirectAction();
 
     public:
         Colorimetry(ActionManager *actionManager, QWidget *parent = 0);
+        ~Colorimetry();
 
         cv::Mat getKernel();
         QSlider *** getSlidersTab();
@@ -67,6 +61,8 @@ class Colorimetry : public QDialog
         void sigSlidersValueChanged();
 
     public slots:
+        void createReleaseAction();
+        void backupSliderValues();
         void sloSetDefaultValues();
         void sloSetRedFilter();
         void sloSetGreenFilter();
