@@ -184,6 +184,7 @@ void ArcStreamLab::createUIControl()
     connect(btnPlay, &QPushButton::clicked, this, &ArcStreamLab::sloPlayButtonClicked);
     connect(btnStop, &QPushButton::clicked, this, &ArcStreamLab::sloStopButtonClicked);
     connect(btnPause, &QPushButton::clicked, this, &ArcStreamLab::sloPauseButtonClicked);
+    connect(btnSnapshot, &QPushButton::clicked, this, &ArcStreamLab::sloSaveSnapshot);
 
     // connection with the dialog box
     colorDialog = new Colorimetry(this->actionManager, this);
@@ -301,4 +302,29 @@ void ArcStreamLab::undo()
 void ArcStreamLab::redo()
 {
     this->actionManager->redo();
+}
+
+void ArcStreamLab::sloSaveSnapshot()
+{
+    // Get the current displayed image
+    QPixmap snapshot = graphicViewProcess->grab();
+
+    // Get the file name
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Sauver"), "./", tr("Dessins (*.PNG)"));
+
+    if (!fileName.isEmpty())
+    {
+        // Create the file
+        QFile file(fileName);
+
+        // Open the file
+        if (!file.open(QFile::WriteOnly))
+        {
+            QMessageBox::critical(this, tr("Erreur"), tr("Erreur lors de la sauvegarde de l'instantanée"));
+            return;
+        }
+
+        // Save the QPixmap into the file
+        snapshot.save(&file, "PNG");
+    }
 }

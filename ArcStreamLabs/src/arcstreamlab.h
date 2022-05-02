@@ -98,5 +98,6 @@ class ArcStreamLab : public QWidget
         void sloStopButtonClicked();
         void undo();
         void redo();
+        void sloSaveSnapshot();
 
 };

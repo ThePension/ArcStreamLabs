@@ -66,6 +66,7 @@ void Settings::exportSettings()
         if (!data.open(QFile::WriteOnly | QFile::Truncate))
         {
             QMessageBox::critical(this, "Erreur", "Erreur d'ouverture");
+            return;
         }
 
         QDataStream out(&data);
