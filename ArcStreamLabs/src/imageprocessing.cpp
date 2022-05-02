@@ -5,7 +5,7 @@
 using namespace cv;
 using namespace std;
 
-ImageProcessing::ImageProcessing(ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer, QObject * parent) : QThread(parent)
+ImageProcessing::ImageProcessing(CircularBuffer *circularBuffer, QObject * parent) : QThread(parent)
 {
     this->circularBuffer = circularBuffer;
 }

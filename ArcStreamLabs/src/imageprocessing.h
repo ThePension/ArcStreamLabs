@@ -14,7 +14,7 @@ class ImageProcessing : public QThread
 {
     Q_OBJECT
 public:
-    ImageProcessing(ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer, QObject * parent = nullptr);
+    ImageProcessing(CircularBuffer *circularBuffer, QObject * parent = nullptr);
     ~ImageProcessing();
 
     QPixmap pixmap() const {
@@ -28,7 +28,7 @@ protected:
 signals:
     void imagedProcessed();
 private:
-    ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer;
+    CircularBuffer *circularBuffer;
     QPixmap mPixmap;
     cv::Mat mFrame, mGaussianBlur;
     cv::Mat kernel;

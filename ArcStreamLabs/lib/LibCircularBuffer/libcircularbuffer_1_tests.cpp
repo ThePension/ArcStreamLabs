@@ -2,8 +2,6 @@
 // LOCAL INCLUDES
 #include "LibCircularBuffer/libcircularbuffer_1.h"
 
-using namespace ArcStreamLabs::LibCircularBuffer;
-
 TEST(LibCircularBuffer, CircularBuffer)
 {
     CircularBuffer cb(10);

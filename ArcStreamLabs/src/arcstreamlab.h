@@ -23,7 +23,7 @@ class ArcStreamLab : public QWidget
         VideoStream *rawStream;
         ImageProcessing *processedStream;
 
-        ArcStreamLabs::LibCircularBuffer::CircularBuffer *circularBuffer;
+        CircularBuffer *circularBuffer;
 
         QGraphicsPixmapItem inputPixmap;
         QGraphicsPixmapItem outputPixmap;

@@ -3,33 +3,28 @@
 #include <memory> // for unique_ptr
 #include <opencv2/opencv.hpp>
 
-namespace ArcStreamLabs
+class CircularBuffer
 {
-    namespace LibCircularBuffer
-    {
-        class CircularBuffer
-        {
-        private:
+private:
 
-            std::unique_ptr<cv::Mat[]> buffer;
-            int head;
-            int tail;
-            std::mutex mutex;
-            int maxSize;
-            bool isFull;
+    std::unique_ptr<cv::Mat[]> buffer;
+    int head;
+    int tail;
+    std::mutex mutex;
+    int maxSize;
+    bool isFull;
 
-        public:
+public:
 
-            CircularBuffer(int maxSize);
-            void put(cv::Mat);
-            bool empty();
-            bool full();
-            cv::Mat read();
-            void reset();
-            int getCurrentSize();
-            int getMaxSize();
-            int getHead();
-            int getTail();
-        };
-    }
-}
+    CircularBuffer(int maxSize);
+    void put(cv::Mat);
+    bool empty();
+    bool full();
+    cv::Mat read();
+    void reset();
+    int getCurrentSize();
+    int getMaxSize();
+    int getHead();
+    int getTail();
+};
+
