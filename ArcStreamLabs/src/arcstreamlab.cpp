@@ -170,8 +170,20 @@ void ArcStreamLab::createUIAppearance()
     this->btnSpecialEffect->setMinimumHeight(50);
     this->btnSpecialEffect->setMaximumHeight(50);
 
-    // Graphics view
-    //this->graphicViewInput->setMaximumHeight(5*this->formatHeight);
+    this->btnPause->setEnabled(false);
+    this->btnStop->setEnabled(false);
+    this->btnSnapshot->setEnabled(false);
+
+    QString btnStylesheet =
+        "QPushButton:hover {"
+            "background-color: gray;"
+            "border: 1px black solid;"
+        "}";
+
+    this->btnPlay->setStyleSheet(btnStylesheet);
+    this->btnPause->setStyleSheet(btnStylesheet);
+    this->btnStop->setStyleSheet(btnStylesheet);
+    this->btnSnapshot->setStyleSheet(btnStylesheet);
 }
 
 void ArcStreamLab::createUIControl()
@@ -257,6 +269,11 @@ void ArcStreamLab::sloUpdateProcessedStreamValue()
 
 void ArcStreamLab::sloPlayButtonClicked()
 {
+    this->btnPause->setEnabled(true);
+    this->btnStop->setEnabled(true);
+    this->btnSnapshot->setEnabled(true);
+    this->btnPlay->setEnabled(false);
+
     rawStream->start(QThread::HighPriority);
     processedStream->start(QThread::LowPriority);
 }
