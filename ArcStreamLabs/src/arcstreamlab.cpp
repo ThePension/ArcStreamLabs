@@ -5,7 +5,7 @@ ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
     actionManager = new ActionManager();
     rawStream = new VideoStream();
     circularBuffer = new CircularBuffer(1000);
-    processedStream = new ImageProcessing(circularBuffer);
+    processedStream = new ImageProcessing(circularBuffer, this->actionManager);
     createUIGeometry();
     createUIAppearance();
     createUIControl();
@@ -174,6 +174,7 @@ void ArcStreamLab::createUIControl()
     connect(filterDialog, &Filter::sigSetBlueFilter, colorDialog, &Colorimetry::sloSetBlueFilter);
     connect(filterDialog, &Filter::sigSetSepiaFilter, colorDialog, &Colorimetry::sloSetSepiaFilter);
     connect(filterDialog, &Filter::sigSetBlackAndWhiteFilter, colorDialog, &Colorimetry::sloSetBlackAndWhiteFilter);
+    connect(filterDialog, &Filter::sigSetSobelFilter, this, &ArcStreamLab::sloCreateFilterAction);
 
     specialEffectDialog =  new SpecialEffect(this);
     connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);
@@ -305,4 +306,9 @@ void ArcStreamLab::sloSaveSnapshot()
         // Save the QPixmap into the file
         snapshot.save(&file, "PNG");
     }
+}
+
+void ArcStreamLab::sloCreateFilterAction(FilterActions * filterAction)
+{
+    this->actionManager->executeAction(filterAction);
 }

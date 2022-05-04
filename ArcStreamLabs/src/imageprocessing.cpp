@@ -5,9 +5,10 @@
 using namespace cv;
 using namespace std;
 
-ImageProcessing::ImageProcessing(CircularBuffer *circularBuffer, QObject * parent) : QThread(parent)
+ImageProcessing::ImageProcessing(CircularBuffer *circularBuffer, ActionManager * am, QObject * parent) : QThread(parent)
 {
     this->circularBuffer = circularBuffer;
+    this->actionManager = am;
 }
 
 ImageProcessing::~ImageProcessing() {}
@@ -31,6 +32,8 @@ void ImageProcessing::run()
             }
 
             if(!this->kernel.empty()) mGaussianBlur = Helper::transformMatWithKernel(mGaussianBlur, this->kernel);
+
+            mGaussianBlur = this->actionManager->executeFilters(mGaussianBlur);
 
             mPixmap = Helper::cvMatToQPixmap(mGaussianBlur);
 

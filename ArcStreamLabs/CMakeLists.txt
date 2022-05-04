@@ -31,6 +31,8 @@ set(PROJECT_SOURCES
         src/imageprocessing.h src/imageprocessing.cpp
         src/dialog/colorimetry/colorimetry.h src/dialog/colorimetry/colorimetry.cpp
         src/dialog/filter/filter.h src/dialog/filter/filter.cpp
+        src/dialog/filter/filteractions.h src/dialog/filter/filteractions.cpp
+        src/dialog/filter/sobelfilter.h src/dialog/filter/sobelfilter.cpp
         src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp
         src/dialog/animation/animation.h src/dialog/animation/animation.cpp
         src/dialog/colorimetry/colorimetryactions.h src/dialog/colorimetry/colorimetryactions.cpp

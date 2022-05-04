@@ -55,6 +55,12 @@ void Filter::sloButtonBlackAndWhiteFilterClick()
     emit sigSetBlackAndWhiteFilter();
 }
 
+void Filter::sloButtonSobelFilter()
+{
+    FilterActions * sobelFilter = new SobelFilter();
+    emit sigSetSobelFilter(sobelFilter);
+}
+
 void Filter::geometry()
 {
     this->buttonDefaultFilter = new QPushButton(this);
@@ -75,14 +81,18 @@ void Filter::geometry()
     this->buttonBlackAndWhiteFilter = new QPushButton(this);
     this->buttonBlackAndWhiteFilter->setText(tr("Black and White filter"));
 
-    verticalBox = new QVBoxLayout();
-    verticalBox->addWidget(buttonDefaultFilter);
-    verticalBox->addWidget(buttonRedFilter);
-    verticalBox->addWidget(buttonGreenFilter);
-    verticalBox->addWidget(buttonBlueFilter);
-    verticalBox->addWidget(buttonBlackAndWhiteFilter);
-    verticalBox->addWidget(buttonSepiaFilter);
-    setLayout(verticalBox);
+    this->buttonSobelFilter = new QPushButton(this);
+    this->buttonSobelFilter->setText(tr("Sobel filter"));
+
+    this->verticalBox = new QVBoxLayout();
+    this->verticalBox->addWidget(this->buttonDefaultFilter);
+    this->verticalBox->addWidget(this->buttonRedFilter);
+    this->verticalBox->addWidget(this->buttonGreenFilter);
+    this->verticalBox->addWidget(this->buttonBlueFilter);
+    this->verticalBox->addWidget(this->buttonBlackAndWhiteFilter);
+    this->verticalBox->addWidget(this->buttonSepiaFilter);
+    this->verticalBox->addWidget(this->buttonSobelFilter);
+    setLayout(this->verticalBox);
 }
 
 void Filter::control()
@@ -93,6 +103,7 @@ void Filter::control()
     connect(this->buttonBlueFilter, &QPushButton::clicked, this, &Filter::sloButtonBlueFilterClick);
     connect(this->buttonSepiaFilter, &QPushButton::clicked, this, &Filter::sloButtonSepiaFilterClick);
     connect(this->buttonBlackAndWhiteFilter, &QPushButton::clicked, this, &Filter::sloButtonBlackAndWhiteFilterClick);
+    connect(this->buttonSobelFilter, &QPushButton::clicked, this, &Filter::sloButtonSobelFilter);
 }
 
 void Filter::appearance()

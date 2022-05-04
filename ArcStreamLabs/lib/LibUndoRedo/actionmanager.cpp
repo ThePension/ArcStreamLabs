@@ -30,6 +30,44 @@ void ActionManager::executeAction(UndoableAction* action)
     this->undoStack->push(action);
 }
 
+cv::Mat ActionManager::executeFilters(cv::Mat mat)
+{
+    std::stack<UndoableAction*> *tempStack = new std::stack<UndoableAction*>();
+
+    while(!this->undoStack->empty())
+    {
+        UndoableAction * ua = this->undoStack->top();
+        this->undoStack->pop();
+
+        std::cout << "passed" << std::endl;
+
+        FilterActions * fa = dynamic_cast<FilterActions *>(ua);
+
+        if(fa != nullptr)
+        {
+            fa->setMatrix(mat);
+            fa->execute();
+            mat = fa->getMatrix();
+        }
+
+        tempStack->push(ua);
+
+        // std::cout << "passed"
+    }
+
+    while(!tempStack->empty())
+    {
+        this->undoStack->push(tempStack->top());
+        tempStack->pop();
+    }
+
+    delete tempStack; tempStack = nullptr;
+
+    std::cout << this->undoStack->size() << std::endl;
+
+    return mat;
+}
+
 void ActionManager::undo()
 {
     if(!this->undoStack->empty())

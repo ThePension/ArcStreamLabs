@@ -7,6 +7,7 @@
 #include "opencv2/opencv.hpp"
 #include "lib/LibCircularBuffer/libcircularbuffer_1.h"
 #include "helper.h"
+#include "../lib/LibUndoRedo/actionmanager.h"
 
 #define ID_CAMERA 0
 
@@ -14,7 +15,7 @@ class ImageProcessing : public QThread
 {
     Q_OBJECT
 public:
-    ImageProcessing(CircularBuffer *circularBuffer, QObject * parent = nullptr);
+    ImageProcessing(CircularBuffer *circularBuffer, ActionManager * am, QObject * parent = nullptr);
     ~ImageProcessing();
 
     QPixmap pixmap() const {
@@ -32,6 +33,7 @@ private:
     QPixmap mPixmap;
     cv::Mat mFrame, mGaussianBlur;
     cv::Mat kernel;
+    ActionManager * actionManager;
 };
 
 #endif // VIDEOSTREAM_H

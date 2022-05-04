@@ -1,8 +1,7 @@
 ###############################################################################
 ##########          MINIMUM REQUIREMENTS (some need to be BEFORE project command)
 ###############################################################################
-set(PATH_OPENCV "C:/opencv-build" "C:/opencv/release")
-find_package( OpenCV REQUIRED PATHS ${PATH_OPENCV} )
+find_package(OpenCV REQUIRED)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 ###############################################################################
