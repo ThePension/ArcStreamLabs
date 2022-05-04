@@ -40,6 +40,8 @@ void Colorimetry::geometry()
     this->horizontalLayoutForSliders = new QHBoxLayout(this);
     this->verticalLayout = new QVBoxLayout(this);
 
+    setLayout(verticalLayout);
+
     this->slidersTab = new QSlider**[3];
 
     buttonDefaultValues = new QPushButton(this);
@@ -56,8 +58,10 @@ void Colorimetry::geometry()
     }
 
     this->verticalLayout->addWidget(this->buttonDefaultValues);
-    this->verticalLayout->addStrut(100);
+    this->verticalLayout->addSpacing(50);
     this->verticalLayout->addLayout(this->horizontalLayoutForSliders);
+
+
 }
 
 void Colorimetry::control()

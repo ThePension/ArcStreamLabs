@@ -157,6 +157,7 @@ void ArcStreamLab::createUIControl()
 
     // connection with the dialog box
     colorDialog = new Colorimetry(this->actionManager, this);
+    colorimetryTabs = new ColorimetryTabs(colorDialog, this);
     connect(this->btnColor, &QPushButton::clicked, colorDialog, &QDialog::show);
     connect(colorDialog, &Colorimetry::sigSlidersValueChanged, this, &ArcStreamLab::sloUpdateColorimetryValues);
 

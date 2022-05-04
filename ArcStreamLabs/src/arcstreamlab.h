@@ -3,6 +3,7 @@
 #include <QtWidgets>
 
 #include "dialog/colorimetry/colorimetry.h"
+#include "dialog/colorimetry/colorimetrytabs.h"
 #include "dialog/filter/filter.h"
 #include "dialog/specialEffect/specialeffect.h"
 #include "dialog/animation/animation.h"
@@ -60,6 +61,7 @@ class ArcStreamLab : public QWidget
         QLabel *lblHSeparator3;
 
         // Dialogs
+        ColorimetryTabs *colorimetryTabs;
         Colorimetry * colorDialog;
         Filter * filterDialog;
         SpecialEffect *specialEffectDialog;

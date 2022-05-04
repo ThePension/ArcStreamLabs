@@ -30,12 +30,14 @@ set(PROJECT_SOURCES
         src/settings.h src/settings.cpp
         src/imageprocessing.h src/imageprocessing.cpp
         src/dialog/colorimetry/colorimetry.h src/dialog/colorimetry/colorimetry.cpp
+        src/dialog/colorimetry/colorimetrytabs.h src/dialog/colorimetry/colorimetrytabs.cpp
+        src/dialog/colorimetry/colorimetryactions.h src/dialog/colorimetry/colorimetryactions.cpp
+        src/dialog/colorimetry/colorimetryfilter.h src/dialog/colorimetry/colorimetryfilter.cpp
         src/dialog/filter/filter.h src/dialog/filter/filter.cpp
         src/dialog/filter/filteractions.h src/dialog/filter/filteractions.cpp
         src/dialog/filter/sobelfilter.h src/dialog/filter/sobelfilter.cpp
         src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp
         src/dialog/animation/animation.h src/dialog/animation/animation.cpp
-        src/dialog/colorimetry/colorimetryactions.h src/dialog/colorimetry/colorimetryactions.cpp
         src/dialog/filter/stylizationfilter.h src/dialog/filter/stylizationfilter.cpp
         Ressources.qrc
 )
