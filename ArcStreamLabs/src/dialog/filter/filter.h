@@ -4,6 +4,7 @@
 #include "QBoxLayout"
 #include "QVBoxLayout"
 #include "sobelfilter.h"
+#include "stylizationfilter.h"
 
 class QCheckBox;
 class QLabel;
@@ -25,6 +26,7 @@ class Filter : public QDialog
         QPushButton * buttonSepiaFilter;
         QPushButton * buttonBlackAndWhiteFilter;
         QPushButton * buttonSobelFilter; // Edge detector
+        QPushButton * buttonStylizationFilter;
         ArcStreamLab *parent;
         QAction *actUndo, *actRedo;
 
@@ -43,6 +45,7 @@ class Filter : public QDialog
         void sigSetSepiaFilter();
         void sigSetBlackAndWhiteFilter();
         void sigSetSobelFilter(FilterActions *);
+        void sigSetStylizationFilter(FilterActions *);
 
     private slots:
         void sloButtonDefaultFilterClick();
@@ -52,4 +55,5 @@ class Filter : public QDialog
         void sloButtonSepiaFilterClick();
         void sloButtonBlackAndWhiteFilterClick();
         void sloButtonSobelFilter();
+        void sloButtonStylizationFilter();
 };
