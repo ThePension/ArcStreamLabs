@@ -69,4 +69,5 @@ class Colorimetry : public QWidget
         void sloSetBlueFilter();
         void sloSetSepiaFilter();
         void sloSetBlackAndWhiteFilter();
+        void sloSetAlienFilter();
 };

@@ -290,6 +290,30 @@ void Colorimetry::sloSetBlackAndWhiteFilter()
     emit sigSlidersValueChanged();
 }
 
+void Colorimetry::sloSetAlienFilter()
+{
+    int **AlienValues = new int*[3];
+    for(int i=0; i<3; i++)
+    {
+        AlienValues[i] = new int[3];
+    }
+
+    // black and white values
+    AlienValues[0][0] = -1000;
+    AlienValues[0][1] = 1000;
+    AlienValues[0][2] = 1000;
+    AlienValues[1][0] = 1000;
+    AlienValues[1][1] = -1000;
+    AlienValues[1][2] = 1000;
+    AlienValues[2][0] = 1000;
+    AlienValues[2][1] = 1000;
+    AlienValues[2][2] = -1000;
+
+    this->actionManager->executeAction(createColorimetryAction(AlienValues));
+
+    emit sigSlidersValueChanged();
+}
+
 void Colorimetry::backupSliderValues()
 {
     this->tempBackupValues[0][0] = this->slidersTab[0][0]->value();

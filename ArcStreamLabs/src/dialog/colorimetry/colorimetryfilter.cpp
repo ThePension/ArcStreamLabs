@@ -55,6 +55,11 @@ void ColorimetryFilter::sloButtonBlackAndWhiteFilterClick()
     emit sigSetBlackAndWhiteFilter();
 }
 
+void ColorimetryFilter::sloButtonAlienFilterClick()
+{
+    emit sigSetAlienFilter();
+}
+
 void ColorimetryFilter::geometry()
 {
     this->buttonDefaultFilter = new QPushButton(this);
@@ -75,6 +80,8 @@ void ColorimetryFilter::geometry()
     this->buttonBlackAndWhiteFilter = new QPushButton(this);
     this->buttonBlackAndWhiteFilter->setText(tr("Black and White filter"));
 
+    this->buttonAlienFilter = new QPushButton("Alien filter", this);
+
     this->verticalBox = new QVBoxLayout();
     this->verticalBox->addWidget(this->buttonDefaultFilter);
     this->verticalBox->addWidget(this->buttonRedFilter);
@@ -82,6 +89,7 @@ void ColorimetryFilter::geometry()
     this->verticalBox->addWidget(this->buttonBlueFilter);
     this->verticalBox->addWidget(this->buttonBlackAndWhiteFilter);
     this->verticalBox->addWidget(this->buttonSepiaFilter);
+    this->verticalBox->addWidget(this->buttonAlienFilter);
     setLayout(this->verticalBox);
 }
 
@@ -93,6 +101,7 @@ void ColorimetryFilter::control()
     connect(this->buttonBlueFilter, &QPushButton::clicked, this, &ColorimetryFilter::sloButtonBlueFilterClick);
     connect(this->buttonSepiaFilter, &QPushButton::clicked, this, &ColorimetryFilter::sloButtonSepiaFilterClick);
     connect(this->buttonBlackAndWhiteFilter, &QPushButton::clicked, this, &ColorimetryFilter::sloButtonBlackAndWhiteFilterClick);
+    connect(this->buttonAlienFilter, &QPushButton::clicked, this, &ColorimetryFilter::sloButtonAlienFilterClick);
 }
 
 void ColorimetryFilter::appearance()
