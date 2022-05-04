@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QWidget>
-#include <QDialog>
 #include "opencv2/opencv.hpp"
 #include <QTabWidget>
 //#include <QDialogButtonBox>
@@ -19,7 +18,7 @@ class QVBoxLayout;
 class QAction;
 class ArcStreamLab;
 
-class Colorimetry : public QDialog
+class Colorimetry : public QWidget
 {
     Q_OBJECT
 

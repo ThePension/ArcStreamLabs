@@ -62,6 +62,7 @@ class ArcStreamLab : public QWidget
 
         // Dialogs
         ColorimetryTabs *colorimetryTabs;
+        ColorimetryFilter *colorimetryFilter;
         Colorimetry * colorDialog;
         Filter * filterDialog;
         SpecialEffect *specialEffectDialog;

@@ -157,22 +157,24 @@ void ArcStreamLab::createUIControl()
 
     // connection with the dialog box
     colorDialog = new Colorimetry(this->actionManager, this);
-    colorimetryTabs = new ColorimetryTabs(colorDialog, this);
-    connect(this->btnColor, &QPushButton::clicked, colorDialog, &QDialog::show);
+    colorimetryFilter = new ColorimetryFilter(this);
+    colorimetryTabs = new ColorimetryTabs(colorDialog, colorimetryFilter, this);
+    connect(this->btnColor, &QPushButton::clicked, colorimetryTabs, &QDialog::show);
     connect(colorDialog, &Colorimetry::sigSlidersValueChanged, this, &ArcStreamLab::sloUpdateColorimetryValues);
 
     sloUpdateColorimetryValues();
 
     filterDialog =  new Filter(this);
     connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
-    connect(filterDialog, &Filter::sigSetDefaultFilter, colorDialog, &Colorimetry::sloSetDefaultValues);
-    connect(filterDialog, &Filter::sigSetRedFilter, colorDialog, &Colorimetry::sloSetRedFilter);
-    connect(filterDialog, &Filter::sigSetGreenFilter, colorDialog, &Colorimetry::sloSetGreenFilter);
-    connect(filterDialog, &Filter::sigSetBlueFilter, colorDialog, &Colorimetry::sloSetBlueFilter);
-    connect(filterDialog, &Filter::sigSetSepiaFilter, colorDialog, &Colorimetry::sloSetSepiaFilter);
-    connect(filterDialog, &Filter::sigSetBlackAndWhiteFilter, colorDialog, &Colorimetry::sloSetBlackAndWhiteFilter);
     connect(filterDialog, &Filter::sigSetSobelFilter, this, &ArcStreamLab::sloCreateFilterAction);
     connect(filterDialog, &Filter::sigSetStylizationFilter, this, &ArcStreamLab::sloCreateFilterAction);
+
+    connect(colorimetryFilter, &ColorimetryFilter::sigSetDefaultFilter, colorDialog, &Colorimetry::sloSetDefaultValues);
+    connect(colorimetryFilter, &ColorimetryFilter::sigSetRedFilter, colorDialog, &Colorimetry::sloSetRedFilter);
+    connect(colorimetryFilter, &ColorimetryFilter::sigSetGreenFilter, colorDialog, &Colorimetry::sloSetGreenFilter);
+    connect(colorimetryFilter, &ColorimetryFilter::sigSetBlueFilter, colorDialog, &Colorimetry::sloSetBlueFilter);
+    connect(colorimetryFilter, &ColorimetryFilter::sigSetSepiaFilter, colorDialog, &Colorimetry::sloSetSepiaFilter);
+    connect(colorimetryFilter, &ColorimetryFilter::sigSetBlackAndWhiteFilter, colorDialog, &Colorimetry::sloSetBlackAndWhiteFilter);
 
     specialEffectDialog =  new SpecialEffect(this);
     connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);
