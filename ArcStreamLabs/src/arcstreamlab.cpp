@@ -242,6 +242,11 @@ void ArcStreamLab::sloPauseButtonClicked()
     this->rawStream->terminate();
     this->processedStream->terminate();
     this->circularBuffer->reset();
+
+    this->btnPause->setEnabled(false);
+    this->btnStop->setEnabled(false);
+    this->btnSnapshot->setEnabled(false);
+    this->btnPlay->setEnabled(true);
 }
 
 void ArcStreamLab::sloStopButtonClicked()
