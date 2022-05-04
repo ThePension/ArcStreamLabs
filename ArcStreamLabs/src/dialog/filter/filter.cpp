@@ -108,5 +108,5 @@ void Filter::control()
 
 void Filter::appearance()
 {
-
+    this->setStyleSheet("background : url(:/img/back6.png)");
 }

@@ -9,14 +9,7 @@ ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
     createUIGeometry();
     createUIAppearance();
     createUIControl();
-    //TEST ALESSIO
-    this->window()->setStyleSheet("background : url(:/img/back.png)");
-    QPixmap bkng("./img/back.png");
-    QPalette pal = QPalette();
-    pal.setColor(QPalette::Window,Qt::gray);
-    this->setAutoFillBackground(true);
-    this->setPalette(pal);
-    //FIN TEST ALESSIO
+
     graphicViewInput->setScene(new QGraphicsScene(this));
     graphicViewInput->setBackgroundBrush(QColor( "black"));
     graphicViewInput->scene()->addItem(&inputPixmap);
@@ -135,16 +128,19 @@ void ArcStreamLab::createUIAppearance()
     this->btnStop->setEnabled(false);
     this->btnSnapshot->setEnabled(false);
 
-    QString btnStylesheet =
+    QString btnDrawStylesheet =
         "QPushButton:hover {"
             "background-color: gray;"
             "border: 1px black solid;"
         "}";
 
-    this->btnPlay->setStyleSheet(btnStylesheet);
-    this->btnPause->setStyleSheet(btnStylesheet);
-    this->btnStop->setStyleSheet(btnStylesheet);
-    this->btnSnapshot->setStyleSheet(btnStylesheet);
+    this->btnPlay->setStyleSheet(btnDrawStylesheet);
+    this->btnPause->setStyleSheet(btnDrawStylesheet);
+    this->btnStop->setStyleSheet(btnDrawStylesheet);
+    this->btnSnapshot->setStyleSheet(btnDrawStylesheet);
+
+    //BackGround text button
+    this->setStyleSheet("QPushButton {color: black; background-color: transparent}");
 }
 
 void ArcStreamLab::createUIControl()

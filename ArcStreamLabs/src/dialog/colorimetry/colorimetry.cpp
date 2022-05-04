@@ -81,6 +81,7 @@ void Colorimetry::control()
 void Colorimetry::appearance()
 {
     setWindowTitle("Colorimetry");
+    this->setStyleSheet("background : url(:/img/back6.png)");
     resize(200, 200);
 
     int interval = 1000;
