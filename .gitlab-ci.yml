@@ -22,7 +22,7 @@ stages:
 
 build-job:
   image:
-    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    name: gitlab-etu.ing.he-arc.ch:5050/lucas.perrin1/docker-image-gelo:latest
     entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
   tags:
     - alpine-docker # here we specify the runner to use
@@ -40,7 +40,7 @@ build-job:
 
 test-job:
   image:
-    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    name: gitlab-etu.ing.he-arc.ch:5050/lucas.perrin1/docker-image-gelo:latest
     entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
   tags:
     - alpine-docker
@@ -50,7 +50,7 @@ test-job:
 
 deploy-job:
   image:
-    name: gitlab-etu.ing.he-arc.ch:5050/isc/2021-22/niveau-2/2282-1-projet-p2-il-sp/g1:1.1
+    name: gitlab-etu.ing.he-arc.ch:5050/lucas.perrin1/docker-image-gelo:latest
     entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
   tags:
     - alpine-docker
