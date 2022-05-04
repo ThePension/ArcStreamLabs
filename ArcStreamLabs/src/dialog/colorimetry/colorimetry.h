@@ -1,8 +1,9 @@
 #pragma once
 
+#include <QWidget>
 #include <QDialog>
 #include "opencv2/opencv.hpp"
-//#include <QTabWidget>
+#include <QTabWidget>
 //#include <QDialogButtonBox>
 
 #include "colorimetryactions.h"
@@ -23,7 +24,7 @@ class Colorimetry : public QDialog
     Q_OBJECT
 
     private:
-        //QTabWidget *tabWidget;
+        QTabWidget *tabWidget;
         //QDialogButtonBox *buttonBox;
 
         ActionManager *actionManager;
