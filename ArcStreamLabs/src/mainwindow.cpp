@@ -62,6 +62,8 @@ void MainWindow::createMenusActions()
 
     QMenu* menuHelp = menuBar()->addMenu(tr("&?"));
     menuHelp->addAction(actAbout);
+
+
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)

@@ -4,5 +4,7 @@
         <file>img/Play.png</file>
         <file>img/Snapshot.png</file>
         <file>img/Stop.png</file>
+        <file>img/bkground.png</file>
+        <file>img/back.png</file>
     </qresource>
 </RCC>

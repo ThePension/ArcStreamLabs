@@ -53,11 +53,6 @@ class ArcStreamLab : public QWidget
         QPushButton *btnSpecialEffect; // Open the special effect dialog
         QPushButton *btnAnimation; // Open the animation dialog
 
-        QLabel *lblColorimetry;
-        QLabel *lblFilter;
-        QLabel *lblSpecialEffect;
-        QLabel *lblAnimation;
-
         // Label use as separator line
         QLabel *lblVSeparator;
         QLabel *lblHSeparator1;

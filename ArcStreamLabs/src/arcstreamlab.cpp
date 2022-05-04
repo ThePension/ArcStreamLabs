@@ -9,9 +9,19 @@ ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
     createUIGeometry();
     createUIAppearance();
     createUIControl();
+    //TEST ALESSIO
+    this->window()->setStyleSheet("background : url(:/img/back.png)");
+    QPixmap bkng("./img/back.png");
+    QPalette pal = QPalette();
+    pal.setColor(QPalette::Window,Qt::gray);
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
+    //FIN TEST ALESSIO
     graphicViewInput->setScene(new QGraphicsScene(this));
+    graphicViewInput->setBackgroundBrush(QColor( "black"));
     graphicViewInput->scene()->addItem(&inputPixmap);
     graphicViewProcess->setScene(new QGraphicsScene(this));
+    graphicViewProcess->setBackgroundBrush(QColor( "black"));
     graphicViewProcess->scene()->addItem(&outputPixmap);
 }
 
@@ -39,46 +49,27 @@ void ArcStreamLab::createUIGeometry()
     this->btnStop = new QPushButton();
     this->btnSnapshot = new QPushButton();
 
-    this->btnColor = new QPushButton("Paramètres");
-    this->btnFilter = new QPushButton("Paramètres");
-    this->btnSpecialEffect = new QPushButton("Paramètres");
-    this->btnAnimation = new QPushButton("Paramètres");
+    this->btnColor = new QPushButton("Colorimetry");
+    this->btnFilter = new QPushButton("Filters");
+    this->btnSpecialEffect = new QPushButton("Special effect");
+    this->btnAnimation = new QPushButton("Animation");
 
     // Graphics View
     this->graphicViewInput = new QGraphicsView();
     this->graphicViewProcess = new QGraphicsView();
 
-    // Label
-    this->lblVSeparator = new QLabel();
-    this->lblHSeparator1 = new QLabel();
-    this->lblHSeparator2 = new QLabel();
-    this->lblHSeparator3 = new QLabel();
-
-    this->lblColorimetry = new QLabel("Colorimetry");
-    this->lblFilter = new QLabel("Filter");
-    this->lblSpecialEffect = new QLabel("Special Effect");
-    this->lblAnimation = new QLabel("Animation");
-
     // Composition Settings (Colorimetry, Filter, etc)
-    this->colorimetryVLayout->addWidget(this->lblColorimetry);
-    this->colorimetryVLayout->addSpacing(40);
     this->colorimetryVLayout->addWidget(this->btnColor);
-    this->colorimetryVLayout->addSpacing(20);
+    this->colorimetryVLayout->addSpacing(15);
 
-    this->filterVLayout->addWidget(this->lblFilter);
-    this->filterVLayout->addSpacing(40);
     this->filterVLayout->addWidget(this->btnFilter);
-    this->filterVLayout->addSpacing(20);
+    this->filterVLayout->addSpacing(15);
 
-    this->specialEffectVLayout->addWidget(this->lblSpecialEffect);
-    this->specialEffectVLayout->addSpacing(40);
     this->specialEffectVLayout->addWidget(this->btnSpecialEffect);
-    this->specialEffectVLayout->addSpacing(20);
+    this->specialEffectVLayout->addSpacing(15);
 
-    this->animationVLayout->addWidget(this->lblAnimation);
-    this->animationVLayout->addSpacing(40);
     this->animationVLayout->addWidget(this->btnAnimation);
-    this->animationVLayout->addSpacing(20);
+    this->animationVLayout->addSpacing(15);
 
     // Composition (other)
     this->buttonsHLayout->addWidget(this->btnPlay);
@@ -93,16 +84,12 @@ void ArcStreamLab::createUIGeometry()
     this->displayGridLayout->addWidget(this->graphicViewProcess, 0, 1);
 
     this->settingsHLayout->addLayout(this->colorimetryVLayout);
-    this->settingsHLayout->addWidget(this->lblHSeparator1);
     this->settingsHLayout->addLayout(this->filterVLayout);
-    this->settingsHLayout->addWidget(this->lblHSeparator2);
     this->settingsHLayout->addLayout(this->specialEffectVLayout);
-    this->settingsHLayout->addWidget(this->lblHSeparator3);
     this->settingsHLayout->addLayout(this->animationVLayout);
 
     this->mainVLayout->addLayout(this->displayGridLayout);
     this->mainVLayout->addSpacing(10);
-    this->mainVLayout->addWidget(this->lblVSeparator);
     this->mainVLayout->addLayout(this->settingsHLayout);
 
     // Display
@@ -125,50 +112,24 @@ void ArcStreamLab::createUIAppearance()
     this->displayGridLayout->setColumnStretch(0, 1);
     this->displayGridLayout->setColumnStretch(1, 3);
 
-    // Label
-    this->lblColorimetry->setFont(font);
-    this->lblColorimetry->setAlignment(Qt::AlignCenter);
-    this->lblColorimetry->setMaximumHeight(this->lblColorimetry->height());
-    this->lblFilter->setFont(font);
-    this->lblFilter->setAlignment(Qt::AlignCenter);
-    this->lblFilter->setMaximumHeight(this->lblFilter->height());
-    this->lblSpecialEffect->setFont(font);
-    this->lblSpecialEffect->setAlignment(Qt::AlignCenter);
-    this->lblSpecialEffect->setMaximumHeight(this->lblSpecialEffect->height());
-    this->lblAnimation->setFont(font);
-    this->lblAnimation->setAlignment(Qt::AlignCenter);
-    this->lblAnimation->setMaximumHeight(this->lblAnimation->height());
-
-    this->lblVSeparator->setStyleSheet("QLabel { border-top: 1px solid black; }");
-    this->lblVSeparator->setMaximumHeight(20);
-    this->lblVSeparator->setMinimumHeight(20);
-
-    this->lblHSeparator1->setStyleSheet("QLabel { border: 1px solid black; }");
-    this->lblHSeparator1->setMaximumWidth(1);
-
-    this->lblHSeparator2->setStyleSheet("QLabel { border: 1px solid black; }");
-    this->lblHSeparator2->setMaximumWidth(1);
-
-    this->lblHSeparator3->setStyleSheet("QLabel { border: 1px solid black; }");
-    this->lblHSeparator3->setMaximumWidth(1);
-
     // Button
     imageButtons();
-    font.setPixelSize(20);
+    font.setPixelSize(38);
+
 
     this->btnColor->setFont(font);
     this->btnFilter->setFont(font);
     this->btnSpecialEffect->setFont(font);
     this->btnAnimation->setFont(font);
 
-    this->btnAnimation->setMinimumHeight(50);
-    this->btnAnimation->setMaximumHeight(50);
-    this->btnFilter->setMinimumHeight(50);
-    this->btnFilter->setMaximumHeight(50);
-    this->btnColor->setMinimumHeight(50);
-    this->btnColor->setMaximumHeight(50);
-    this->btnSpecialEffect->setMinimumHeight(50);
-    this->btnSpecialEffect->setMaximumHeight(50);
+    this->btnAnimation->setMinimumHeight(100);
+    this->btnAnimation->setMaximumHeight(100);
+    this->btnFilter->setMinimumHeight(100);
+    this->btnFilter->setMaximumHeight(100);
+    this->btnColor->setMinimumHeight(100);
+    this->btnColor->setMaximumHeight(100);
+    this->btnSpecialEffect->setMinimumHeight(100);
+    this->btnSpecialEffect->setMaximumHeight(100);
 
     this->btnPause->setEnabled(false);
     this->btnStop->setEnabled(false);
