@@ -1,9 +1,11 @@
 #pragma once
 
 #include <QDialog>
+#include <QVBoxLayout>
 #include <QTabWidget>
 
 #include "colorimetry.h"
+#include "colorimetryfilter.h"
 
 class ColorimetryTabs : public QDialog
 {
@@ -13,6 +15,6 @@ class ColorimetryTabs : public QDialog
         QTabWidget *tabWidget;
 
     public:
-        ColorimetryTabs(Colorimetry * colorimetry, QWidget *parent = 0);
+        ColorimetryTabs(Colorimetry * colorimetry, ColorimetryFilter * colorimetryFilter, QWidget *parent = 0);
         ~ColorimetryTabs() {};
 };

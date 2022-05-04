@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-Colorimetry::Colorimetry(ActionManager *actionManager, QWidget *parent) : QDialog(parent)
+Colorimetry::Colorimetry(ActionManager *actionManager, QWidget *parent) : QWidget(parent)
 {
     this->actionManager = actionManager;
     this->parent = static_cast<ArcStreamLab*>(parent);
@@ -33,12 +33,15 @@ Colorimetry::~Colorimetry()
     }
 
     delete [] this->tempBackupValues;
+
+    delete this->horizontalLayoutForSliders;
+    delete this->verticalLayout;
 }
 
 void Colorimetry::geometry()
 {
-    this->horizontalLayoutForSliders = new QHBoxLayout(this);
-    this->verticalLayout = new QVBoxLayout(this);
+    this->horizontalLayoutForSliders = new QHBoxLayout();
+    this->verticalLayout = new QVBoxLayout();
 
     setLayout(verticalLayout);
 
@@ -58,10 +61,8 @@ void Colorimetry::geometry()
     }
 
     this->verticalLayout->addWidget(this->buttonDefaultValues);
-    this->verticalLayout->addSpacing(50);
+    this->verticalLayout->addSpacing(20);
     this->verticalLayout->addLayout(this->horizontalLayoutForSliders);
-
-
 }
 
 void Colorimetry::control()

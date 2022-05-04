@@ -1,10 +1,12 @@
 #include "colorimetrytabs.h"
 
-ColorimetryTabs::ColorimetryTabs(Colorimetry * colorimetry, QWidget *parent) : QDialog(parent)
+ColorimetryTabs::ColorimetryTabs(Colorimetry * colorimetry, ColorimetryFilter * colorimetryFilter, QWidget *parent) : QDialog(parent)
 {
-    this->resize(400, 400);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
     this->tabWidget = new QTabWidget(this);
     this->tabWidget->addTab(colorimetry, "Sliders");
-    //this->tabWidget->currentWidget()->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+    this->tabWidget->addTab(colorimetryFilter, "pre-made filters");
+
+    mainLayout->addWidget(this->tabWidget);
 }
