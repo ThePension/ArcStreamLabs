@@ -36,6 +36,7 @@ set(PROJECT_SOURCES
         src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp
         src/dialog/animation/animation.h src/dialog/animation/animation.cpp
         src/dialog/colorimetry/colorimetryactions.h src/dialog/colorimetry/colorimetryactions.cpp
+        src/dialog/filter/stylizationfilter.h src/dialog/filter/stylizationfilter.cpp
         Ressources.qrc
 )
 

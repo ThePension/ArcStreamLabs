@@ -171,6 +171,7 @@ void ArcStreamLab::createUIControl()
     connect(filterDialog, &Filter::sigSetSepiaFilter, colorDialog, &Colorimetry::sloSetSepiaFilter);
     connect(filterDialog, &Filter::sigSetBlackAndWhiteFilter, colorDialog, &Colorimetry::sloSetBlackAndWhiteFilter);
     connect(filterDialog, &Filter::sigSetSobelFilter, this, &ArcStreamLab::sloCreateFilterAction);
+    connect(filterDialog, &Filter::sigSetStylizationFilter, this, &ArcStreamLab::sloCreateFilterAction);
 
     specialEffectDialog =  new SpecialEffect(this);
     connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);

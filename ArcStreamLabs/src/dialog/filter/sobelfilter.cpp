@@ -14,6 +14,7 @@ void SobelFilter::execute()
 {
     if(!this->mat.empty())
     {
+        // based on : https://docs.opencv.org/3.4/d3/d94/samples_2cpp_2tutorial_code_2ImgTrans_2Sobel_Demo_8cpp-example.html#a16
         cv::Mat grad_x, grad_y, output;
         cv::Mat abs_grad_x, abs_grad_y;
 
