@@ -24,6 +24,7 @@ class ColorimetryFilter : public QWidget
         QPushButton * buttonBlueFilter;
         QPushButton * buttonSepiaFilter;
         QPushButton * buttonBlackAndWhiteFilter;
+        QPushButton * buttonAlienFilter;
 
         ArcStreamLab *parent;
         QAction *actUndo, *actRedo;
@@ -42,6 +43,7 @@ class ColorimetryFilter : public QWidget
         void sigSetBlueFilter();
         void sigSetSepiaFilter();
         void sigSetBlackAndWhiteFilter();
+        void sigSetAlienFilter();
 
     private slots:
         void sloButtonDefaultFilterClick();
@@ -50,4 +52,5 @@ class ColorimetryFilter : public QWidget
         void sloButtonBlueFilterClick();
         void sloButtonSepiaFilterClick();
         void sloButtonBlackAndWhiteFilterClick();
+        void sloButtonAlienFilterClick();
 };
