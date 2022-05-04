@@ -39,8 +39,6 @@ cv::Mat ActionManager::executeFilters(cv::Mat mat)
         UndoableAction * ua = this->undoStack->top();
         this->undoStack->pop();
 
-        std::cout << "passed" << std::endl;
-
         FilterActions * fa = dynamic_cast<FilterActions *>(ua);
 
         if(fa != nullptr)
@@ -51,8 +49,6 @@ cv::Mat ActionManager::executeFilters(cv::Mat mat)
         }
 
         tempStack->push(ua);
-
-        // std::cout << "passed"
     }
 
     while(!tempStack->empty())
@@ -62,8 +58,6 @@ cv::Mat ActionManager::executeFilters(cv::Mat mat)
     }
 
     delete tempStack; tempStack = nullptr;
-
-    std::cout << this->undoStack->size() << std::endl;
 
     return mat;
 }
