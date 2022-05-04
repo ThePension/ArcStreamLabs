@@ -4,7 +4,7 @@ ArcStreamLab::ArcStreamLab(QWidget *parent) : QWidget(parent)
 {
     actionManager = new ActionManager();
     rawStream = new VideoStream();
-    circularBuffer = new CircularBuffer(1000);
+    circularBuffer = new CircularBuffer(100);
     processedStream = new ImageProcessing(circularBuffer, this->actionManager);
     createUIGeometry();
     createUIAppearance();

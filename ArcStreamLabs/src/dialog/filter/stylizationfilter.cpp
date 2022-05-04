@@ -17,7 +17,7 @@ void StylizationFilter::execute()
         // based on : https://learnopencv.com/non-photorealistic-rendering-using-opencv-python-c/
         cv::Mat output;
 
-        stylization(this->mat, output, 60, 0.45f);
+        stylization(this->mat, output, 1, 0.45f); // TODO : Add sliders for these values
 
         this->mat = output;
     }
