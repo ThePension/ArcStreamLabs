@@ -27,6 +27,7 @@ set(PROJECT_SOURCES
         src/helper.h src/helper.cpp
         src/videostream.h src/videostream.cpp
         src/arcstreamlab.h src/arcstreamlab.cpp
+        src/aboutdialog.h src/aboutdialog.cpp
         src/settings.h src/settings.cpp
         src/imageprocessing.h src/imageprocessing.cpp
         src/dialog/colorimetry/colorimetry.h src/dialog/colorimetry/colorimetry.cpp

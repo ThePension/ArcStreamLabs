@@ -2,10 +2,10 @@
 
 #include <QMainWindow>
 #include <opencv2/opencv.hpp>
-#include <QMutex>
 
 #include "arcstreamlab.h"
 #include "settings.h"
+#include "aboutdialog.h"
 
 QT_BEGIN_NAMESPACE
     namespace Ui { class MainWindow; }
@@ -17,20 +17,18 @@ class MainWindow : public QMainWindow
 
     private:
         QAction *actImportSettings, *actExportSettings, *actExportSettingsAs, *actQuit, *actCancel;
-        QAction *actChangeThick, *actChangePen, *actChangeBrush;
-        QAction *actZoomIn, *actZoomOut, *actZoomReset, *actHelp, *actAbout;
+        QAction *actAbout;
         QAction *actUndo, *actRedo;
 
         ArcStreamLab *arcStreamLab;
 
-        QMutex mutex;
-        cv::Mat mat;
-
     public:
         MainWindow(QWidget *parent = nullptr);
 
+    public slots:
+        void displayAbout();
+
     private:
         void createMenusActions();
-
         void resizeEvent(QResizeEvent *event);
 };
