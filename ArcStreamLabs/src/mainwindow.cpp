@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     //set mainwindow background
     this->setStyleSheet("MainWindow {background : url(:/img/back6.png)}");
 
-
     createMenusActions();
 }
 

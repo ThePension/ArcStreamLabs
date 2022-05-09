@@ -270,15 +270,15 @@ void Colorimetry::sloSetBlackAndWhiteFilter()
     }
 
     // black and white values
-    blackAndWhiteValues[0][0] = 800;
-    blackAndWhiteValues[0][1] = 700;
-    blackAndWhiteValues[0][2] = 700;
-    blackAndWhiteValues[1][0] = 700;
-    blackAndWhiteValues[1][1] = 800;
-    blackAndWhiteValues[1][2] = 700;
-    blackAndWhiteValues[2][0] = 700;
-    blackAndWhiteValues[2][1] = 700;
-    blackAndWhiteValues[2][2] = 800;
+    blackAndWhiteValues[0][0] = 300;
+    blackAndWhiteValues[0][1] = 200;
+    blackAndWhiteValues[0][2] = 150;
+    blackAndWhiteValues[1][0] = 300;
+    blackAndWhiteValues[1][1] = 200;
+    blackAndWhiteValues[1][2] = 150;
+    blackAndWhiteValues[2][0] = 300;
+    blackAndWhiteValues[2][1] = 200;
+    blackAndWhiteValues[2][2] = 150;
 
     this->actionManager->executeAction(createColorimetryAction(blackAndWhiteValues));
 
