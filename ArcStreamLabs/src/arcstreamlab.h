@@ -72,6 +72,9 @@ class ArcStreamLab : public QWidget
         float formatWidth = 16.0;
         float formatHeight = 9.0;
 
+        // Special effect
+        MosaicBlurEffect *mosaicEffect = nullptr;
+
         // Settings
         Settings * settings;
 
@@ -101,5 +104,6 @@ class ArcStreamLab : public QWidget
         void sloCreateEffectAction(SpecialEffectActions *);
         void sloNoFilter();
         void sloNoSpecialEffects();
+        void sloUpdateMosaicTileSize(int);
 
 };

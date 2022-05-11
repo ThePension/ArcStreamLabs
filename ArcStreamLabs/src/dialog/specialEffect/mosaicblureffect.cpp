@@ -1,7 +1,9 @@
 #include "mosaicblureffect.h"
 
-MosaicBlurEffect::MosaicBlurEffect() {
+MosaicBlurEffect::MosaicBlurEffect()
+{
     this->mat = cv::Mat();
+    this->tileSize = 16;
 }
 
 MosaicBlurEffect::~MosaicBlurEffect() { }
@@ -12,13 +14,11 @@ void MosaicBlurEffect::execute()
     {
         // Based on : https://stackoverflow.com/questions/55508615/how-to-pixelate-image-using-opencv-in-python
 
-        int tileSize = 16; // SHOULD BE A SLIDER
-
         int matWidth = this->mat.size().width;
         int matHeight = this->mat.size().height;
 
-        int cols = matWidth / tileSize;
-        int rows = matHeight / tileSize;
+        int cols = matWidth / this->tileSize;
+        int rows = matHeight / this->tileSize;
 
         cv::Mat temp, output;
 
@@ -28,4 +28,9 @@ void MosaicBlurEffect::execute()
 
         this->mat = output;
     }
+}
+
+void MosaicBlurEffect::setTileSize(int tileSize)
+{
+    this->tileSize = tileSize;
 }

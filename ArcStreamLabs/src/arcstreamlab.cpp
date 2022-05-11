@@ -191,6 +191,7 @@ void ArcStreamLab::createUIControl()
     connect(specialEffectDialog, &SpecialEffect::sigSetMirrorEffect, this, &ArcStreamLab::sloCreateEffectAction);
     connect(specialEffectDialog, &SpecialEffect::sigSetMosaicBlurEffect, this, &ArcStreamLab::sloCreateEffectAction);
     connect(specialEffectDialog, &SpecialEffect::sigSetNoSpecialEffects, this, &ArcStreamLab::sloNoSpecialEffects);
+    connect(specialEffectDialog, &SpecialEffect::sigMosaicTileSizeChanged, this, &ArcStreamLab::sloUpdateMosaicTileSize);
 }
 
 void ArcStreamLab::imageButtons()
@@ -328,7 +329,20 @@ void ArcStreamLab::sloCreateFilterAction(FilterActions * filterAction)
 
 void ArcStreamLab::sloCreateEffectAction(SpecialEffectActions * specialEffectAction)
 {
-    this->actionManager->addAction(specialEffectAction);
+    MosaicBlurEffect * mbe = dynamic_cast<MosaicBlurEffect *>(specialEffectAction);
+
+    if(mbe != nullptr)
+    {
+        if(this->mosaicEffect == nullptr)
+        {
+            this->mosaicEffect = mbe;
+            this->actionManager->addAction(specialEffectAction);
+        }
+    }
+    else
+    {
+        this->actionManager->addAction(specialEffectAction);
+    }
 }
 
 void ArcStreamLab::sloNoFilter()
@@ -339,5 +353,14 @@ void ArcStreamLab::sloNoFilter()
 void ArcStreamLab::sloNoSpecialEffects()
 {
     this->actionManager->removeSpecialEffects();
+    this->mosaicEffect = nullptr;
+}
+
+void ArcStreamLab::sloUpdateMosaicTileSize(int tileSize)
+{
+    if(this->mosaicEffect != nullptr)
+    {
+        this->mosaicEffect->setTileSize(tileSize);
+    }
 }
 

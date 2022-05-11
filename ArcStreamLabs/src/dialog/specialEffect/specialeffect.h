@@ -10,6 +10,7 @@ class QCheckBox;
 class QLabel;
 class QLineEdit;
 class QPushButton;
+class QSlider;
 class ArcStreamLab;
 
 class SpecialEffect : public QDialog
@@ -19,11 +20,14 @@ class SpecialEffect : public QDialog
     private:
         QVBoxLayout *verticalBox;
 
+        QSlider * mosaicSlider;
         QPushButton * buttonNoFilter;
         QPushButton * buttonMirror;
         QPushButton * buttonMosaicBlur;
         ArcStreamLab *parent;
         QAction *actUndo, *actRedo;
+
+        int mosaicTileSize;
 
         void geometry();
         void control();
@@ -36,10 +40,12 @@ class SpecialEffect : public QDialog
         void sigSetNoSpecialEffects();
         void sigSetMirrorEffect(SpecialEffectActions *);
         void sigSetMosaicBlurEffect(SpecialEffectActions *);
+        void sigMosaicTileSizeChanged(int);
 
     private slots:
         void sloButtonNoFilter();
         void sloMirrorEffect();
         void sloMosaicBlurEffect();
+        void sloMosaicSlider();
 };
 
