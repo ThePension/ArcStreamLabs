@@ -3,14 +3,14 @@
 #include "LibUndoRedo/undoableaction.h"
 #include "opencv2/opencv.hpp"
 
-class AnimationAction : public UndoableAction
+class AnimationActions : public UndoableAction
 {
 protected:
     cv::Mat mat;
 
 public:
-    AnimationAction();
-    virtual ~AnimationAction() override;
+    AnimationActions();
+    virtual ~AnimationActions() override;
 
     void setMatrix(cv::Mat mat);
     cv::Mat getMatrix();
