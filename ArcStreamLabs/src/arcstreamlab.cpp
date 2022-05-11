@@ -180,6 +180,7 @@ void ArcStreamLab::createUIControl()
     specialEffectDialog =  new SpecialEffect(this);
     connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);
     connect(specialEffectDialog, &SpecialEffect::sigSetMirrorEffect, this, &ArcStreamLab::sloCreateEffectAction);
+    connect(specialEffectDialog, &SpecialEffect::sigSetMosaicBlurEffect, this, &ArcStreamLab::sloCreateEffectAction);
 
     animationDialog =  new Animation(this);
     connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);

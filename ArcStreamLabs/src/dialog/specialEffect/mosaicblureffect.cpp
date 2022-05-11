@@ -1,6 +1,8 @@
 #include "mosaicblureffect.h"
 
-MosaicBlurEffect::MosaicBlurEffect() { }
+MosaicBlurEffect::MosaicBlurEffect() {
+    this->mat = cv::Mat();
+}
 
 MosaicBlurEffect::~MosaicBlurEffect() { }
 
@@ -8,24 +10,21 @@ void MosaicBlurEffect::execute()
 {
     if(!this->mat.empty())
     {
-        // based on : https://docs.opencv.org/3.4/d3/d94/samples_2cpp_2tutorial_code_2ImgTrans_2Sobel_Demo_8cpp-example.html#a16
-        cv::Mat grad_x, grad_y, output;
-        cv::Mat abs_grad_x, abs_grad_y;
+        // Based on : https://stackoverflow.com/questions/55508615/how-to-pixelate-image-using-opencv-in-python
 
-        int ddepth = CV_16S;
-        int ksize = 3;
-        int delta = 30;
-        int scale = 1;
+        int tileSize = 16; // SHOULD BE A SLIDER
 
-        Sobel(this->mat, grad_x, ddepth, 1, 0, ksize, scale, delta, cv::BORDER_DEFAULT);
+        int matWidth = this->mat.size().width;
+        int matHeight = this->mat.size().height;
 
-        Sobel(this->mat, grad_y, ddepth, 0, 1, ksize, scale, delta, cv::BORDER_DEFAULT);
+        int cols = matWidth / tileSize;
+        int rows = matHeight / tileSize;
 
-        // converting back to CV_8U
-        convertScaleAbs(grad_x, abs_grad_x);
-        convertScaleAbs(grad_y, abs_grad_y);
+        cv::Mat temp, output;
 
-        addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0, output);
+        cv::resize(this->mat, temp, cv::Size(cols, rows), 0, 0, cv::INTER_LINEAR);
+
+        cv::resize(temp, output, cv::Size(matWidth, matHeight), 0, 0, cv::INTER_NEAREST);
 
         this->mat = output;
     }
