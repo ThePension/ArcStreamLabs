@@ -3,6 +3,9 @@
 MustacheAnimation::MustacheAnimation()
 {
     // this->matMustache = cv::imread(":/img/mustache.png");
+
+    // Load classifiers from "opencv/data/haarcascades" directory
+    cascade.load("C:/opencv-build/install/etc/haarcascades/haarcascade_mcs_mouth.xml");
 }
 
 MustacheAnimation::~MustacheAnimation() { }
@@ -15,11 +18,7 @@ void MustacheAnimation::execute()
         // - https://www.geeksforgeeks.org/opencv-c-program-face-detection/
         // - https://datahacker.rs/003-opencv-projects-how-to-create-instagram-like-filters-mustaches-glasses-and-masks/
 
-        cv::CascadeClassifier cascade;
         double scale = 1.0;
-
-        // Load classifiers from "opencv/data/haarcascades" directory
-        cascade.load("C:/opencv-build/install/etc/haarcascades/haarcascade_mcs_mouth.xml");
 
         std::vector<cv::Rect> faces;
         cv::Mat gray, smallImg, output;

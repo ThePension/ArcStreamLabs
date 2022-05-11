@@ -4,6 +4,9 @@
 
 class FacialBlurEffect : public SpecialEffectActions
 {
+private:
+    cv::CascadeClassifier cascade;
+
 public:
     FacialBlurEffect();
     virtual ~FacialBlurEffect() override;

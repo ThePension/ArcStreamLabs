@@ -8,6 +8,7 @@ class MustacheAnimation : public AnimationActions
 {
 private:
     cv::Mat matMustache;
+    cv::CascadeClassifier cascade;
 
 public:
     MustacheAnimation();

@@ -2,7 +2,8 @@
 
 FacialBlurEffect::FacialBlurEffect()
 {
-
+    // Load classifiers from "opencv/data/haarcascades" directory
+    cascade.load("C:/opencv-build/install/etc/haarcascades/haarcascade_frontalface_default.xml");
 }
 
 FacialBlurEffect::~FacialBlurEffect() { }
@@ -11,11 +12,7 @@ void FacialBlurEffect::execute()
 {
     if(!this->mat.empty())
     {
-        cv::CascadeClassifier cascade;
         double scale = 1.0;
-
-        // Load classifiers from "opencv/data/haarcascades" directory
-        cascade.load("C:/opencv-build/install/etc/haarcascades/haarcascade_frontalface_alt.xml");
 
         std::vector<cv::Rect> faces;
         cv::Mat gray, smallImg, output;
