@@ -80,4 +80,19 @@ Mat Helper::transformMatWithKernel(Mat src,
     return dst;
 }
 
+Mat Helper::loadMatFromQrc(QString qrc, int flag)
+{
+    QFile file(qrc);
+    cv::Mat mat;
+    if(file.open(QIODevice::ReadOnly))
+    {
+        qint64 sz = file.size();
+        std::vector<uchar> buf(sz);
+        file.read((char*)buf.data(), sz);
+        mat = cv::imdecode(buf, flag);
+    }
+
+    return mat;
+}
+
 

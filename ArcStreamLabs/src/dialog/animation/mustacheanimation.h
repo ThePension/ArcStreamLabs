@@ -3,6 +3,7 @@
 #include "animationactions.h"
 
 #include "opencv2/objdetect.hpp"
+#include "../../helper.h"
 
 class MustacheAnimation : public AnimationActions
 {

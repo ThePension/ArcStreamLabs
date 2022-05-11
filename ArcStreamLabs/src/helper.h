@@ -4,6 +4,8 @@
 #include <QImage>
 #include <QPixmap>
 #include <QDebug>
+#include <QFile>
+#include <QIODevice>
 
 class Helper
 {
@@ -18,6 +20,7 @@ public:
                                           float x0y0, float x1y0, float x2y0,
                                           float x0y1, float x1y1, float x2y1,
                                           float x0y2, float x1y2, float x2y2);
+    static cv::Mat loadMatFromQrc(QString qrc, int flag = cv::IMREAD_COLOR);
 };
 
 #endif // HELPER_H

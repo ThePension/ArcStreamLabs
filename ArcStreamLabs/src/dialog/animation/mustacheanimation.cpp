@@ -2,7 +2,7 @@
 
 MustacheAnimation::MustacheAnimation()
 {
-    // this->matMustache = cv::imread(":/img/mustache.png");
+    this->matMustache = Helper::loadMatFromQrc(":/img/mustache.png");
 
     // Load classifiers from "opencv/data/haarcascades" directory
     cascade.load("C:/opencv-build/install/etc/haarcascades/haarcascade_mcs_mouth.xml");
@@ -44,6 +44,8 @@ void MustacheAnimation::execute()
                       cvRound(r.y*scale)),
                       cv::Point(cvRound((r.x + r.width-1)*scale),
                       cvRound((r.y + r.height-1)*scale)), color, 3, 8, 0);
+
+
         }
     }
 }
