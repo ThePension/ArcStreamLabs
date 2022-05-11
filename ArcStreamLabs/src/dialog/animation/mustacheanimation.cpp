@@ -20,32 +20,55 @@ void MustacheAnimation::execute()
 
         double scale = 1.0;
 
-        std::vector<cv::Rect> faces;
-        cv::Mat gray, smallImg, output;
+        std::vector<cv::Rect> mouths;
 
-        cvtColor(this->mat, gray, cv::COLOR_BGR2GRAY); // Convert to Gray Scale
+        // Frame variable (input)
+        cv::Mat matFramegray, matFrameROI, matFrameSmall, matFrameMasked, matFrameWithMustacheMask;
+
+        // Mustache variables
+        cv::Mat matMustacheSmall, matMustacheSmallGray, matMustacheMask, matMustacheMaskInv;
+
+
+        cvtColor(this->mat, matFramegray, cv::COLOR_BGR2GRAY); // Convert to Gray Scale
         double fx = 1 / scale;
 
         // Resize the Grayscale Image
-        resize(gray, smallImg, cv::Size(), fx, fx, cv::INTER_LINEAR);
-        equalizeHist(smallImg, smallImg);
+        cv::resize(matFramegray, matFrameSmall, cv::Size(), fx, fx, cv::INTER_LINEAR);
+        equalizeHist(matFrameSmall, matFrameSmall);
 
         // Detect faces of different sizes using cascade classifier
-        cascade.detectMultiScale( smallImg, faces, 1.7, 11, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30));
+        cascade.detectMultiScale(matFrameSmall, mouths, 1.7, 11, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30));
 
         // Draw circles around the faces
-        for (size_t i = 0; i < faces.size(); i++)
+        for (size_t i = 0; i < mouths.size(); i++)
         {
-            cv::Rect r = faces[i];
-            cv::Scalar color = cv::Scalar(255, 0, 0); // Color for Drawing tool
+            cv::Rect roi = mouths[i];
 
-            cv::rectangle(this->mat,
-                      cv::Point(cvRound(r.x*scale),
-                      cvRound(r.y*scale)),
-                      cv::Point(cvRound((r.x + r.width-1)*scale),
-                      cvRound((r.y + r.height-1)*scale)), color, 3, 8, 0);
+            if (roi.height > 0 && roi.width > 0)
+            {
+                roi.height *= 2;
+                roi.width *= 2;
+                roi.y -= 20;
+                roi.x -= roi.width/4;
+            }
 
+            matFrameROI = this->mat(roi); // Extract Region Of Interest (mouth)
 
+            // Resizing the image
+            cv::resize(this->matMustache, matMustacheSmall, cv::Size(roi.width, roi.height), 0, 0, cv::INTER_AREA);
+
+            // Convert image into grayscale
+            cv::cvtColor(matMustacheSmall, matMustacheSmallGray, cv::COLOR_BGR2GRAY);
+
+            cv::threshold(matMustacheSmallGray, matMustacheMask, 244, 255,  cv::THRESH_BINARY_INV);
+
+            cv::bitwise_not(matMustacheMask, matMustacheMaskInv);
+
+            cv::bitwise_and(matMustacheSmall, matMustacheSmall, matFrameWithMustacheMask, matMustacheMask);
+
+            cv::bitwise_and(matFrameROI, matFrameROI, matFrameMasked, matMustacheMaskInv);
+
+            cv::add(matFrameWithMustacheMask, matFrameMasked, this->mat(roi));
         }
     }
 }
