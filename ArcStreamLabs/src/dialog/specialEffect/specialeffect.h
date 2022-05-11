@@ -4,6 +4,7 @@
 #include "QVBoxLayout"
 #include <QDialog>
 #include "mirror.h"
+#include "mosaicblureffect.h"
 
 class QCheckBox;
 class QLabel;
@@ -20,6 +21,7 @@ class SpecialEffect : public QDialog
 
         QPushButton * buttonNoFilter;
         QPushButton * buttonMirror;
+        QPushButton * buttonMosaicBlur;
         ArcStreamLab *parent;
         QAction *actUndo, *actRedo;
 
@@ -33,9 +35,11 @@ class SpecialEffect : public QDialog
     signals:
         void sigSetNoFilter(SpecialEffectActions *);
         void sigSetMirrorEffect(SpecialEffectActions *);
+        void sigSetMosaicBlurEffect(SpecialEffectActions *);
 
     private slots:
         void sloButtonNoFilter();
         void sloMirrorEffect();
+        void sloMosaicBlurEffect();
 };
 

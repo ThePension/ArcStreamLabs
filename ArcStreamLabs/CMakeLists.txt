@@ -40,6 +40,7 @@ set(PROJECT_SOURCES
         src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp
         src/dialog/specialEffect/specialeffectactions.h src/dialog/specialEffect/specialeffectactions.cpp
         src/dialog/specialEffect/mirror.h src/dialog/specialEffect/mirror.cpp
+        src/dialog/specialEffect/mosaicblureffect.h src/dialog/specialEffect/mosaicblureffect.cpp
         src/dialog/animation/animation.h src/dialog/animation/animation.cpp
         src/dialog/filter/stylizationfilter.h src/dialog/filter/stylizationfilter.cpp
         Ressources.qrc

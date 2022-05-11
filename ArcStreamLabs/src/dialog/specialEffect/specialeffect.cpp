@@ -37,6 +37,12 @@ void SpecialEffect::sloMirrorEffect()
     emit sigSetMirrorEffect(mirror);
 }
 
+void SpecialEffect::sloMosaicBlurEffect()
+{
+    SpecialEffectActions * mosaicBlurEffect = new MosaicBlurEffect();
+    emit sigSetMosaicBlurEffect(mosaicBlurEffect);
+}
+
 void SpecialEffect::geometry()
 {
     this->buttonNoFilter = new QPushButton(this);
@@ -45,9 +51,13 @@ void SpecialEffect::geometry()
     this->buttonMirror = new QPushButton(this);
     this->buttonMirror->setText(tr("mirror"));
 
+    this->buttonMosaicBlur = new QPushButton(this);
+    this->buttonMosaicBlur->setText(tr("Mosaic blur"));
+
     this->verticalBox = new QVBoxLayout();
     this->verticalBox->addWidget(this->buttonNoFilter);
     this->verticalBox->addWidget(this->buttonMirror);
+    this->verticalBox->addWidget(this->buttonMosaicBlur);
     setLayout(this->verticalBox);
 }
 
@@ -55,6 +65,7 @@ void SpecialEffect::control()
 {
     connect(this->buttonNoFilter, &QPushButton::clicked, this, &SpecialEffect::sloButtonNoFilter);
     connect(this->buttonMirror, &QPushButton::clicked, this, &SpecialEffect::sloMirrorEffect);
+    connect(this->buttonMosaicBlur, &QPushButton::clicked, this, &SpecialEffect::sloMosaicBlurEffect);
 }
 
 void SpecialEffect::appearance()
