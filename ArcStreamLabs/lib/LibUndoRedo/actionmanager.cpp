@@ -40,6 +40,7 @@ cv::Mat ActionManager::executeActions(cv::Mat mat)
 
         FilterActions * fa = dynamic_cast<FilterActions *>(ua);
         SpecialEffectActions * sea = dynamic_cast<SpecialEffectActions *>(ua);
+        AnimationActions * aa = dynamic_cast<AnimationActions * >(ua);
 
         if(fa != nullptr)
         {
@@ -52,6 +53,12 @@ cv::Mat ActionManager::executeActions(cv::Mat mat)
             sea->setMatrix(mat);
             sea->execute();
             mat = sea->getMatrix();
+        }
+        else if (aa != nullptr)
+        {
+            aa->setMatrix(mat);
+            aa->execute();
+            mat = aa->getMatrix();
         }
 
         tempStack->push(ua);

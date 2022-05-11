@@ -49,6 +49,12 @@ void SpecialEffect::sloMosaicSlider()
     emit sigMosaicTileSizeChanged(this->mosaicSlider->value());
 }
 
+void SpecialEffect::sloFacialBlurEffect()
+{
+    SpecialEffectActions * facialBlurEffect = new FacialBlurEffect();
+    emit sigSetFacialBlurEffect(facialBlurEffect);
+}
+
 void SpecialEffect::geometry()
 {
     this->buttonNoFilter = new QPushButton(this);
@@ -69,11 +75,15 @@ void SpecialEffect::geometry()
     mosaicLayout->addWidget(this->buttonMosaicBlur);
     mosaicLayout->addWidget(this->mosaicSlider);
 
+    this->buttonFacialBlur = new QPushButton(this);
+    this->buttonFacialBlur->setText(tr("Facial blur"));
+
     this->verticalBox = new QVBoxLayout();
     this->verticalBox->addWidget(this->buttonNoFilter);
     this->verticalBox->addWidget(this->buttonMirror);
     this->verticalBox->addLayout(mosaicLayout);
-
+    this->verticalBox->addWidget(this->buttonMosaicBlur);
+    this->verticalBox->addWidget(this->buttonFacialBlur);
     setLayout(this->verticalBox);
 }
 
@@ -83,6 +93,7 @@ void SpecialEffect::control()
     connect(this->buttonMirror, &QPushButton::clicked, this, &SpecialEffect::sloMirrorEffect);
     connect(this->buttonMosaicBlur, &QPushButton::clicked, this, &SpecialEffect::sloMosaicBlurEffect);
     connect(this->mosaicSlider, &QSlider::valueChanged, this, &SpecialEffect::sloMosaicSlider);
+    connect(this->buttonFacialBlur, &QPushButton::clicked, this, &SpecialEffect::sloFacialBlurEffect);
 }
 
 void SpecialEffect::appearance()

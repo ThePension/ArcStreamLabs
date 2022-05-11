@@ -192,9 +192,8 @@ void ArcStreamLab::createUIControl()
     connect(specialEffectDialog, &SpecialEffect::sigSetMosaicBlurEffect, this, &ArcStreamLab::sloCreateEffectAction);
     connect(specialEffectDialog, &SpecialEffect::sigSetNoSpecialEffects, this, &ArcStreamLab::sloNoSpecialEffects);
     connect(specialEffectDialog, &SpecialEffect::sigMosaicTileSizeChanged, this, &ArcStreamLab::sloUpdateMosaicTileSize);
+    connect(specialEffectDialog, &SpecialEffect::sigSetFacialBlurEffect, this, &ArcStreamLab::sloCreateEffectAction);
 
-    animationDialog =  new Animation(this);
-    connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);
     connect(animationDialog, &Animation::sigSetMustacheAnimation, this, &ArcStreamLab::sloCreateAnimationAction);
 
     this->settings = new Settings(colorDialog, filterDialog, specialEffectDialog, animationDialog, this);

@@ -5,6 +5,7 @@
 #include <QDialog>
 #include "mirror.h"
 #include "mosaicblureffect.h"
+#include "facialblureffect.h"
 
 class QCheckBox;
 class QLabel;
@@ -24,6 +25,7 @@ class SpecialEffect : public QDialog
         QPushButton * buttonNoFilter;
         QPushButton * buttonMirror;
         QPushButton * buttonMosaicBlur;
+        QPushButton * buttonFacialBlur;
         ArcStreamLab *parent;
         QAction *actUndo, *actRedo;
 
@@ -41,11 +43,13 @@ class SpecialEffect : public QDialog
         void sigSetMirrorEffect(SpecialEffectActions *);
         void sigSetMosaicBlurEffect(SpecialEffectActions *);
         void sigMosaicTileSizeChanged(int);
+        void sigSetFacialBlurEffect(SpecialEffectActions *);
 
     private slots:
         void sloButtonNoFilter();
         void sloMirrorEffect();
         void sloMosaicBlurEffect();
         void sloMosaicSlider();
+        void sloFacialBlurEffect();
 };
 

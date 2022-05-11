@@ -46,6 +46,7 @@ set(PROJECT_SOURCES
         Ressources.qrc
         src/dialog/animation/animationactions.h src/dialog/animation/animationactions.cpp
         src/dialog/animation/mustacheanimation.h src/dialog/animation/mustacheanimation.cpp
+        src/dialog/specialEffect/facialblureffect.h src/dialog/specialEffect/facialblureffect.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
