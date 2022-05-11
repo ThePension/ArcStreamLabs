@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stack>
+#include <vector>
 
 #include "undoableaction.h"
 #include "opencv2/opencv.hpp"
@@ -17,9 +18,11 @@ class ActionManager
         ActionManager();
         ~ActionManager();
 
-        void executeAction(UndoableAction* action);
-        cv::Mat executeFilters(cv::Mat);
-        cv::Mat executeSpecialEffects(cv::Mat);
+        void addAction(UndoableAction* action);
+        cv::Mat executeActions(cv::Mat);
+        void removeFilters();
+        void removeSpecialEffects();
+
         void undo();
         void redo();
 };

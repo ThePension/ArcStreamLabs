@@ -19,6 +19,7 @@ class Filter : public QDialog
     private:
         QVBoxLayout *verticalBox;
 
+        QPushButton * buttonNoFilter;
         QPushButton * buttonSobelFilter; // Edge detector
         QPushButton * buttonStylizationFilter;
         ArcStreamLab *parent;
@@ -32,10 +33,12 @@ class Filter : public QDialog
         Filter(QWidget *parent = 0);
 
     signals:
+        void sigSetNoFilter();
         void sigSetSobelFilter(FilterActions *);
         void sigSetStylizationFilter(FilterActions *);
 
     private slots:
+        void sloButtonNoFilter();
         void sloButtonSobelFilter();
         void sloButtonStylizationFilter();
 };

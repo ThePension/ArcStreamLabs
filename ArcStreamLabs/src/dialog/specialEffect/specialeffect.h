@@ -33,7 +33,7 @@ class SpecialEffect : public QDialog
         SpecialEffect(QWidget *parent = 0);
 
     signals:
-        void sigSetNoFilter(SpecialEffectActions *);
+        void sigSetNoSpecialEffects();
         void sigSetMirrorEffect(SpecialEffectActions *);
         void sigSetMosaicBlurEffect(SpecialEffectActions *);
 

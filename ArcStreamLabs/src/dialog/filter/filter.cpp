@@ -25,6 +25,11 @@ Filter::Filter(QWidget *parent) : QDialog(parent)
     addAction(actRedo);
 }
 
+void Filter::sloButtonNoFilter()
+{
+    emit sigSetNoFilter();
+}
+
 void Filter::sloButtonSobelFilter()
 {
     FilterActions * sobelFilter = new SobelFilter();
@@ -39,6 +44,9 @@ void Filter::sloButtonStylizationFilter()
 
 void Filter::geometry()
 {
+    this->buttonNoFilter = new QPushButton(this);
+    this->buttonNoFilter->setText(tr("No filter"));
+
     this->buttonSobelFilter = new QPushButton(this);
     this->buttonSobelFilter->setText(tr("Sobel filter"));
 
@@ -46,6 +54,7 @@ void Filter::geometry()
     this->buttonStylizationFilter->setText(tr("Stylization filter"));
 
     this->verticalBox = new QVBoxLayout();
+    this->verticalBox->addWidget(this->buttonNoFilter);
     this->verticalBox->addWidget(this->buttonSobelFilter);
     this->verticalBox->addWidget(this->buttonStylizationFilter);
     setLayout(this->verticalBox);
@@ -53,6 +62,7 @@ void Filter::geometry()
 
 void Filter::control()
 {
+    connect(this->buttonNoFilter, &QPushButton::clicked, this, &Filter::sloButtonNoFilter);
     connect(this->buttonSobelFilter, &QPushButton::clicked, this, &Filter::sloButtonSobelFilter);
     connect(this->buttonStylizationFilter, &QPushButton::clicked, this, &Filter::sloButtonStylizationFilter);
 }

@@ -27,8 +27,7 @@ SpecialEffect::SpecialEffect(QWidget *parent) : QDialog(parent)
 
 void SpecialEffect::sloButtonNoFilter()
 {
-    //SpecialEffect * sobelFilter = new SobelFilter();
-    //emit sigSetNoFilter(sobelFilter);
+    emit sigSetNoSpecialEffects();
 }
 
 void SpecialEffect::sloMirrorEffect()
@@ -46,7 +45,7 @@ void SpecialEffect::sloMosaicBlurEffect()
 void SpecialEffect::geometry()
 {
     this->buttonNoFilter = new QPushButton(this);
-    this->buttonNoFilter->setText(tr("No filter"));
+    this->buttonNoFilter->setText(tr("No special effects"));
 
     this->buttonMirror = new QPushButton(this);
     this->buttonMirror->setText(tr("mirror"));
@@ -58,6 +57,7 @@ void SpecialEffect::geometry()
     this->verticalBox->addWidget(this->buttonNoFilter);
     this->verticalBox->addWidget(this->buttonMirror);
     this->verticalBox->addWidget(this->buttonMosaicBlur);
+
     setLayout(this->verticalBox);
 }
 

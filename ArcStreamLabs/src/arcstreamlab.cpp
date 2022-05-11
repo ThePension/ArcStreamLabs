@@ -85,6 +85,17 @@ void ArcStreamLab::createUIGeometry()
     this->mainVLayout->addSpacing(10);
     this->mainVLayout->addLayout(this->settingsHLayout);
 
+    // Dialog
+    colorDialog = new Colorimetry(this->actionManager, this);
+    colorimetryFilter = new ColorimetryFilter(this);
+    colorimetryTabs = new ColorimetryTabs(colorDialog, colorimetryFilter, this);
+    filterDialog =  new Filter(this);
+    specialEffectDialog =  new SpecialEffect(this);
+    animationDialog =  new Animation(this);
+
+    // Settings
+    this->settings = new Settings(colorDialog, filterDialog, specialEffectDialog, animationDialog, this);
+
     // Display
     setLayout(this->mainVLayout);
 }
@@ -156,10 +167,11 @@ void ArcStreamLab::createUIControl()
     connect(btnSnapshot, &QPushButton::clicked, this, &ArcStreamLab::sloSaveSnapshot);
 
     // connection with the dialog box
-    colorDialog = new Colorimetry(this->actionManager, this);
-    colorimetryFilter = new ColorimetryFilter(this);
-    colorimetryTabs = new ColorimetryTabs(colorDialog, colorimetryFilter, this);
     connect(this->btnColor, &QPushButton::clicked, colorimetryTabs, &QDialog::show);
+    connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
+    connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);
+    connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);
+
     connect(colorDialog, &Colorimetry::sigSlidersValueChanged, this, &ArcStreamLab::sloUpdateColorimetryValues);
 
     connect(colorimetryFilter, &ColorimetryFilter::sigSetDefaultFilter, colorDialog, &Colorimetry::sloSetDefaultValues);
@@ -172,20 +184,13 @@ void ArcStreamLab::createUIControl()
 
     sloUpdateColorimetryValues();
 
-    filterDialog =  new Filter(this);
-    connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
     connect(filterDialog, &Filter::sigSetSobelFilter, this, &ArcStreamLab::sloCreateFilterAction);
     connect(filterDialog, &Filter::sigSetStylizationFilter, this, &ArcStreamLab::sloCreateFilterAction);
+    connect(filterDialog, &Filter::sigSetNoFilter, this, &ArcStreamLab::sloNoFilter);
 
-    specialEffectDialog =  new SpecialEffect(this);
-    connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);
     connect(specialEffectDialog, &SpecialEffect::sigSetMirrorEffect, this, &ArcStreamLab::sloCreateEffectAction);
     connect(specialEffectDialog, &SpecialEffect::sigSetMosaicBlurEffect, this, &ArcStreamLab::sloCreateEffectAction);
-
-    animationDialog =  new Animation(this);
-    connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);
-
-    this->settings = new Settings(colorDialog, filterDialog, specialEffectDialog, animationDialog, this);
+    connect(specialEffectDialog, &SpecialEffect::sigSetNoSpecialEffects, this, &ArcStreamLab::sloNoSpecialEffects);
 }
 
 void ArcStreamLab::imageButtons()
@@ -318,11 +323,21 @@ void ArcStreamLab::sloSaveSnapshot()
 
 void ArcStreamLab::sloCreateFilterAction(FilterActions * filterAction)
 {
-    this->actionManager->executeAction(filterAction);
+    this->actionManager->addAction(filterAction);
 }
 
 void ArcStreamLab::sloCreateEffectAction(SpecialEffectActions * specialEffectAction)
 {
-    this->actionManager->executeAction(specialEffectAction);
+    this->actionManager->addAction(specialEffectAction);
+}
+
+void ArcStreamLab::sloNoFilter()
+{
+    this->actionManager->removeFilters();
+}
+
+void ArcStreamLab::sloNoSpecialEffects()
+{
+    this->actionManager->removeSpecialEffects();
 }
 

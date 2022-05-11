@@ -99,5 +99,7 @@ class ArcStreamLab : public QWidget
         void sloSaveSnapshot();
         void sloCreateFilterAction(FilterActions *);
         void sloCreateEffectAction(SpecialEffectActions *);
+        void sloNoFilter();
+        void sloNoSpecialEffects();
 
 };

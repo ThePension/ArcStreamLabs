@@ -165,7 +165,7 @@ void Colorimetry::sloSetDefaultValues()
     defaultValues[2][1] = 0;
     defaultValues[2][2] = 1000;
 
-    this->actionManager->executeAction(createColorimetryAction(defaultValues));
+    this->actionManager->addAction(createColorimetryAction(defaultValues));
 
     emit sigSlidersValueChanged();
 }
@@ -189,7 +189,7 @@ void Colorimetry::sloSetRedFilter()
     redValues[2][1] = 0;
     redValues[2][2] = 1000;
 
-    this->actionManager->executeAction(createColorimetryAction(redValues));
+    this->actionManager->addAction(createColorimetryAction(redValues));
 
     emit sigSlidersValueChanged();
 }
@@ -213,7 +213,7 @@ void Colorimetry::sloSetGreenFilter()
     greenValues[2][1] = 0;
     greenValues[2][2] = 0;
 
-    this->actionManager->executeAction(createColorimetryAction(greenValues));
+    this->actionManager->addAction(createColorimetryAction(greenValues));
 
     emit sigSlidersValueChanged();
 }
@@ -237,7 +237,7 @@ void Colorimetry::sloSetBlueFilter()
     blueValues[2][1] = 0;
     blueValues[2][2] = 0;
 
-    this->actionManager->executeAction(createColorimetryAction(blueValues));
+    this->actionManager->addAction(createColorimetryAction(blueValues));
 
     emit sigSlidersValueChanged();
 }
@@ -261,7 +261,7 @@ void Colorimetry::sloSetSepiaFilter()
     sepiaValues[2][1] = 769;
     sepiaValues[2][2] = 189;
 
-    this->actionManager->executeAction(createColorimetryAction(sepiaValues));
+    this->actionManager->addAction(createColorimetryAction(sepiaValues));
 
     emit sigSlidersValueChanged();
 }
@@ -285,7 +285,7 @@ void Colorimetry::sloSetBlackAndWhiteFilter()
     blackAndWhiteValues[2][1] = 200;
     blackAndWhiteValues[2][2] = 150;
 
-    this->actionManager->executeAction(createColorimetryAction(blackAndWhiteValues));
+    this->actionManager->addAction(createColorimetryAction(blackAndWhiteValues));
 
     emit sigSlidersValueChanged();
 }
@@ -309,7 +309,7 @@ void Colorimetry::sloSetAlienFilter()
     AlienValues[2][1] = 1000;
     AlienValues[2][2] = -1000;
 
-    this->actionManager->executeAction(createColorimetryAction(AlienValues));
+    this->actionManager->addAction(createColorimetryAction(AlienValues));
 
     emit sigSlidersValueChanged();
 }
@@ -361,7 +361,7 @@ void Colorimetry::createReleaseAction()
     newValues[2][1] = this->slidersTab[2][1]->value();
     newValues[2][2] = this->slidersTab[2][2]->value();
 
-    this->actionManager->executeAction(new ColorimetryActions(backupValues, newValues, this->slidersTab));
+    this->actionManager->addAction(new ColorimetryActions(backupValues, newValues, this->slidersTab));
 }
 
 ColorimetryActions* Colorimetry::createColorimetryAction(int **colorValues)
