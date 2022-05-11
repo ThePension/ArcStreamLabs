@@ -105,5 +105,6 @@ class ArcStreamLab : public QWidget
         void sloNoFilter();
         void sloNoSpecialEffects();
         void sloUpdateMosaicTileSize(int);
+        void sloCreateAnimationAction(AnimationActions * );
 
 };
