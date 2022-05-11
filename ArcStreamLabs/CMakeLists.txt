@@ -44,6 +44,7 @@ set(PROJECT_SOURCES
         src/dialog/animation/animation.h src/dialog/animation/animation.cpp
         src/dialog/filter/stylizationfilter.h src/dialog/filter/stylizationfilter.cpp
         Ressources.qrc
+        src/dialog/animation/animationaction.h src/dialog/animation/animationaction.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
