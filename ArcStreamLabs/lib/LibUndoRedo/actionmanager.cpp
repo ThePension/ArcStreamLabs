@@ -62,6 +62,37 @@ cv::Mat ActionManager::executeFilters(cv::Mat mat)
     return mat;
 }
 
+cv::Mat ActionManager::executeSpecialEffects(cv::Mat mat)
+{
+    std::stack<UndoableAction*> *tempStack = new std::stack<UndoableAction*>();
+
+    while(!this->undoStack->empty())
+    {
+        UndoableAction * ua = this->undoStack->top();
+        this->undoStack->pop();
+
+        SpecialEffectActions * fa = dynamic_cast<SpecialEffectActions *>(ua);
+
+        if(fa != nullptr)
+        {
+            fa->setMatrix(mat);
+            fa->execute();
+            mat = fa->getMatrix();
+        }
+
+        tempStack->push(ua);
+    }
+
+    while(!tempStack->empty())
+    {
+        this->undoStack->push(tempStack->top());
+        tempStack->pop();
+    }
+
+    delete tempStack; tempStack = nullptr;
+
+    return mat;
+}
 void ActionManager::undo()
 {
     if(!this->undoStack->empty())

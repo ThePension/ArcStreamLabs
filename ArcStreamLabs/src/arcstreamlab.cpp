@@ -162,13 +162,6 @@ void ArcStreamLab::createUIControl()
     connect(this->btnColor, &QPushButton::clicked, colorimetryTabs, &QDialog::show);
     connect(colorDialog, &Colorimetry::sigSlidersValueChanged, this, &ArcStreamLab::sloUpdateColorimetryValues);
 
-    sloUpdateColorimetryValues();
-
-    filterDialog =  new Filter(this);
-    connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
-    connect(filterDialog, &Filter::sigSetSobelFilter, this, &ArcStreamLab::sloCreateFilterAction);
-    connect(filterDialog, &Filter::sigSetStylizationFilter, this, &ArcStreamLab::sloCreateFilterAction);
-
     connect(colorimetryFilter, &ColorimetryFilter::sigSetDefaultFilter, colorDialog, &Colorimetry::sloSetDefaultValues);
     connect(colorimetryFilter, &ColorimetryFilter::sigSetRedFilter, colorDialog, &Colorimetry::sloSetRedFilter);
     connect(colorimetryFilter, &ColorimetryFilter::sigSetGreenFilter, colorDialog, &Colorimetry::sloSetGreenFilter);
@@ -177,8 +170,16 @@ void ArcStreamLab::createUIControl()
     connect(colorimetryFilter, &ColorimetryFilter::sigSetBlackAndWhiteFilter, colorDialog, &Colorimetry::sloSetBlackAndWhiteFilter);
     connect(colorimetryFilter, &ColorimetryFilter::sigSetAlienFilter, colorDialog, &Colorimetry::sloSetAlienFilter);
 
+    sloUpdateColorimetryValues();
+
+    filterDialog =  new Filter(this);
+    connect(this->btnFilter, &QPushButton::clicked, filterDialog, &QDialog::show);
+    connect(filterDialog, &Filter::sigSetSobelFilter, this, &ArcStreamLab::sloCreateFilterAction);
+    connect(filterDialog, &Filter::sigSetStylizationFilter, this, &ArcStreamLab::sloCreateFilterAction);
+
     specialEffectDialog =  new SpecialEffect(this);
     connect(this->btnSpecialEffect, &QPushButton::clicked, specialEffectDialog, &QDialog::show);
+    connect(specialEffectDialog, &SpecialEffect::sigSetMirrorEffect, this, &ArcStreamLab::sloCreateEffectAction);
 
     animationDialog =  new Animation(this);
     connect(this->btnAnimation, &QPushButton::clicked, animationDialog, &QDialog::show);
@@ -318,3 +319,9 @@ void ArcStreamLab::sloCreateFilterAction(FilterActions * filterAction)
 {
     this->actionManager->executeAction(filterAction);
 }
+
+void ArcStreamLab::sloCreateEffectAction(SpecialEffectActions * specialEffectAction)
+{
+    this->actionManager->executeAction(specialEffectAction);
+}
+

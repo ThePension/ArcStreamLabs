@@ -34,7 +34,7 @@ void ImageProcessing::run()
             if(!this->kernel.empty()) mGaussianBlur = Helper::transformMatWithKernel(mGaussianBlur, this->kernel);
 
             mGaussianBlur = this->actionManager->executeFilters(mGaussianBlur);
-
+            mGaussianBlur = this->actionManager->executeSpecialEffects(mGaussianBlur);
             mPixmap = Helper::cvMatToQPixmap(mGaussianBlur);
 
             emit imagedProcessed();
