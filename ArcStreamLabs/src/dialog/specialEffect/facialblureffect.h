@@ -5,7 +5,8 @@
 class FacialBlurEffect : public SpecialEffectActions
 {
 private:
-    cv::CascadeClassifier cascade;
+    cv::CascadeClassifier cascadeFrontalFace;
+    cv::CascadeClassifier cascadeProfileFace;
 
 public:
     FacialBlurEffect();
