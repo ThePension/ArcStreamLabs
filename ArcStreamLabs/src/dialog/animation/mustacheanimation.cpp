@@ -50,6 +50,7 @@ void MustacheAnimation::execute()
                 roi.width *= 2;
                 roi.y -= 20;
                 roi.x -= roi.width/4;
+                if(roi.x < 0) roi.x = 0;
             }
 
             matFrameROI = this->mat(roi); // Extract Region Of Interest (mouth)
