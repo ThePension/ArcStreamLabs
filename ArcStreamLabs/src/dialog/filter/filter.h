@@ -11,6 +11,8 @@ class QLabel;
 class QLineEdit;
 class QPushButton;
 class ArcStreamLab;
+class QRadioButton;
+class QGroupBox;
 
 class Filter : public QDialog
 {
@@ -18,6 +20,10 @@ class Filter : public QDialog
 
     private:
         QVBoxLayout *verticalBox;
+
+        QGroupBox *superpositionGroupBox;
+        QRadioButton *radioSuperpositionNo;
+        QRadioButton *radioSuperpositionYes;
 
         QPushButton * buttonNoFilter;
         QPushButton * buttonSobelFilter; // Edge detector

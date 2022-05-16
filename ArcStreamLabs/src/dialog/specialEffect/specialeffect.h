@@ -13,6 +13,8 @@ class QLineEdit;
 class QPushButton;
 class QSlider;
 class ArcStreamLab;
+class QRadioButton;
+class QGroupBox;
 
 class SpecialEffect : public QDialog
 {
@@ -20,6 +22,10 @@ class SpecialEffect : public QDialog
 
     private:
         QVBoxLayout *verticalBox;
+
+        QGroupBox *superpositionGroupBox;
+        QRadioButton *radioSuperpositionNo;
+        QRadioButton *radioSuperpositionYes;
 
         QSlider * mosaicSlider;
         QPushButton * buttonNoFilter;

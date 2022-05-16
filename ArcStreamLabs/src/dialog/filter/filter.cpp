@@ -32,18 +32,31 @@ void Filter::sloButtonNoFilter()
 
 void Filter::sloButtonSobelFilter()
 {
+    if(radioSuperpositionNo->isChecked())
+        emit sigSetNoFilter();
     FilterActions * sobelFilter = new SobelFilter();
     emit sigSetSobelFilter(sobelFilter);
 }
 
 void Filter::sloButtonStylizationFilter()
 {
+    if(radioSuperpositionNo->isChecked())
+        emit sigSetNoFilter();
     FilterActions * stylizationFilter = new StylizationFilter();
     emit sigSetSobelFilter(stylizationFilter);
 }
 
 void Filter::geometry()
 {
+    this->superpositionGroupBox = new QGroupBox("Superposition des effets ?");
+    this->radioSuperpositionNo = new QRadioButton("Non", this);
+    this->radioSuperpositionYes = new QRadioButton("Oui", this);
+    radioSuperpositionNo->setChecked(true);
+    QHBoxLayout *hbox = new QHBoxLayout;
+    hbox->addWidget(radioSuperpositionNo);
+    hbox->addWidget(radioSuperpositionYes);
+    superpositionGroupBox->setLayout(hbox);
+
     this->buttonNoFilter = new QPushButton(this);
     this->buttonNoFilter->setText(tr("No filter"));
 
@@ -54,6 +67,7 @@ void Filter::geometry()
     this->buttonStylizationFilter->setText(tr("Stylization filter"));
 
     this->verticalBox = new QVBoxLayout();
+    this->verticalBox->addWidget(superpositionGroupBox);
     this->verticalBox->addWidget(this->buttonNoFilter);
     this->verticalBox->addWidget(this->buttonSobelFilter);
     this->verticalBox->addWidget(this->buttonStylizationFilter);

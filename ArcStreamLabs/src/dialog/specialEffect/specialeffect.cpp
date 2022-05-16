@@ -33,12 +33,16 @@ void SpecialEffect::sloButtonNoFilter()
 
 void SpecialEffect::sloMirrorEffect()
 {
+    if(radioSuperpositionNo->isChecked())
+        emit sigSetNoSpecialEffects();
     SpecialEffectActions * mirror = new Mirror();
     emit sigSetMirrorEffect(mirror);
 }
 
 void SpecialEffect::sloMosaicBlurEffect()
 {
+    if(radioSuperpositionNo->isChecked())
+        emit sigSetNoSpecialEffects();
     SpecialEffectActions * mosaicBlurEffect = new MosaicBlurEffect();
     emit sigSetMosaicBlurEffect(mosaicBlurEffect);
 }
@@ -51,12 +55,23 @@ void SpecialEffect::sloMosaicSlider()
 
 void SpecialEffect::sloFacialBlurEffect()
 {
+    if(radioSuperpositionNo->isChecked())
+        emit sigSetNoSpecialEffects();
     SpecialEffectActions * facialBlurEffect = new FacialBlurEffect();
     emit sigSetFacialBlurEffect(facialBlurEffect);
 }
 
 void SpecialEffect::geometry()
 {
+    this->superpositionGroupBox = new QGroupBox("Superposition des effets ?");
+    this->radioSuperpositionNo = new QRadioButton("Non", this);
+    this->radioSuperpositionYes = new QRadioButton("Oui", this);
+    radioSuperpositionNo->setChecked(true);
+    QHBoxLayout *hbox = new QHBoxLayout;
+    hbox->addWidget(radioSuperpositionNo);
+    hbox->addWidget(radioSuperpositionYes);
+    superpositionGroupBox->setLayout(hbox);
+
     this->buttonNoFilter = new QPushButton(this);
     this->buttonNoFilter->setText(tr("No special effects"));
 
@@ -79,6 +94,7 @@ void SpecialEffect::geometry()
     this->buttonFacialBlur->setText(tr("Facial blur"));
 
     this->verticalBox = new QVBoxLayout();
+    this->verticalBox->addWidget(superpositionGroupBox);
     this->verticalBox->addWidget(this->buttonNoFilter);
     this->verticalBox->addWidget(this->buttonMirror);
     this->verticalBox->addLayout(mosaicLayout);
