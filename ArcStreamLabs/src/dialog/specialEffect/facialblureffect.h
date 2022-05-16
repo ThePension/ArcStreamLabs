@@ -1,6 +1,7 @@
 #pragma once
 
 #include "specialeffectactions.h"
+#include "../../helper.h"
 
 class FacialBlurEffect : public SpecialEffectActions
 {

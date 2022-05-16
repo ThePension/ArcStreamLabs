@@ -1,11 +1,15 @@
-#ifndef HELPER_H
-#define HELPER_H
+#pragma once
+
 #include "opencv2/opencv.hpp"
 #include <QImage>
 #include <QPixmap>
 #include <QDebug>
 #include <QFile>
 #include <QIODevice>
+#include <io.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <string>
 
 class Helper
 {
@@ -21,6 +25,5 @@ public:
                                           float x0y1, float x1y1, float x2y1,
                                           float x0y2, float x1y2, float x2y2);
     static cv::Mat loadMatFromQrc(QString qrc, int flag = cv::IMREAD_COLOR);
+    static bool doesFolderExists(std::string folderPath);
 };
-
-#endif // HELPER_H

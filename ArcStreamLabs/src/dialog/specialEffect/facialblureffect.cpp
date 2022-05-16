@@ -3,8 +3,16 @@
 FacialBlurEffect::FacialBlurEffect()
 {
     // Load classifiers from "opencv/data/haarcascades" directory
-    cascadeFrontalFace.load("C:/opencv-build/install/etc/haarcascades/haarcascade_frontalface_default.xml");
-    cascadeProfileFace.load("C:/opencv-build/install/etc/haarcascades/haarcascade_profileface.xml");
+    if(Helper::doesFolderExists("C:/opencv/release"))
+    {
+        cascadeFrontalFace.load("C:/opencv/release/install/etc/haarcascades/haarcascade_frontalface_default.xml");
+        cascadeProfileFace.load("C:/opencv/release/install/etc/haarcascades/haarcascade_profileface.xml");
+    }
+    else if (Helper::doesFolderExists("C:/opencv-build"))
+    {
+        cascadeFrontalFace.load("C:/opencv-build/install/etc/haarcascades/haarcascade_frontalface_default.xml");
+        cascadeProfileFace.load("C:/opencv-build/install/etc/haarcascades/haarcascade_profileface.xml");
+    }
 }
 
 FacialBlurEffect::~FacialBlurEffect() { }

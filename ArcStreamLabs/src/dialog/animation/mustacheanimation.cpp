@@ -5,7 +5,14 @@ MustacheAnimation::MustacheAnimation()
     this->matMustache = Helper::loadMatFromQrc(":/img/mustache.png");
 
     // Load classifiers from "opencv/data/haarcascades" directory
-    cascade.load("C:/opencv-build/install/etc/haarcascades/haarcascade_mcs_mouth.xml");
+    if(Helper::doesFolderExists("C:/opencv/release"))
+    {
+        cascade.load("C:/opencv/release/install/etc/haarcascades/haarcascade_mcs_mouth.xml");
+    }
+    else if (Helper::doesFolderExists("C:/opencv-build"))
+    {
+        cascade.load("C:/opencv-build/install/etc/haarcascades/haarcascade_mcs_mouth.xml");
+    }
 }
 
 MustacheAnimation::~MustacheAnimation() { }
