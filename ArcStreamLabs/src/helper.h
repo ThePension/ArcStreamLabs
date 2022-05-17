@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QIODevice>
-#include <io.h>
+//#include <io.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <string>
