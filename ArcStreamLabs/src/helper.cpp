@@ -95,24 +95,9 @@ Mat Helper::loadMatFromQrc(QString qrc, int flag)
     return mat;
 }
 
-bool Helper::doesFolderExists(std::string folderPath)
+bool Helper::doesFolderExists(QString folderPath)
 {
-    if ( access( folderPath.c_str(), 0 ) == 0 )
-       {
-          struct stat status;
-          stat( folderPath.c_str(), &status );
-
-          if ( status.st_mode & S_IFDIR )
-          {
-              return true;
-          }
-          else
-          {
-              return false;
-          }
-       }
-
-    return false;
+    return QFile::exists(folderPath);
 }
 
 
