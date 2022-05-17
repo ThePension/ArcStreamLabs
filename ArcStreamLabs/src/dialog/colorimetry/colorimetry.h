@@ -6,7 +6,7 @@
 //#include <QDialogButtonBox>
 
 #include "colorimetryactions.h"
-#include "LibUndoRedo/actionmanager.h"
+#include "../../undo_redo/actionmanager.h"
 
 class QCheckBox;
 class QLabel;

@@ -7,7 +7,7 @@
 #include "opencv2/opencv.hpp"
 #include "lib/LibCircularBuffer/libcircularbuffer_1.h"
 #include "helper.h"
-#include "../lib/LibUndoRedo/actionmanager.h"
+#include "undo_redo/actionmanager.h"
 
 #define ID_CAMERA 0
 

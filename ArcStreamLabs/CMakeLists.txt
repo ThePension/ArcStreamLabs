@@ -5,7 +5,6 @@ project(ArcStreamLabs VERSION 0.1 LANGUAGES CXX)
 find_package( OpenCV REQUIRED)
 
 add_subdirectory("lib/LibCircularBuffer")
-add_subdirectory("lib/LibUndoRedo")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -47,6 +46,7 @@ set(PROJECT_SOURCES
         src/dialog/animation/animationactions.h src/dialog/animation/animationactions.cpp
         src/dialog/animation/mustacheanimation.h src/dialog/animation/mustacheanimation.cpp
         src/dialog/specialEffect/facialblureffect.h src/dialog/specialEffect/facialblureffect.cpp
+        src/undo_redo/actionmanager.cpp src/undo_redo/actionmanager.h src/undo_redo/undoableaction.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -72,7 +72,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibCircularBuffer LibUndoRedo)
+target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibCircularBuffer)
 
 set_target_properties(ArcStreamLabs PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -101,9 +101,9 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(tests test/tests.cpp ${LibCircularBuffer_TESTS} ${LibUndoRedo_TESTS}) # tests.cpp
+add_executable(tests test/tests.cpp ${LibCircularBuffer_TESTS} src/undo_redo/undoredo_tests.cpp) # tests.cpp
 target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(tests gtest_main ${OpenCV_LIBS} LibCircularBuffer LibUndoRedo) # tests.cpp
+target_link_libraries(tests gtest_main Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibCircularBuffer) # tests.cpp
 
 include(GoogleTest)
 gtest_discover_tests(tests)

@@ -5,9 +5,9 @@
 
 #include "undoableaction.h"
 #include "opencv2/opencv.hpp"
-#include "../../src/dialog/filter/filteractions.h"
-#include "../../src/dialog/specialEffect/specialeffectactions.h"
-#include "../../src/dialog/animation/animationactions.h"
+#include "../dialog/filter/filteractions.h"
+#include "../dialog/specialEffect/specialeffectactions.h"
+#include "../dialog/animation/animationactions.h"
 
 class ActionManager
 {

@@ -1,6 +1,8 @@
 #pragma once
 
-class UndoableAction
+#include <QObject>
+
+class UndoableAction : public QObject
 {
     public:
         virtual ~UndoableAction() {};

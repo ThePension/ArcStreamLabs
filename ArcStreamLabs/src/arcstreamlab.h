@@ -11,7 +11,7 @@
 #include "videostream.h"
 #include "lib/LibCircularBuffer/libcircularbuffer_1.h"
 #include "imageprocessing.h"
-#include "LibUndoRedo/actionmanager.h"
+#include "undo_redo/actionmanager.h"
 
 
 class ArcStreamLab : public QWidget
