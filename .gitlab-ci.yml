@@ -32,7 +32,7 @@ build_job_latex:
     - latexmk -pdf $LATEX_MAIN
   artifacts:
     paths:
-      - "*.pdf"
+      - "./doc/latex_report-main/*.pdf"
 
 release_job_latex:
   stage: deploy
