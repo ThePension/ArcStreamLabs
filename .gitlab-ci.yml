@@ -28,11 +28,11 @@ build_job_latex:
   tags:
     - alpine-docker
   script:
-    - cd ./doc/latex_report-main/
+    - cp -R ./doc/latex_report-main/* ./
     - latexmk -pdf $LATEX_MAIN
   artifacts:
     paths:
-      - "./doc/latex_report-main/*.pdf"
+      - "*.pdf"
 
 release_job_latex:
   stage: deploy
