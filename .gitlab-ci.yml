@@ -2,7 +2,7 @@
 variables:
   DOCKER_DRIVER: overlay2
   LATEX_IMAGE: listx/texlive:2020
-  LATEX_MAIN: report.tex
+  LATEX_MAIN: doc/latex_report-main/report.tex
 
 stages:
   # - build-image
