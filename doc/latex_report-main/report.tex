@@ -1,4 +1,4 @@
-\input{structure_and_commands.tex}
+\input{./structure_and_commands.tex}
 
 \begin{document}
 
@@ -6,7 +6,25 @@
 \newpage
 \pagenumbering{roman} % Roman page numbering - lowercase
 
-\input{./content.tex}
+\input{./chapters/1_abstract.tex}
+
+\input{./chapters/2_glossaire.tex}
+
+\setcounter{tocdepth}{6}
+\setcounter{secnumdepth}{6}
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic} % Arabic (standard) page numbering
+
+\input{./chapters/3_introduction.tex}
+\input{./chapters/4_analyse.tex}
+\input{./chapters/5_conception.tex}
+\input{./chapters/6_realisation.tex}
+\input{./chapters/7_resultats.tex}
+\input{./chapters/8_limitations-perspectives.tex}
+\input{./chapters/9_conclusion.tex}
+\input{./chapters/10_annexes.tex}
 
 \listoffigures
 %\printbibliography
