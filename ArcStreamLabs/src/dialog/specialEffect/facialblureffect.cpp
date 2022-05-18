@@ -44,10 +44,10 @@ void FacialBlurEffect::execute()
         cascadeFrontalFace.detectMultiScale(matFrameGraySmall, frontalFaces, scaleFactor);
 
         // Detect profile face from the right
-        cascadeProfileFace.detectMultiScale(matFrameGraySmall, rightProfileFaces, scaleFactor);
+        //cascadeProfileFace.detectMultiScale(matFrameGraySmall, rightProfileFaces, scaleFactor);
 
         // Detect profile face from the left
-        cascadeProfileFace.detectMultiScale(matFrameGraySmallFlipped, leftProfileFaces, scaleFactor);
+        //cascadeProfileFace.detectMultiScale(matFrameGraySmallFlipped, leftProfileFaces, scaleFactor);
 
 
         // Blur the frontal faces
