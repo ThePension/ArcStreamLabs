@@ -70,5 +70,5 @@ void Animation::control()
 
 void Animation::appearance()
 {
-    this->setStyleSheet("background : url(:/img/back6.png)");
+    this->setStyleSheet("Animation {background : url(:/img/popupBack.jpg)}");
 }

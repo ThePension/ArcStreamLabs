@@ -4,14 +4,13 @@
         <file>img/Play.png</file>
         <file>img/Snapshot.png</file>
         <file>img/Stop.png</file>
-        <file>img/back.png</file>
-        <file>img/back3.png</file>
-        <file>img/back4.png</file>
-        <file>img/back5.png</file>
-        <file>img/back6.png</file>
-        <file>img/back7.png</file>
-        <file>img/back2.png</file>
         <file>img/hearc.png</file>
         <file>img/mustache.png</file>
+        <file>img/backB.png</file>
+        <file>img/PauseWhite.png</file>
+        <file>img/PlayWhite.png</file>
+        <file>img/SnapshotWhite.png</file>
+        <file>img/StopWhite.png</file>
+        <file>img/popupBack.jpg</file>
     </qresource>
 </RCC>

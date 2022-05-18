@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     this->arcStreamLab->responsiveResize();
 
     //set mainwindow background
-    this->setStyleSheet("MainWindow {background : url(:/img/back6.png)}");
+    this->setStyleSheet("MainWindow {background : url(:/img/backB.png)}");
 
     createMenusActions();
 }

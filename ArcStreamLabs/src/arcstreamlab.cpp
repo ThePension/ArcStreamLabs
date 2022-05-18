@@ -69,6 +69,9 @@ void ArcStreamLab::createUIGeometry()
     this->buttonsHLayout->addWidget(this->btnPause);
     this->buttonsHLayout->addWidget(this->btnStop);
 
+    //TO DO
+    //ADD school logo here
+    //TO DO
     this->videoInputVLayout->addWidget(this->graphicViewInput);
     this->videoInputVLayout->addLayout(this->buttonsHLayout);
     this->videoInputVLayout->addWidget(this->btnSnapshot);
@@ -120,7 +123,6 @@ void ArcStreamLab::createUIAppearance()
     imageButtons();
     font.setPixelSize(38);
 
-
     this->btnColor->setFont(font);
     this->btnFilter->setFont(font);
     this->btnSpecialEffect->setFont(font);
@@ -139,19 +141,44 @@ void ArcStreamLab::createUIAppearance()
     this->btnStop->setEnabled(false);
     this->btnSnapshot->setEnabled(false);
 
+    //BackGround text button
+    //this->setStyleSheet("QPushButton {color: white; background-color: rgba(120,120,120,30)}");
+    this->setStyleSheet("QPushButton{"
+                            "color: white;"
+                            "background-color: rgba(120, 120, 120, 50);"
+                            "border:0px solid rgb(0,0,0);"
+                            "border-style: outset;"
+                            "border-width: 1px;"
+                            "margin-bottom: 1px; }"
+                        "QPushButton:hover{"
+                            "background-color: rgba(120, 120, 120, 100);"
+                        "}"
+                        "QPushButton:pressed {"
+                            "background-color: rgba(120, 120, 120, 150);"
+                            "border-style: inset;"
+                            "border-width: 2px;"
+                        "}");
+
+    //BackGround draw button
     QString btnDrawStylesheet =
-        "QPushButton:hover {"
-            "background-color: gray;"
-            "border: 1px black solid;"
-        "}";
+            "QPushButton{"
+                "color: white;"
+                "background-color: rgba(120, 120, 120, 0);"
+                "border:0px solid rgb(0,0,0);"
+                "}"
+            "QPushButton:hover{"
+                "background-color: rgba(120, 120, 120, 100);"
+            "}"
+            "QPushButton:pressed {"
+                "background-color: rgba(120, 120, 120, 0);"
+                "border-style: inset;"
+                "border-width: 2px;"
+            "}";
 
     this->btnPlay->setStyleSheet(btnDrawStylesheet);
     this->btnPause->setStyleSheet(btnDrawStylesheet);
     this->btnStop->setStyleSheet(btnDrawStylesheet);
     this->btnSnapshot->setStyleSheet(btnDrawStylesheet);
-
-    //BackGround text button
-    this->setStyleSheet("QPushButton {color: black; background-color: transparent}");
 }
 
 void ArcStreamLab::createUIControl()
@@ -203,28 +230,28 @@ void ArcStreamLab::createUIControl()
 
 void ArcStreamLab::imageButtons()
 {
-    QPixmap play = QPixmap(":/img/Play.png");
+    QPixmap play = QPixmap(":/img/PlayWhite.png");
     play = play.scaled(50, 50, Qt::KeepAspectRatio);
     this->btnPlay->setIcon(play);
     this->btnPlay->setFlat(true);
     this->btnPlay->setFocusPolicy(Qt::NoFocus);
     this->btnPlay->setIconSize(play.size());
 
-    QPixmap pause = QPixmap(":/img/Pause.png");
+    QPixmap pause = QPixmap(":/img/PauseWhite.png");
     pause = pause.scaled(50, 50, Qt::KeepAspectRatio);
     this->btnPause->setIcon(pause);
     this->btnPause->setFlat(true);
     this->btnPause->setFocusPolicy(Qt::NoFocus);
     this->btnPause->setIconSize(pause.size());
 
-    QPixmap stop = QPixmap(":/img/Stop.png");
+    QPixmap stop = QPixmap(":/img/StopWhite.png");
     stop = stop.scaled(50, 50, Qt::KeepAspectRatio);
     this->btnStop->setIcon(stop);
     this->btnStop->setFlat(true);
     this->btnStop->setFocusPolicy(Qt::NoFocus);
     this->btnStop->setIconSize(stop.size());
 
-    QPixmap snapshot = QPixmap(":/img/Snapshot.png");
+    QPixmap snapshot = QPixmap(":/img/SnapshotWhite.png");
     snapshot = snapshot.scaled(80, 80, Qt::KeepAspectRatio);
     this->btnSnapshot->setIcon(snapshot);
     this->btnSnapshot->setFlat(true);

@@ -67,6 +67,15 @@ void SpecialEffect::geometry()
     this->radioSuperpositionNo = new QRadioButton("Non", this);
     this->radioSuperpositionYes = new QRadioButton("Oui", this);
     radioSuperpositionNo->setChecked(true);
+    QString btnRadio =
+            "QRadioButton{"
+                "color: white;"
+                "background-color: rgba(120, 120, 120, 0);"
+                "border:0px solid rgb(0,0,0);"
+                "}";
+    this->superpositionGroupBox->setStyleSheet("color:white");
+    this->radioSuperpositionNo->setStyleSheet(btnRadio);
+    this->radioSuperpositionYes->setStyleSheet(btnRadio);
     QHBoxLayout *hbox = new QHBoxLayout;
     hbox->addWidget(radioSuperpositionNo);
     hbox->addWidget(radioSuperpositionYes);
@@ -114,5 +123,6 @@ void SpecialEffect::control()
 
 void SpecialEffect::appearance()
 {
-    this->setStyleSheet("background : url(:/img/back6.png)");
+    this->setStyleSheet("SpecialEffect {background : url(:/img/popupBack.jpg)}");
+
 }
