@@ -1,105 +1,12 @@
-\documentclass[oneside,openright,a4paper, 11pt]{report}
-\usepackage[resetfonts]{cmap}
-\usepackage[T1]{fontenc}
-\usepackage[french]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{float}
-\usepackage{subfig}
-\usepackage{fancyhdr}
-\usepackage{lastpage}
-\usepackage[nottoc]{tocbibind}
-\usepackage[ruled,vlined]{algorithm2e}
-
-% Needed to use biblatex instead of bibtex
-%\usepackage[style=authoryear-ibid,backend=biber,sorting=anyt]{biblatex}
-%\addbibresource{biblio.bib}
-
-% Image management
-\usepackage[pdftex]{graphicx}
-% Margins
-\usepackage{geometry}
- \geometry{
- a4paper,
- total={160mm,257mm},
- left=25mm,
- top=10mm,
- includeheadfoot,
- }
-% Paragraph indentation
-\setlength{\parindent}{0em}
-% Link format
-\usepackage[colorlinks = true, linkcolor = blue, urlcolor  = blue, citecolor = blue, anchorcolor = blue]{hyperref}
-% Caption options
-\usepackage[format=hang, font=footnotesize, justification=centerlast]{caption}
-% TODO notes
-% Usage:
-% Note in the margin: \todo{this is a todo note}
-% Inline note: \todo[inline]{this is a todo note}
-% To disable the display of todo notes: %\usepackage[disable]{todonotes}
-\usepackage{todonotes}
-% Citations quotes
-\usepackage[autostyle=true]{csquotes}
-% Footnotes fixed at the bottom of the page
-\usepackage[bottom]{footmisc}
-
-\usepackage{listings}
-\usepackage{xcolor}
-\definecolor{darkgreen}{rgb}{0,0.6,0}
-\lstset
-{
-  basicstyle=\footnotesize,
-  breakatwhitespace=false,         
-  breaklines=true,                 
-  commentstyle=\color{darkgreen}\bfseries,
-  keepspaces=true,                 
-  keywordstyle=\color{blue}\bfseries,
-  language=C++,                 
-  showspaces=false,                
-  showstringspaces=false,          
-  showtabs=false,                  
-  stringstyle=\color{red}\bfseries,     
-  tabsize=2	                   
-}
-
-\usepackage{lipsum}
-
-% English words
-\newcommand{\eng}[1]{
-\kern-1ex \textit{#1}~\kern-1ex
-}
+\input{structure_and_commands.tex}
 
 \begin{document}
 
 \input{./title.tex}
-
-\input{./chapters/remerciements.tex}
-
-\input{./chapters/resume.tex}
-
-\input{./chapters/abstract.tex}
-
-\tableofcontents
-
-\input{./chapters/introduction.tex}
-
-\input{./chapters/contributions.tex}
-
-\input{./chapters/analyse.tex}
-
-\input{./chapters/risques.tex}
-
-\input{./chapters/technologies.tex}
-
-\input{./chapters/conception.tex}
-
-\input{./chapters/implementation.tex}
-
-\input{./chapters/resultats.tex}
-
-\input{./chapters/limitation_perspectives.tex}
-
 \newpage
 \pagenumbering{roman} % Roman page numbering - lowercase
+
+\input{./content.tex}
 
 \listoffigures
 %\printbibliography

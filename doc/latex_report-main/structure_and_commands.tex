@@ -1,0 +1,171 @@
+\documentclass[oneside,openright,a4paper, 11pt]{report}
+\usepackage[resetfonts]{cmap}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[nottoc]{tocbibind}
+\usepackage[ruled,vlined]{algorithm2e}
+
+% Needed to use biblatex instead of bibtex
+%\usepackage[style=authoryear-ibid,backend=biber,sorting=anyt]{biblatex}
+%\addbibresource{biblio.bib}
+
+% Image management
+\usepackage[pdftex]{graphicx}
+% Margins
+\usepackage{geometry}
+ \geometry{
+ paper=a4paper,
+ total={160mm,257mm},
+ left=25mm,
+ top=10mm,
+ includeheadfoot}
+% Paragraph indentation
+\setlength{\parindent}{0em}
+% Link format
+\usepackage[colorlinks = true, linkcolor = blue, urlcolor  = blue, citecolor = blue, anchorcolor = blue]{hyperref}
+% Caption options
+\usepackage[format=hang, font=footnotesize, justification=centerlast]{caption}
+
+% TODO notes
+% Usage:
+% Note in the margin: \todo{this is a todo note}
+% Inline note: \todo[inline]{this is a todo note}
+% To disable the display of todo notes: %\usepackage[disable]{todonotes}
+\usepackage{todonotes}
+% Citations quotes
+\usepackage[autostyle=true]{csquotes}
+% Footnotes fixed at the bottom of the page
+\usepackage[bottom]{footmisc}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\lstset
+{
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  commentstyle=\color{darkgreen}\bfseries,
+  keepspaces=true,                 
+  keywordstyle=\color{blue}\bfseries,
+  language=C++,                 
+  showspaces=false,                
+  showstringspaces=false,          
+  showtabs=false,                  
+  stringstyle=\color{red}\bfseries,     
+  tabsize=2	                   
+}
+
+\usepackage{lipsum}
+\usepackage[framemethod=tikz]{mdframed}
+
+% English words
+\newcommand{\eng}[1]{
+\kern-1ex \textit{#1}~\kern-1ex
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lachaise Assignment
+% Structure Specification File
+% Version 1.0 (26/6/2018)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Marion Lachaise & François Févotte
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------------------
+%	COMMAND LINE ENVIRONMENT
+%----------------------------------------------------------------------------------------
+
+% Usage:
+% \begin{commandline}
+%	\begin{verbatim}
+%		$ ls
+%		
+%		Applications	Desktop	...
+%	\end{verbatim}
+% \end{commandline}
+\mdfdefinestyle{commandline}{
+	leftmargin=10pt,
+	rightmargin=10pt,
+	innerleftmargin=15pt,
+	middlelinecolor=black!50!white,
+	middlelinewidth=2pt,
+	frametitlerule=false,
+	backgroundcolor=black!5!white,
+	frametitle={Command Line},
+	frametitlefont={\normalfont\sffamily\color{white}\hspace{-1em}},
+	frametitlebackgroundcolor=black!50!white,
+	nobreak,
+}
+% Define a custom environment for command-line snapshots
+\newenvironment{commandline}{
+	\medskip
+	\begin{mdframed}[style=commandline]
+}{
+	\end{mdframed}
+	\medskip
+}
+
+% Usage:
+% \begin{warn}[optional title, defaults to "Warning:"]
+%	Contents
+% \end{warn}
+\mdfdefinestyle{warning}{
+	topline=false, bottomline=false,
+	leftline=false, rightline=false,
+	nobreak,
+	singleextra={%
+		\draw(P-|O)++(-0.5em,0)node(tmp1){};
+		\draw(P-|O)++(0.5em,0)node(tmp2){};
+		\fill[black,rotate around={45:(P-|O)}](tmp1)rectangle(tmp2);
+		\node at(P-|O){\color{white}\scriptsize\bf !};
+		\draw[very thick](P-|O)++(0,-1em)--(O);%--(O-|P);
+	}
+}
+
+% Define a custom environment for warning text
+\newenvironment{warn}[1][Warning:]{ % Set the default warning to "Warning:"
+	\medskip
+	\begin{mdframed}[style=warning]
+		\noindent{\textbf{#1}}
+}{
+	\end{mdframed}
+}
+
+% Usage:
+% \begin{info}[optional title, defaults to "Info:"]
+% 	contents
+% 	\end{info}
+\mdfdefinestyle{info}{%
+	topline=false, bottomline=false,
+	leftline=false, rightline=false,
+	nobreak,
+	singleextra={%
+		\fill[black](P-|O)circle[radius=0.4em];
+		\node at(P-|O){\color{white}\scriptsize\bf i};
+		\draw[very thick](P-|O)++(0,-0.8em)--(O);%--(O-|P);
+	}
+}
+% Define a custom environment for information
+\newenvironment{info}[1][Info:]{ % Set the default title to "Info:"
+	\medskip
+	\begin{mdframed}[style=info]
+		\noindent{\textbf{#1}}
+}{
+	\end{mdframed}
+}
+
