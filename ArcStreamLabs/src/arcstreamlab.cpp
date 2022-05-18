@@ -184,6 +184,7 @@ void ArcStreamLab::createUIControl()
 
     sloUpdateColorimetryValues();
 
+    connect(filterDialog, &Filter::sigSetLongExposureFilter, this, &ArcStreamLab::sloCreateFilterAction);
     connect(filterDialog, &Filter::sigSetSobelFilter, this, &ArcStreamLab::sloCreateFilterAction);
     connect(filterDialog, &Filter::sigSetStylizationFilter, this, &ArcStreamLab::sloCreateFilterAction);
     connect(filterDialog, &Filter::sigSetNoFilter, this, &ArcStreamLab::sloNoFilter);

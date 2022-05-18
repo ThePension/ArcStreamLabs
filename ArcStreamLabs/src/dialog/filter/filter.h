@@ -5,6 +5,7 @@
 #include "QVBoxLayout"
 #include "sobelfilter.h"
 #include "stylizationfilter.h"
+#include "longexposure.h"
 
 class QCheckBox;
 class QLabel;
@@ -28,6 +29,7 @@ class Filter : public QDialog
         QPushButton * buttonNoFilter;
         QPushButton * buttonSobelFilter; // Edge detector
         QPushButton * buttonStylizationFilter;
+        QPushButton * buttonLongExposureFilter;
         ArcStreamLab *parent;
         QAction *actUndo, *actRedo;
 
@@ -42,9 +44,12 @@ class Filter : public QDialog
         void sigSetNoFilter();
         void sigSetSobelFilter(FilterActions *);
         void sigSetStylizationFilter(FilterActions *);
+        void sigSetLongExposureFilter(FilterActions *);
 
     private slots:
         void sloButtonNoFilter();
         void sloButtonSobelFilter();
         void sloButtonStylizationFilter();
+        void sloButtonLongExposureFilter();
 };
+

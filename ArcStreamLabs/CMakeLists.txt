@@ -36,6 +36,7 @@ set(PROJECT_SOURCES
         src/dialog/filter/filter.h src/dialog/filter/filter.cpp
         src/dialog/filter/filteractions.h src/dialog/filter/filteractions.cpp
         src/dialog/filter/sobelfilter.h src/dialog/filter/sobelfilter.cpp
+        src/dialog/filter/longexposure.h src/dialog/filter/longexposure.cpp
         src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp
         src/dialog/specialEffect/specialeffectactions.h src/dialog/specialEffect/specialeffectactions.cpp
         src/dialog/specialEffect/mirror.h src/dialog/specialEffect/mirror.cpp
