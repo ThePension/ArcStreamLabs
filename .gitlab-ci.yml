@@ -2,7 +2,7 @@
 variables:
   DOCKER_DRIVER: overlay2
   LATEX_IMAGE: listx/texlive:2020
-  LATEX_MAIN: doc/latex_report-main/report.tex
+  LATEX_MAIN: report.tex
 
 stages:
   # - build-image
@@ -28,6 +28,7 @@ build_job_latex:
   tags:
     - alpine-docker
   script:
+    - cd ./doc/latex_report-main/
     - latexmk -pdf $LATEX_MAIN
   artifacts:
     paths:
