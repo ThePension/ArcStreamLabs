@@ -195,6 +195,7 @@ void ArcStreamLab::createUIControl()
     connect(specialEffectDialog, &SpecialEffect::sigSetFacialBlurEffect, this, &ArcStreamLab::sloCreateEffectAction);
 
     connect(animationDialog, &Animation::sigSetMustacheAnimation, this, &ArcStreamLab::sloCreateAnimationAction);
+    connect(animationDialog, &Animation::sigSetTextAnimation, this, &ArcStreamLab::sloCreateAnimationAction);
 
     this->settings = new Settings(colorDialog, filterDialog, specialEffectDialog, animationDialog, this);
 }

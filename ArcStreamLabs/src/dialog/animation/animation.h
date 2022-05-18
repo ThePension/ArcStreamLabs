@@ -3,11 +3,13 @@
 #include <QDialog>
 
 #include "mustacheanimation.h"
+#include "textanimation.h"
 
 class QCheckBox;
 class QLabel;
-class QLineEdit;
+class QTextEdit;
 class QPushButton;
+class QLineEdit;
 class QVBoxLayout;
 class ArcStreamLab;
 
@@ -19,6 +21,8 @@ class Animation : public QDialog
         QVBoxLayout *verticalBox;
 
         QPushButton * buttonMustacheAnimation;
+        QPushButton * buttonText;
+        QLineEdit * lineEditText;
 
         ArcStreamLab *parent;
         QAction *actUndo, *actRedo;
@@ -32,7 +36,9 @@ class Animation : public QDialog
 
     signals:
         void sigSetMustacheAnimation(AnimationActions *);
+        void sigSetTextAnimation(AnimationActions *);
 
     private slots:
         void sloButtonMustacheAnimation();
+        void sloButtonTextAnimation();
 };
