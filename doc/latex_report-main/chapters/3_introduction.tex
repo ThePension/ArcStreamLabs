@@ -1,0 +1,61 @@
+\chapter{Introduction}
+Extrait des conseils pour écrire un rapport de P3 et de Bachelor présents \href{https://gitlab-etu.ing.he-arc.ch/isc/documentation/projet-p3-et-bachelor/-/wikis/help-report}{ici} :
+\begin{quote}    
+  \begin{itemize}   
+    \item exposer le sujet (ou le thème, la matière prise en considération) en faisant valoir son importance et son originalité,
+    \item articuler la problématique soulevée,
+    annoncer le plan.
+  \end{itemize}
+\end{quote}
+
+Pour inclure une image, il faut faire comme ceci :
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{./images/logos/he-arc-banner.jpg}
+  \caption{Teaser figure.}
+  \label{Fig_teaser}
+\end{figure}
+
+On peut ensuite facilement référencer la Figure \ref{Fig_teaser} ailleurs dans le texte.
+
+Pour rajouter une nouvelle figure et la référencer (voir Figure \ref{Fig_exemple}).
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./images/logos/he-arc-logo.png}
+    \caption{Ceci est le nouveau logo de la HE-Arc.}
+    \label{Fig_exemple}
+\end{figure}
+
+À noter que la numérotation se fait automatiquement.
+Les liens entre les références sont aussi gérés de manière transparente.
+
+\section{Comment formater le texte}
+\textbf{Comment mettre un texte en gras.}
+\underline{Comment souligner un texte.} 
+\textit{Comment mettre un texte en italique.}
+\underline{\textbf{\textit{On peut aussi mélanger les 3.}}}
+
+Pour commencer un nouveau paragraphe, il suffit d'ajouter 1 ligne vide le fichier .tex.
+
+Pour faire une liste :
+\begin{itemize}
+    \item élément 1
+    \item élément 2
+    \item élément 3
+\end{itemize}
+
+Pour faire une liste numérotée :
+\begin{enumerate}
+    \item élément 1
+    \item élément 2
+    \item élément 3
+\end{enumerate}
+
+\section{Lorem ipsum}
+\lipsum[1-1] % PLACEHOLDER
+\subsection{Dolor sit}
+\lipsum[1-1] % PLACEHOLDER
+\subsubsection{amet}
+\lipsum[1-1] % PLACEHOLDER
+\paragraph{consectetuer}
+\lipsum[1-1] % PLACEHOLDER

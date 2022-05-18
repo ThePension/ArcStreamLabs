@@ -1,0 +1,32 @@
+\chapter{Implémentation}
+Pour afficher des instructions en ligne de command, vous pouvez faire comme ceci :
+\begin{commandline}
+  \begin{verbatim}
+	$ git pull --rebase
+	\end{verbatim}
+\end{commandline}
+
+Pour attirer l'attention de lecteur sur un point intéressant :
+\begin{info}[Bon à savoir :]
+ 	Ceci est une information intéressante à mettre en avant dans le rapport.
+\end{info}
+
+Pour avertir de lecteur :
+\begin{warn}[Erreur à éviter :]
+ 	Ceci est une erreur fréquente qu'il faut absolument éviter.
+\end{warn}
+
+Si vous avez besoin de lister un (petit) bout de code, il faut faire comme ce qui suit :
+\begin{lstlisting}
+// This is great!
+IEnumerator DoCheck() 
+{
+  for(;;)
+  {
+    ProximityCheck();
+    Debug.Log("Yielding execution here");
+    yield return new WaitForSeconds(.1f);
+    Debug.Log("Execution resumed");
+  }
+}
+\end{lstlisting}
