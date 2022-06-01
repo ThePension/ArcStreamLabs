@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(ArcStreamLabs VERSION 0.1 LANGUAGES CXX)
 
-find_package( OpenCV REQUIRED)
+find_package(OpenCV REQUIRED)
 
 add_subdirectory("lib/LibCircularBuffer")
 

@@ -23,9 +23,9 @@ void LongExposure::execute()
         double alpha = 0.8; double beta, gamma=0.5;
 
         //utiliser un combobox pour choisir
-           imB = cv::imread("../ArcStreamLabs/img/asianGhost.png");
-           imC = cv::imread("../ArcStreamLabs/img/Boloss.png");
-           imD = cv::imread("../ArcStreamLabs/img/asianBoloss.png");
+       imB = Helper::loadMatFromQrc(":/img/asianGhost.png");
+       imC = Helper::loadMatFromQrc(":/img/Boloss.png");
+       imD = Helper::loadMatFromQrc(":/img/asianBoloss.png");
 
         beta = ( 1.0 - alpha );
         addWeighted( this->mat, alpha, imD, beta, 0.0, output);

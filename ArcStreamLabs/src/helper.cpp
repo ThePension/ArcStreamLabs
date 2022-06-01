@@ -95,6 +95,20 @@ Mat Helper::loadMatFromQrc(QString qrc, int flag)
     return mat;
 }
 
+// From Url : https://stackoverflow.com/questions/16099442/loaad-a-opencv-haarcascade-from-qt-ressources
+cv::CascadeClassifier Helper::loadCascadeClassifierFromQrc(QString qrc)
+{
+    CascadeClassifier cascadeClassifier;
+
+    QString sPath = QCoreApplication::applicationDirPath().append("/temp.xml");
+    QFile::copy(qrc , sPath);
+    cascadeClassifier = cv::CascadeClassifier(sPath.toStdString());
+
+    QFile::remove(sPath);
+
+    return cascadeClassifier;
+}
+
 bool Helper::doesFolderExists(QString folderPath)
 {
     return QFile::exists(folderPath);

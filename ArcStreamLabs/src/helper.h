@@ -6,6 +6,9 @@
 #include <QDebug>
 #include <QFile>
 #include <QIODevice>
+#include <QCoreApplication>
+#include <QDir>
+#include <QUrl>
 
 class Helper
 {
@@ -21,5 +24,6 @@ public:
                                           float x0y1, float x1y1, float x2y1,
                                           float x0y2, float x1y2, float x2y2);
     static cv::Mat loadMatFromQrc(QString qrc, int flag = cv::IMREAD_COLOR);
+    static cv::CascadeClassifier loadCascadeClassifierFromQrc(QString qrc);
     static bool doesFolderExists(QString folderPath);
 };

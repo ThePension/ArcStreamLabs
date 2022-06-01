@@ -12,5 +12,12 @@
         <file>img/SnapshotWhite.png</file>
         <file>img/StopWhite.png</file>
         <file>img/popupBack.jpg</file>
+        <file>img/asianBoloss.png</file>
+        <file>img/asianGhost.png</file>
+        <file>img/Boloss.png</file>
+    </qresource>
+    <qresource prefix="/xml">
+        <file>xml/haarcascade_mcs_mouth.xml</file>
+        <file>xml/haarcascade_frontalface_default.xml</file>
     </qresource>
 </RCC>

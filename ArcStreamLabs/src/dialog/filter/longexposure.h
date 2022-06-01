@@ -1,6 +1,7 @@
 #pragma once
 
 #include "filteractions.h"
+#include "../../helper.h"
 
 class LongExposure : public FilterActions
 {
