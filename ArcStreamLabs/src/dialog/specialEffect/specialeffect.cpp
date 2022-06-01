@@ -63,19 +63,11 @@ void SpecialEffect::sloFacialBlurEffect()
 
 void SpecialEffect::geometry()
 {
-    this->superpositionGroupBox = new QGroupBox("Superposition des effets ?");
-    this->radioSuperpositionNo = new QRadioButton("Non", this);
-    this->radioSuperpositionYes = new QRadioButton("Oui", this);
+    this->superpositionGroupBox = new QGroupBox(tr("Superposition des effets ?"));
+    this->radioSuperpositionNo = new QRadioButton(tr("Non"), this);
+    this->radioSuperpositionYes = new QRadioButton(tr("Oui"), this);
     radioSuperpositionNo->setChecked(true);
-    QString btnRadio =
-            "QRadioButton{"
-                "color: white;"
-                "background-color: rgba(120, 120, 120, 0);"
-                "border:0px solid rgb(0,0,0);"
-                "}";
-    this->superpositionGroupBox->setStyleSheet("color:white");
-    this->radioSuperpositionNo->setStyleSheet(btnRadio);
-    this->radioSuperpositionYes->setStyleSheet(btnRadio);
+
     QHBoxLayout *hbox = new QHBoxLayout;
     hbox->addWidget(radioSuperpositionNo);
     hbox->addWidget(radioSuperpositionYes);
@@ -85,19 +77,20 @@ void SpecialEffect::geometry()
     this->buttonNoFilter->setText(tr("No special effects"));
 
     this->buttonMirror = new QPushButton(this);
-    this->buttonMirror->setText(tr("mirror"));
+    this->buttonMirror->setText(tr("Mirror"));
 
+    this->mosaicGroupBox = new QGroupBox("mosaic blur");
     this->buttonMosaicBlur = new QPushButton(this);
     this->buttonMosaicBlur->setText(tr("Mosaic blur"));
-
     this->mosaicSlider = new QSlider(Qt::Horizontal, this);
     this->mosaicSlider->setTickInterval(1);
     this->mosaicSlider->setRange(1, 50);
     this->mosaicSlider->setValue(16);
 
-    QHBoxLayout *mosaicLayout = new QHBoxLayout();
+    QVBoxLayout *mosaicLayout = new QVBoxLayout;
     mosaicLayout->addWidget(this->buttonMosaicBlur);
     mosaicLayout->addWidget(this->mosaicSlider);
+    mosaicGroupBox->setLayout(mosaicLayout);
 
     this->buttonFacialBlur = new QPushButton(this);
     this->buttonFacialBlur->setText(tr("Facial blur"));
@@ -106,8 +99,7 @@ void SpecialEffect::geometry()
     this->verticalBox->addWidget(superpositionGroupBox);
     this->verticalBox->addWidget(this->buttonNoFilter);
     this->verticalBox->addWidget(this->buttonMirror);
-    this->verticalBox->addLayout(mosaicLayout);
-    this->verticalBox->addWidget(this->buttonMosaicBlur);
+    this->verticalBox->addWidget(this->mosaicGroupBox);
     this->verticalBox->addWidget(this->buttonFacialBlur);
     setLayout(this->verticalBox);
 }
@@ -123,6 +115,33 @@ void SpecialEffect::control()
 
 void SpecialEffect::appearance()
 {
-    this->setStyleSheet("SpecialEffect {background : url(:/img/popupBack.jpg)}");
+    int minHeight = 40, maxHeight = 80;
+
+    QString btnRadio =
+            "QRadioButton{"
+                "color: white;"
+                "background-color: rgba(120, 120, 120, 0);"
+                "border:0px solid rgb(0,0,0);"
+                "}";
+
+    this->superpositionGroupBox->setStyleSheet("color:white");
+    this->superpositionGroupBox->setMaximumHeight(maxHeight);
+    this->radioSuperpositionNo->setStyleSheet(btnRadio);
+    this->radioSuperpositionYes->setStyleSheet(btnRadio);
+
+    this->mosaicGroupBox->setStyleSheet("color:white");
+    this->mosaicSlider->setTickPosition(QSlider::TicksBothSides);
+    this->mosaicSlider->setTickInterval(10);
+    this->mosaicSlider->setSingleStep(1);
+    this->mosaicSlider->setStyleSheet("QSlider::handle:horizontal {background-color: red;}");
+
+    this->buttonNoFilter->setMinimumHeight(minHeight);
+    this->buttonNoFilter->setMaximumHeight(maxHeight);
+    this->buttonMirror->setMinimumHeight(minHeight);
+    this->buttonMirror->setMaximumHeight(maxHeight);
+    this->buttonMosaicBlur->setMinimumHeight(minHeight);
+    this->buttonMosaicBlur->setMaximumHeight(maxHeight);
+    this->buttonFacialBlur->setMinimumHeight(minHeight);
+    this->buttonFacialBlur->setMaximumHeight(maxHeight);
 
 }

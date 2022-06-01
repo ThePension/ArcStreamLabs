@@ -49,8 +49,6 @@ class ArcStreamLab : public QWidget
         QPushButton *btnStop;
         QPushButton *btnSnapshot;
 
-        QPushButton *logoHEARC;
-
         QPushButton *btnColor; // Open the colorimetry dialog
         QPushButton *btnFilter; // Open the filter dialog
         QPushButton *btnSpecialEffect; // Open the special effect dialog

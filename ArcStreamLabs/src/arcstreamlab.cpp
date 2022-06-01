@@ -69,9 +69,6 @@ void ArcStreamLab::createUIGeometry()
     this->buttonsHLayout->addWidget(this->btnPause);
     this->buttonsHLayout->addWidget(this->btnStop);
 
-    //TO DO
-    //ADD school logo here
-    //TO DO
     this->videoInputVLayout->addWidget(this->graphicViewInput);
     this->videoInputVLayout->addLayout(this->buttonsHLayout);
     this->videoInputVLayout->addWidget(this->btnSnapshot);
@@ -89,7 +86,7 @@ void ArcStreamLab::createUIGeometry()
     this->mainVLayout->addLayout(this->settingsHLayout);
 
     // Dialog
-    colorDialog = new Colorimetry(this->actionManager, this);
+    colorDialog = new Colorimetry(this->actionManager);
     colorimetryFilter = new ColorimetryFilter(this);
     colorimetryTabs = new ColorimetryTabs(colorDialog, colorimetryFilter, this);
     filterDialog =  new Filter(this);
@@ -142,8 +139,9 @@ void ArcStreamLab::createUIAppearance()
     this->btnSnapshot->setEnabled(false);
 
     //BackGround text button
-    //this->setStyleSheet("QPushButton {color: white; background-color: rgba(120,120,120,30)}");
-    this->setStyleSheet("QPushButton{"
+    this->setStyleSheet("QFrame {background-image : url(:/img/popupBack.jpg)}"
+                        "QDialog {background-image : url(:/img/popupBack.jpg)}"
+                        "QPushButton{"
                             "color: white;"
                             "background-color: rgba(120, 120, 120, 50);"
                             "border:0px solid rgb(0,0,0);"
@@ -157,7 +155,8 @@ void ArcStreamLab::createUIAppearance()
                             "background-color: rgba(120, 120, 120, 150);"
                             "border-style: inset;"
                             "border-width: 2px;"
-                        "}");
+                        "}"
+                        );
 
     //BackGround draw button
     QString btnDrawStylesheet =

@@ -56,21 +56,10 @@ void Filter::sloButtonLongExposureFilter()
 
 void Filter::geometry()
 {
-    int minHeight = 40, maxHeight = 80;
     this->superpositionGroupBox = new QGroupBox("Superposition des effets ?");
     this->radioSuperpositionNo = new QRadioButton("Non", this);
     this->radioSuperpositionYes = new QRadioButton("Oui", this);
     radioSuperpositionNo->setChecked(true);
-    QString btnRadio =
-            "QRadioButton{"
-                "color: white;"
-                "background-color: rgba(120, 120, 120, 0);"
-                "border:0px solid rgb(0,0,0);"
-                "}";
-    this->superpositionGroupBox->setStyleSheet("color:white");
-    this->superpositionGroupBox->setMaximumHeight(maxHeight);
-    this->radioSuperpositionNo->setStyleSheet(btnRadio);
-    this->radioSuperpositionYes->setStyleSheet(btnRadio);
 
     QHBoxLayout *hbox = new QHBoxLayout;
     hbox->addWidget(radioSuperpositionNo);
@@ -79,23 +68,16 @@ void Filter::geometry()
 
     this->buttonNoFilter = new QPushButton(this);
     this->buttonNoFilter->setText(tr("No filter"));
-    this->buttonNoFilter->setMinimumHeight(minHeight);
-    this->buttonNoFilter->setMaximumHeight(maxHeight);
 
     this->buttonSobelFilter = new QPushButton(this);
     this->buttonSobelFilter->setText(tr("Sobel filter"));
-    this->buttonSobelFilter->setMinimumHeight(minHeight);
-    this->buttonSobelFilter->setMaximumHeight(maxHeight);
 
     this->buttonLongExposureFilter = new QPushButton(this);
     this->buttonLongExposureFilter->setText(tr("Exposure filter"));
-    this->buttonLongExposureFilter->setMinimumHeight(minHeight);
-    this->buttonLongExposureFilter->setMaximumHeight(maxHeight);
+
 
     this->buttonStylizationFilter = new QPushButton(this);
     this->buttonStylizationFilter->setText(tr("Stylization filter"));
-    this->buttonStylizationFilter->setMinimumHeight(minHeight);
-    this->buttonStylizationFilter->setMaximumHeight(maxHeight);
 
     this->verticalBox = new QVBoxLayout();
     this->verticalBox->addWidget(superpositionGroupBox);
@@ -116,6 +98,27 @@ void Filter::control()
 
 void Filter::appearance()
 {
-    this->setStyleSheet("Filter {background : url(:/img/popupBack.jpg)}");
+    int minHeight = 40, maxHeight = 80;
+
+    QString btnRadio =
+            "QRadioButton{"
+                "color: white;"
+                "background-color: rgba(120, 120, 120, 0);"
+                "border:0px solid rgb(0,0,0);"
+                "}";
+
+    this->superpositionGroupBox->setStyleSheet("color:white");
+    this->superpositionGroupBox->setMaximumHeight(maxHeight);
+    this->radioSuperpositionNo->setStyleSheet(btnRadio);
+    this->radioSuperpositionYes->setStyleSheet(btnRadio);
+
+    this->buttonNoFilter->setMinimumHeight(minHeight);
+    this->buttonNoFilter->setMaximumHeight(maxHeight);
+    this->buttonSobelFilter->setMinimumHeight(minHeight);
+    this->buttonSobelFilter->setMaximumHeight(maxHeight);
+    this->buttonLongExposureFilter->setMinimumHeight(minHeight);
+    this->buttonLongExposureFilter->setMaximumHeight(maxHeight);
+    this->buttonStylizationFilter->setMinimumHeight(minHeight);
+    this->buttonStylizationFilter->setMaximumHeight(maxHeight);
 
 }

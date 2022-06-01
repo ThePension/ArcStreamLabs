@@ -27,6 +27,8 @@ class SpecialEffect : public QDialog
         QRadioButton *radioSuperpositionNo;
         QRadioButton *radioSuperpositionYes;
 
+        QGroupBox *mosaicGroupBox;
+
         QSlider * mosaicSlider;
         QPushButton * buttonNoFilter;
         QPushButton * buttonMirror;

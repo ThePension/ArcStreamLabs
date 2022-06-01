@@ -70,5 +70,12 @@ void Animation::control()
 
 void Animation::appearance()
 {
-    this->setStyleSheet("Animation {background : url(:/img/popupBack.jpg)}");
+    int minHeight = 40, maxHeight = 80;
+
+    this->buttonMustacheAnimation->setMinimumHeight(minHeight);
+    this->buttonMustacheAnimation->setMaximumHeight(maxHeight);
+    this->buttonText->setMinimumHeight(minHeight);
+    this->buttonText->setMaximumHeight(maxHeight);
+    this->lineEditText->setMinimumHeight(minHeight);
+    this->lineEditText->setMaximumHeight(maxHeight);
 }

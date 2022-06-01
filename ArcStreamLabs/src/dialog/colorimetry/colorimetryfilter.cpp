@@ -106,5 +106,20 @@ void ColorimetryFilter::control()
 
 void ColorimetryFilter::appearance()
 {
+    int minHeight = 40, maxHeight = 80;
 
+    this->buttonDefaultFilter->setMinimumHeight(minHeight);
+    this->buttonDefaultFilter->setMaximumHeight(maxHeight);
+    this->buttonRedFilter->setMinimumHeight(minHeight);
+    this->buttonRedFilter->setMaximumHeight(maxHeight);
+    this->buttonGreenFilter->setMinimumHeight(minHeight);
+    this->buttonGreenFilter->setMaximumHeight(maxHeight);
+    this->buttonBlueFilter->setMinimumHeight(minHeight);
+    this->buttonBlueFilter->setMaximumHeight(maxHeight);
+    this->buttonSepiaFilter->setMinimumHeight(minHeight);
+    this->buttonSepiaFilter->setMaximumHeight(maxHeight);
+    this->buttonBlackAndWhiteFilter->setMinimumHeight(minHeight);
+    this->buttonBlackAndWhiteFilter->setMaximumHeight(maxHeight);
+    this->buttonAlienFilter->setMinimumHeight(minHeight);
+    this->buttonAlienFilter->setMaximumHeight(maxHeight);
 }

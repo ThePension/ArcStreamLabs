@@ -24,7 +24,6 @@ class Colorimetry : public QWidget
 
     private:
         QTabWidget *tabWidget;
-        //QDialogButtonBox *buttonBox;
 
         ActionManager *actionManager;
         ArcStreamLab *parent;

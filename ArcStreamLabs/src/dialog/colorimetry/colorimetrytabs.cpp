@@ -9,5 +9,6 @@ ColorimetryTabs::ColorimetryTabs(Colorimetry * colorimetry, ColorimetryFilter * 
     this->tabWidget->addTab(colorimetryFilter, "pre-made filters");
 
     mainLayout->addWidget(this->tabWidget);
-    this->setStyleSheet("background : url(:/img/popupBack.jpg)");
+
+    //this->setStyleSheet("ColorimetryTabs {background : url(:/img/popupBack.jpg)}");
 }

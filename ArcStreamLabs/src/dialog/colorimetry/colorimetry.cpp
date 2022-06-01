@@ -87,22 +87,29 @@ void Colorimetry::appearance()
 {
     setWindowTitle("Colorimetry");
 
-
     resize(200, 200);
 
     int interval = 1000;
+    int minHeight = 40, maxHeight = 80;
 
     for (int i = 0; i < width; i++)
     {
         for (int j = 0; j < height; j++)
         {
             QSlider * slider = this->slidersTab[i][j];
-            slider->setTickInterval(1);
+            slider->setTickInterval(100);
+            slider->setSingleStep(10);
+            slider->setTickPosition(QSlider::TicksLeft);
             slider->setMaximum(interval);
             slider->setMinimum(-interval);
-            slider->setMaximumHeight(100);
+            slider->setMaximumHeight(2*maxHeight);
+            slider->setStyleSheet("QSlider::handle:vertical {background-color: red;}");
         }
     }
+
+
+    this->buttonDefaultValues->setMinimumHeight(minHeight);
+    this->buttonDefaultValues->setMaximumHeight(maxHeight);
 }
 
 cv::Mat Colorimetry::getKernel()
