@@ -27,7 +27,6 @@ void MustacheAnimation::execute()
         // Mustache variables
         cv::Mat matMustacheSmall, matMustacheSmallGray, matMustacheMask, matMustacheMaskInv;
 
-
         cvtColor(this->mat, matFramegray, cv::COLOR_BGR2GRAY); // Convert to Gray Scale
         double fx = 1 / scale;
 
@@ -52,23 +51,26 @@ void MustacheAnimation::execute()
                 if(roi.x < 0) roi.x = 0;
             }
 
-            matFrameROI = this->mat(roi); // Extract Region Of Interest (mouth)
+            if(0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= mat.cols && 0 <= roi.y && 0 <= roi.height && roi.y + roi.height <= mat.rows)
+            {
+                matFrameROI = this->mat(roi); // Extract Region Of Interest (mouth)
 
-            // Resizing the image
-            cv::resize(this->matMustache, matMustacheSmall, cv::Size(roi.width, roi.height), 0, 0, cv::INTER_AREA);
+                // Resizing the image
+                cv::resize(this->matMustache, matMustacheSmall, cv::Size(roi.width, roi.height), 0, 0, cv::INTER_AREA);
 
-            // Convert image into grayscale
-            cv::cvtColor(matMustacheSmall, matMustacheSmallGray, cv::COLOR_BGR2GRAY);
+                // Convert image into grayscale
+                cv::cvtColor(matMustacheSmall, matMustacheSmallGray, cv::COLOR_BGR2GRAY);
 
-            cv::threshold(matMustacheSmallGray, matMustacheMask, 244, 255,  cv::THRESH_BINARY_INV);
+                cv::threshold(matMustacheSmallGray, matMustacheMask, 244, 255,  cv::THRESH_BINARY_INV);
 
-            cv::bitwise_not(matMustacheMask, matMustacheMaskInv);
+                cv::bitwise_not(matMustacheMask, matMustacheMaskInv);
 
-            cv::bitwise_and(matMustacheSmall, matMustacheSmall, matFrameWithMustacheMask, matMustacheMask);
+                cv::bitwise_and(matMustacheSmall, matMustacheSmall, matFrameWithMustacheMask, matMustacheMask);
 
-            cv::bitwise_and(matFrameROI, matFrameROI, matFrameMasked, matMustacheMaskInv);
+                cv::bitwise_and(matFrameROI, matFrameROI, matFrameMasked, matMustacheMaskInv);
 
-            cv::add(matFrameWithMustacheMask, matFrameMasked, this->mat(roi));
+                cv::add(matFrameWithMustacheMask, matFrameMasked, this->mat(roi));
+            }
         }
     }
 }
