@@ -49,6 +49,7 @@ set(PROJECT_SOURCES
         src/dialog/animation/mustacheanimation.h src/dialog/animation/mustacheanimation.cpp
         src/dialog/specialEffect/facialblureffect.h src/dialog/specialEffect/facialblureffect.cpp
         src/undo_redo/actionmanager.cpp src/undo_redo/actionmanager.h src/undo_redo/undoableaction.h
+        src/undo_redo/undoableactiontest.h src/undo_redo/undoableactiontest.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
