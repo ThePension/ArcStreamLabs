@@ -63,9 +63,9 @@ void SpecialEffect::sloFacialBlurEffect()
 
 void SpecialEffect::geometry()
 {
-    this->superpositionGroupBox = new QGroupBox(tr("Superposition des effets ?"));
-    this->radioSuperpositionNo = new QRadioButton(tr("Non"), this);
-    this->radioSuperpositionYes = new QRadioButton(tr("Oui"), this);
+    this->superpositionGroupBox = new QGroupBox(tr("Effects overlay ?"));
+    this->radioSuperpositionNo = new QRadioButton(tr("No"), this);
+    this->radioSuperpositionYes = new QRadioButton(tr("Yes"), this);
     radioSuperpositionNo->setChecked(true);
 
     QHBoxLayout *hbox = new QHBoxLayout;

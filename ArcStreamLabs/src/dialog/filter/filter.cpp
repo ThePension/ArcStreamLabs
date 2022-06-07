@@ -56,9 +56,9 @@ void Filter::sloButtonLongExposureFilter()
 
 void Filter::geometry()
 {
-    this->superpositionGroupBox = new QGroupBox("Superposition des effets ?");
-    this->radioSuperpositionNo = new QRadioButton("Non", this);
-    this->radioSuperpositionYes = new QRadioButton("Oui", this);
+    this->superpositionGroupBox = new QGroupBox("Effects overlay ?");
+    this->radioSuperpositionNo = new QRadioButton("No", this);
+    this->radioSuperpositionYes = new QRadioButton("Yes", this);
     radioSuperpositionNo->setChecked(true);
 
     QHBoxLayout *hbox = new QHBoxLayout;
