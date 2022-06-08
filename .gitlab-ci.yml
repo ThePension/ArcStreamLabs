@@ -64,7 +64,7 @@ build-job:
   stage: build
   artifacts:
     paths:
-    - ./Documentation
+    - BUILD/Documentation/
   script:
     - mkdir BUILD
     - cd BUILD
