@@ -2,6 +2,8 @@
 
 ColorimetryTabs::ColorimetryTabs(Colorimetry * colorimetry, ColorimetryFilter * colorimetryFilter, QWidget *parent) : QDialog(parent)
 {
+
+    setWindowTitle("Colorimetry");
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
     this->tabWidget = new QTabWidget(this);

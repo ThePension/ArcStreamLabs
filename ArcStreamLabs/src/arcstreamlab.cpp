@@ -138,7 +138,7 @@ void ArcStreamLab::createUIAppearance()
     this->btnStop->setEnabled(false);
     this->btnSnapshot->setEnabled(false);
 
-    //BackGround text button
+    //css stlye
     this->setStyleSheet("QFrame {background-image : url(:/img/popupBack.jpg)}"
                         "QDialog {background-image : url(:/img/popupBack.jpg)}"
                         "QPushButton{"
