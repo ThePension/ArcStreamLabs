@@ -1,0 +1,17 @@
+\hypertarget{undoableaction_8h_source}{}\doxysection{undoableaction.\+h}
+\label{undoableaction_8h_source}\index{ArcStreamLabs/src/undo\_redo/undoableaction.h@{ArcStreamLabs/src/undo\_redo/undoableaction.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <QObject>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_undoable_action}{UndoableAction}} : \textcolor{keyword}{public} QObject}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     \textcolor{keyword}{public}:}
+\DoxyCodeLine{8         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_undoable_action}{\string~UndoableAction}}() \{\};}
+\DoxyCodeLine{9         \textcolor{keywordtype}{void} \textcolor{keyword}{virtual} execute() = 0;}
+\DoxyCodeLine{10         \textcolor{keywordtype}{void} \textcolor{keyword}{virtual} undo() = 0;}
+\DoxyCodeLine{11 \};}
+
+\end{DoxyCode}

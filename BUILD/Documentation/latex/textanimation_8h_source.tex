@@ -1,0 +1,30 @@
+\hypertarget{textanimation_8h_source}{}\doxysection{textanimation.\+h}
+\label{textanimation_8h_source}\index{ArcStreamLabs/src/dialog/animation/textanimation.h@{ArcStreamLabs/src/dialog/animation/textanimation.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}animationactions.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{enum class} Direction \{ UP, DOWN, LEFT, RIGHT \};}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_text_animation}{TextAnimation}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_animation_actions}{AnimationActions}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \textcolor{keyword}{private}:}
+\DoxyCodeLine{10     QString text;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keywordtype}{float} x, y, w, h;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{float} xspeed, yspeed;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     cv::Point getNewPosition();}
+\DoxyCodeLine{16     \textcolor{keywordtype}{void} moveCheck();}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_text_animation}{TextAnimation}}(QString text);}
+\DoxyCodeLine{20     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_text_animation}{\string~TextAnimation}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} execute() \textcolor{keyword}{override};}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} undo()\textcolor{keyword}{ override }\{ \}}
+\DoxyCodeLine{24 \};}
+
+\end{DoxyCode}

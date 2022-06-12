@@ -1,0 +1,26 @@
+\hypertarget{colorimetrytabs_8h_source}{}\doxysection{colorimetrytabs.\+h}
+\label{colorimetrytabs_8h_source}\index{ArcStreamLabs/src/dialog/colorimetry/colorimetrytabs.h@{ArcStreamLabs/src/dialog/colorimetry/colorimetrytabs.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <QDialog>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QVBoxLayout>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <QTabWidget>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}colorimetry.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}colorimetryfilter.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_colorimetry_tabs}{ColorimetryTabs}} : \textcolor{keyword}{public} QDialog}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12     Q\_OBJECT}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keyword}{private}:}
+\DoxyCodeLine{15         QTabWidget *tabWidget;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \mbox{\hyperlink{class_colorimetry_tabs}{ColorimetryTabs}}(\mbox{\hyperlink{class_colorimetry}{Colorimetry}} * colorimetry, \mbox{\hyperlink{class_colorimetry_filter}{ColorimetryFilter}} * colorimetryFilter, QWidget *parent = 0);}
+\DoxyCodeLine{19         \mbox{\hyperlink{class_colorimetry_tabs}{\string~ColorimetryTabs}}() \{\};}
+\DoxyCodeLine{20 \};}
+
+\end{DoxyCode}

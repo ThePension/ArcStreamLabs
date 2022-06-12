@@ -1,0 +1,45 @@
+\hypertarget{imageprocessing_8h_source}{}\doxysection{imageprocessing.\+h}
+\label{imageprocessing_8h_source}\index{ArcStreamLabs/src/imageprocessing.h@{ArcStreamLabs/src/imageprocessing.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef IMAGEPROCESSING\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define IMAGEPROCESSING\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QPixmap>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <QImage>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QThread>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}opencv2/opencv.hpp"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}lib/LibCircularBuffer/libcircularbuffer\_1.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}helper.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}undo\_redo/actionmanager.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define ID\_CAMERA 0}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_image_processing}{ImageProcessing}} : \textcolor{keyword}{public} QThread}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     Q\_OBJECT}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_image_processing}{ImageProcessing}}(\mbox{\hyperlink{class_circular_buffer}{CircularBuffer}} *circularBuffer, \mbox{\hyperlink{class_action_manager}{ActionManager}} * am, QObject * parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_image_processing}{\string~ImageProcessing}}();}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     QPixmap pixmap()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{22         \textcolor{keywordflow}{return} mPixmap;}
+\DoxyCodeLine{23     \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} setKernel(cv::Mat);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} run() \textcolor{keyword}{override};}
+\DoxyCodeLine{29 signals:}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} imagedProcessed();}
+\DoxyCodeLine{31 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32     \mbox{\hyperlink{class_circular_buffer}{CircularBuffer}} *circularBuffer;}
+\DoxyCodeLine{33     QPixmap mPixmap;}
+\DoxyCodeLine{34     cv::Mat mFrame, mGaussianBlur;}
+\DoxyCodeLine{35     cv::Mat kernel;}
+\DoxyCodeLine{36     \mbox{\hyperlink{class_action_manager}{ActionManager}} * actionManager;}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// VIDEOSTREAM\_H}}
+
+\end{DoxyCode}

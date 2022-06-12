@@ -1,0 +1,61 @@
+\hypertarget{filter_8h_source}{}\doxysection{filter.\+h}
+\label{filter_8h_source}\index{ArcStreamLabs/src/dialog/filter/filter.h@{ArcStreamLabs/src/dialog/filter/filter.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <QDialog>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}QBoxLayout"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}QVBoxLayout"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}sobelfilter.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}stylizationfilter.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}longexposure.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }QCheckBox;}
+\DoxyCodeLine{11 \textcolor{keyword}{class }QLabel;}
+\DoxyCodeLine{12 \textcolor{keyword}{class }QLineEdit;}
+\DoxyCodeLine{13 \textcolor{keyword}{class }QPushButton;}
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_arc_stream_lab}{ArcStreamLab}};}
+\DoxyCodeLine{15 \textcolor{keyword}{class }QRadioButton;}
+\DoxyCodeLine{16 \textcolor{keyword}{class }QGroupBox;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_filter}{Filter}} : \textcolor{keyword}{public} QDialog}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     Q\_OBJECT}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keyword}{private}:}
+\DoxyCodeLine{23         QVBoxLayout *verticalBox;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         QGroupBox *superpositionGroupBox;}
+\DoxyCodeLine{26         QRadioButton *radioSuperpositionNo;}
+\DoxyCodeLine{27         QRadioButton *radioSuperpositionYes;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         QPushButton * buttonNoFilter;}
+\DoxyCodeLine{30         QPushButton * buttonSobelFilter; \textcolor{comment}{// Edge detector}}
+\DoxyCodeLine{31         QPushButton * buttonStylizationFilter;}
+\DoxyCodeLine{32         QPushButton * buttonLongExposureFilter;}
+\DoxyCodeLine{33         \mbox{\hyperlink{class_arc_stream_lab}{ArcStreamLab}} *parent;}
+\DoxyCodeLine{34         QAction *actUndo, *actRedo;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{keywordtype}{void} geometry();}
+\DoxyCodeLine{37         \textcolor{keywordtype}{void} control();}
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} appearance();}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keyword}{public}:}
+\DoxyCodeLine{41         \mbox{\hyperlink{class_filter}{Filter}}(QWidget *parent = 0);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     signals:}
+\DoxyCodeLine{44         \textcolor{keywordtype}{void} sigSetNoFilter();}
+\DoxyCodeLine{45         \textcolor{keywordtype}{void} sigSetSobelFilter(\mbox{\hyperlink{class_filter_actions}{FilterActions}} *);}
+\DoxyCodeLine{46         \textcolor{keywordtype}{void} sigSetStylizationFilter(\mbox{\hyperlink{class_filter_actions}{FilterActions}} *);}
+\DoxyCodeLine{47         \textcolor{keywordtype}{void} sigSetLongExposureFilter(\mbox{\hyperlink{class_filter_actions}{FilterActions}} *);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{50         \textcolor{keywordtype}{void} sloButtonNoFilter();}
+\DoxyCodeLine{51         \textcolor{keywordtype}{void} sloButtonSobelFilter();}
+\DoxyCodeLine{52         \textcolor{keywordtype}{void} sloButtonStylizationFilter();}
+\DoxyCodeLine{53         \textcolor{keywordtype}{void} sloButtonLongExposureFilter();}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+
+\end{DoxyCode}

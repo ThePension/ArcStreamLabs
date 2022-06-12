@@ -1,0 +1,18 @@
+@startwbs WBS_Exemple
+* Mon Projet
+** WP0 : gestion de projet
+*** Kick off
+*** Séances hebdomadaires
+*** Review mensuelles
+*** (Re)Planification
+** WP1 : spécifications des besoins
+** WP2 : conception
+** WP3 : réalisation
+*** Fonctionalité 1
+**** Implémentation
+**** Tests
+**** Validation
+**** Documentation
+*** Fonctionalité 2
+** WP4 : déploiement
+@endwbs

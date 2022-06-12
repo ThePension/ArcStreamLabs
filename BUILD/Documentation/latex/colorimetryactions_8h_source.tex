@@ -1,0 +1,27 @@
+\hypertarget{colorimetryactions_8h_source}{}\doxysection{colorimetryactions.\+h}
+\label{colorimetryactions_8h_source}\index{ArcStreamLabs/src/dialog/colorimetry/colorimetryactions.h@{ArcStreamLabs/src/dialog/colorimetry/colorimetryactions.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../../undo\_redo/undoableaction.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }QSlider;}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_colorimetry_actions}{ColorimetryActions}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_undoable_action}{UndoableAction}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{keyword}{private}:}
+\DoxyCodeLine{10         QSlider *** slidersTab;}
+\DoxyCodeLine{11         \textcolor{keywordtype}{int} **values;}
+\DoxyCodeLine{12         \textcolor{keywordtype}{int} **backup;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         \mbox{\hyperlink{class_colorimetry_actions}{ColorimetryActions}}(\textcolor{keywordtype}{int} **backup, \textcolor{keywordtype}{int} **values, QSlider *** slidersTab);}
+\DoxyCodeLine{16         \mbox{\hyperlink{class_colorimetry_actions}{ColorimetryActions}}(\textcolor{keywordtype}{int} **values, QSlider *** slidersTab);}
+\DoxyCodeLine{17         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_colorimetry_actions}{\string~ColorimetryActions}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keywordtype}{void} execute() \textcolor{keyword}{override};}
+\DoxyCodeLine{20         \textcolor{keywordtype}{void} undo()\textcolor{keyword}{override};}
+\DoxyCodeLine{21 \};}
+
+\end{DoxyCode}

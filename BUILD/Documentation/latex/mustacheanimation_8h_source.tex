@@ -1,0 +1,27 @@
+\hypertarget{mustacheanimation_8h_source}{}\doxysection{mustacheanimation.\+h}
+\label{mustacheanimation_8h_source}\index{ArcStreamLabs/src/dialog/animation/mustacheanimation.h@{ArcStreamLabs/src/dialog/animation/mustacheanimation.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}animationactions.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}opencv2/objdetect.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}../../helper.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_mustache_animation}{MustacheAnimation}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_animation_actions}{AnimationActions}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11     cv::Mat matMustache;}
+\DoxyCodeLine{12     cv::CascadeClassifier cascade;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_mustache_animation}{MustacheAnimation}}();}
+\DoxyCodeLine{16     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_mustache_animation}{\string~MustacheAnimation}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} execute() \textcolor{keyword}{override};}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} undo()\textcolor{keyword}{ override }\{ \}}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+
+\end{DoxyCode}

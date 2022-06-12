@@ -1,0 +1,36 @@
+\hypertarget{libcircularbuffer__1_8h_source}{}\doxysection{libcircularbuffer\+\_\+1.\+h}
+\label{libcircularbuffer__1_8h_source}\index{ArcStreamLabs/lib/LibCircularBuffer/libcircularbuffer\_1.h@{ArcStreamLabs/lib/LibCircularBuffer/libcircularbuffer\_1.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <mutex>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <memory>} \textcolor{comment}{// for unique\_ptr}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <opencv2/opencv.hpp>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_circular_buffer}{CircularBuffer}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{private}:}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10     std::unique\_ptr<cv::Mat[]> buffer;}
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} head;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int} tail;}
+\DoxyCodeLine{13     std::mutex mutex;}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} maxSize;}
+\DoxyCodeLine{15     \textcolor{keywordtype}{bool} isFull;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \mbox{\hyperlink{class_circular_buffer}{CircularBuffer}}(\textcolor{keywordtype}{int} maxSize);}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} put(cv::Mat);}
+\DoxyCodeLine{21     \textcolor{keywordtype}{bool} empty();}
+\DoxyCodeLine{22     \textcolor{keywordtype}{bool} full();}
+\DoxyCodeLine{23     cv::Mat read();}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} reset();}
+\DoxyCodeLine{25     \textcolor{keywordtype}{int} getCurrentSize();}
+\DoxyCodeLine{26     \textcolor{keywordtype}{int} getMaxSize();}
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} getHead();}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} getTail();}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+
+\end{DoxyCode}

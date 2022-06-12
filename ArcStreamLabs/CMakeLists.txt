@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 
 project(ArcStreamLabs VERSION 0.1 LANGUAGES CXX)
 
-set(PATH_OPENCV "C:/opencv/release", "C:/opencv-build")
-find_package( OpenCV REQUIRED PATHS ${PATH_OPENCV} )
+find_package(OpenCV REQUIRED)
+
+add_subdirectory("lib/LibCircularBuffer")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -19,13 +20,36 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
-add_subdirectory(LibA)
-
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+        src/main.cpp
+        src/mainwindow.h src/mainwindow.cpp
+        src/helper.h src/helper.cpp
+        src/videostream.h src/videostream.cpp
+        src/arcstreamlab.h src/arcstreamlab.cpp
+        src/aboutdialog.h src/aboutdialog.cpp
+        src/settings.h src/settings.cpp
+        src/imageprocessing.h src/imageprocessing.cpp
+        src/dialog/colorimetry/colorimetry.h src/dialog/colorimetry/colorimetry.cpp
+        src/dialog/colorimetry/colorimetrytabs.h src/dialog/colorimetry/colorimetrytabs.cpp
+        src/dialog/colorimetry/colorimetryactions.h src/dialog/colorimetry/colorimetryactions.cpp
+        src/dialog/colorimetry/colorimetryfilter.h src/dialog/colorimetry/colorimetryfilter.cpp
+        src/dialog/filter/filter.h src/dialog/filter/filter.cpp
+        src/dialog/filter/filteractions.h src/dialog/filter/filteractions.cpp
+        src/dialog/filter/sobelfilter.h src/dialog/filter/sobelfilter.cpp
+        src/dialog/filter/longexposure.h src/dialog/filter/longexposure.cpp
+        src/dialog/specialEffect/specialeffect.h src/dialog/specialEffect/specialeffect.cpp
+        src/dialog/specialEffect/specialeffectactions.h src/dialog/specialEffect/specialeffectactions.cpp
+        src/dialog/specialEffect/mirror.h src/dialog/specialEffect/mirror.cpp
+        src/dialog/specialEffect/mosaicblureffect.h src/dialog/specialEffect/mosaicblureffect.cpp
+        src/dialog/animation/animation.h src/dialog/animation/animation.cpp
+        src/dialog/animation/textanimation.h src/dialog/animation/textanimation.cpp
+        src/dialog/filter/stylizationfilter.h src/dialog/filter/stylizationfilter.cpp
+        Ressources.qrc
+        src/dialog/animation/animationactions.h src/dialog/animation/animationactions.cpp
+        src/dialog/animation/mustacheanimation.h src/dialog/animation/mustacheanimation.cpp
+        src/dialog/specialEffect/facialblureffect.h src/dialog/specialEffect/facialblureffect.cpp
+        src/undo_redo/actionmanager.cpp src/undo_redo/actionmanager.h src/undo_redo/undoableaction.h
+        src/undo_redo/undoableactiontest.h src/undo_redo/undoableactiontest.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -51,7 +75,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibA)
+target_link_libraries(ArcStreamLabs PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibCircularBuffer)
 
 set_target_properties(ArcStreamLabs PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -80,9 +104,9 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(tests tests.cpp ${LibA_TESTS}) # tests.cpp
+add_executable(tests test/tests.cpp ${LibCircularBuffer_TESTS} src/undo_redo/undoredo_tests.cpp) # tests.cpp
 target_include_directories(tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(tests gtest_main LibA) # tests.cpp
+target_link_libraries(tests gtest_main Qt${QT_VERSION_MAJOR}::Widgets ${OpenCV_LIBS} LibCircularBuffer) # tests.cpp
 
 include(GoogleTest)
 gtest_discover_tests(tests)

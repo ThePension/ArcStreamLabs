@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/Pause.png</file>
+        <file>img/Play.png</file>
+        <file>img/Snapshot.png</file>
+        <file>img/Stop.png</file>
+        <file>img/hearc.png</file>
+        <file>img/mustache.png</file>
+        <file>img/backB.png</file>
+        <file>img/PauseWhite.png</file>
+        <file>img/PlayWhite.png</file>
+        <file>img/SnapshotWhite.png</file>
+        <file>img/StopWhite.png</file>
+        <file>img/popupBack.jpg</file>
+        <file>img/asianBoloss.png</file>
+        <file>img/asianGhost.png</file>
+        <file>img/Boloss.png</file>
+    </qresource>
+    <qresource prefix="/xml">
+        <file>xml/haarcascade_mcs_mouth.xml</file>
+        <file>xml/haarcascade_frontalface_default.xml</file>
+    </qresource>
+</RCC>

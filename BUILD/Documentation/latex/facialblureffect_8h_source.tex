@@ -1,0 +1,25 @@
+\hypertarget{facialblureffect_8h_source}{}\doxysection{facialblureffect.\+h}
+\label{facialblureffect_8h_source}\index{ArcStreamLabs/src/dialog/specialEffect/facialblureffect.h@{ArcStreamLabs/src/dialog/specialEffect/facialblureffect.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}specialeffectactions.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../../helper.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_facial_blur_effect}{FacialBlurEffect}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_special_effect_actions}{SpecialEffectActions}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{private}:}
+\DoxyCodeLine{9     cv::CascadeClassifier cascadeFrontalFace;}
+\DoxyCodeLine{10     cv::CascadeClassifier cascadeProfileFace;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_facial_blur_effect}{FacialBlurEffect}}();}
+\DoxyCodeLine{14     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_facial_blur_effect}{\string~FacialBlurEffect}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keywordtype}{void} execute() \textcolor{keyword}{override};}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} undo()\textcolor{keyword}{ override }\{ \}}
+\DoxyCodeLine{18 \};}
+\DoxyCodeLine{19 }
+
+\end{DoxyCode}
